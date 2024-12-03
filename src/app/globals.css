@@ -1,10 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Fustat:100, 200, 300, 400, 500, 600, 700, 800, 900');
+@import url('https://fonts.googleapis.com/css?family=B612:100, 200, 300, 400, 500, 600, 700, 800, 900');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root
+{
+    /* Colors */
+
+    --body-background-color: #f9f9f9;
+    --primary-text-color: #050507;
+    --accent-color: #fcac66;
+    
+
+    /* Font Sizes */
+    --heading-one-font-size: clamp(2.3328rem, 2.0827rem + 1.2504vw, 3.0518rem);
+    --heading-two-font-size: clamp(1.944rem, 1.771rem + 0.8651vw, 2.4414rem);
+    --heading-three-font-size: clamp(1.62rem, 1.5041rem + 0.5793vw, 1.9531rem);
+    --heading-four-font-size: clamp(1.35rem, 1.2761rem + 0.3696vw, 1.5625rem);
+    --heading-five-font-size: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+    --heading-six-font-size: clamp(0.8333rem, 0.7754rem + 0.2899vw, 1rem);
+    --paragraph-font-size: clamp( 0.075rem, -0.4424rem + 2.587vw, 1.5625rem);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,4 +35,52 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+  font-weight: 700;
+}
+
+h1
+{
+  font-family: 'B612', sans-serif;
+  font-size: var(--heading-one-font-size);
+}
+
+h2
+{
+  font-family: 'Fustat', sans-serif;
+  font-size: var(--heading-two-font-size);
+}
+
+h3, h4, h5, h6
+{
+  font-family: 'Fustat', sans-serif;
+}
+
+h3
+{
+  font-size: var(--heading-three-font-size);
+}
+
+h4
+{
+  font-size: var(--heading-four-font-size);
+}
+
+h5
+{
+  font-size: var(--heading-five-font-size);
+}
+
+h6
+{
+  font-size: var(--heading-six-font-size);
+}
+
+p
+{
+  font-family: 'Fustat', sans-serif;
+  font-size: var(--paragraph-font-size);
 }
