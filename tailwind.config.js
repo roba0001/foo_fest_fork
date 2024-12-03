@@ -10,6 +10,8 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        buttonBackgroundColor: '#fcac66',
+        buttonHoverBackgroundColor: '#FF8922',
       },
     },
   },
