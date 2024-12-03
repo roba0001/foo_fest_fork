@@ -1,8 +1,8 @@
-export default function Logo({logoText}) 
+export default function Logo({children}) 
 {
     return (
-        <h3>
-            {logoText}
-        </h3>
+       <h4>
+            {children}
+        </h4>
     ) 
 }
