@@ -1,8 +1,13 @@
+import RootLayout from "../layout"
 export default function Program() 
 {
+
+
     return (
-        <>
-            Program   
-        </>
-    ) 
+        <RootLayout>
+            <>
+                Program
+            </>
+        </RootLayout>
+    )
 }

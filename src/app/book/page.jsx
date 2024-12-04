@@ -1,8 +1,13 @@
+import RootLayout from "../layout"
+
 export default function Book() 
 {
+
     return (
-        <>
-            Book   
-        </>
-    ) 
+        <RootLayout>
+            <>
+                Book
+            </>
+        </RootLayout>
+    )
 }
