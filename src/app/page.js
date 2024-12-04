@@ -1,12 +1,10 @@
 'use client'
-import ScrollToTopButton from '../app/components/ScrollToTopButton.jsx'
+import Footer from '../app/components/Footer.jsx'
 
 export default function Home()
 {
   return (
-    <div>
-    
-    </div>
+    <Footer />
   );
 
 
