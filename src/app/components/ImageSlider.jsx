@@ -14,17 +14,17 @@ export default function ImageSlider()
     const slides = [
         {
             backgroundColor: '#333',
-            bandImage: '@/images/band_images/band_1.jpg',
+            bandImage: '/images/band_images/band_1.jpg',
             bandName: 'Band 1',
         },
         {
             backgroundColor: '#000',
-            bandImage: '@/images/band_images/band_1.jpg',
+            bandImage: '/images/band_images/band_2.jpg',
             bandName: 'Band 2',
         },
         {
             backgroundColor: '#adadad',
-            bandImage: '@/images/band_images/band_1.jpg',
+            bandImage: '/images/band_images/band_3.jpg',
             bandName: 'Band 3',
         },
     ]
@@ -52,7 +52,7 @@ export default function ImageSlider()
             <div className="mx-auto flex flex-col items-center min-w-[600px] max-w-[85%]">
                 <div className="slides-container min-w-[375px] w-full max-w-[90%] h-[500px] mt-4 border-2 border-orange-400">
                     <article
-                        style={{ backgroundImage: slides[currentIndex].bandImage }}
+                        style={{ backgroundColor: slides[currentIndex].backgroundColor }}
                         className="h-[100%] w-[100%] duration-500 slide"
                     ></article>
                 </div>
