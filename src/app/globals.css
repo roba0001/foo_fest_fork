@@ -30,6 +30,17 @@
   }
 }
 
+
+@layer utilities
+{
+   .mobile-nav
+   {
+      @apply
+        h-screen
+        flex-col
+   }
+}
+
 body {
   background: var(--body-background-color);
   color: var(--primary-text-color);
