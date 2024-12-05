@@ -1,13 +1,13 @@
-import RootLayout from "../layout"
-export default function Program() 
-{
+import RootLayout from "../layout";
+import BandCard from "@/app/components/BandCard";
 
-
-    return (
-        <RootLayout>
-            <>
-                Program
-            </>
-        </RootLayout>
-    )
+export default function Program() {
+  return (
+    <RootLayout>
+      <>
+        <BandCard />
+        <div>Program</div>
+      </>
+    </RootLayout>
+  );
 }
