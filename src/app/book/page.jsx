@@ -6,7 +6,7 @@ export default function Book() {
     <RootLayout>
       <h1>TICKETS</h1>
       <Form>
-        <p>child</p>
+        <p>chai</p>
       </Form>
     </RootLayout>
   );
