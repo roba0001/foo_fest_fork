@@ -10,8 +10,9 @@ export default function Book() {
     <section>
       <h1>BOOK YOUR STAY</h1>
 
+      <ShoppingCart></ShoppingCart>
+      <br></br>
       <Form>
-        {/* <ShoppingCart></ShoppingCart> */}
         <AreaInput />
         <GuestInput />
       </Form>
