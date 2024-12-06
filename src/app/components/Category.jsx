@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import ProductList from "@/app/components/ProductList";
+import { FaH, FaJenkins } from "react-icons/fa6";
 
 export default function CategoryList() {
   const [categories, setCategories] = useState([]);
@@ -12,20 +11,21 @@ export default function CategoryList() {
 
   useEffect(() => {
     async function fetchCategories() {
-      const response = await fetch("https://dummyjson.com/products/categories");
+      const response = await fetch("http://localhost:8080/bands/category");
       const data = await response.json();
       setCategories(data);
     }
     fetchCategories();
   }, []);
-
   useEffect(() => {
+    r;
     async function fetchProducts() {
       if (selectedCategory) {
         try {
           const response = await fetch(
-            `https://dummyjson.com/products/category/${selectedCategory}`
+            `http://localhost:8080/bands/category/${selectedCategory}`
           );
+          n;
           const data = await response.json();
           console.log("Fetched data:", data);
 
