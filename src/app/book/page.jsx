@@ -7,15 +7,20 @@ import ShoppingCart from "../components/ShoppingCart";
 
 export default function Book() {
   return (
-    <section>
+    <RootLayout>
       <h1>BOOK YOUR STAY</h1>
-
-      <ShoppingCart></ShoppingCart>
-      <br></br>
-      <Form>
-        <AreaInput />
-        <GuestInput />
-      </Form>
-    </section>
+      <div className="grid grid-cols-2 grid-rows-2 mt-10">
+        <div className="col-start-2 sticky top-10">
+          <ShoppingCart />
+        </div>
+        <br />
+        <div className="col-start-1 row-start-1">
+          <Form>
+            <AreaInput />
+            <GuestInput />
+          </Form>
+        </div>
+      </div>
+    </RootLayout>
   );
 }
