@@ -14,31 +14,34 @@ export default function ShoppingCart() {
   const regularTotal = 40;
   const vipTotal = 100;
   return (
-    <Fieldset title={title}>
-      <div className="flex flex-col justify-between min-h-64">
+    <section className="flex flex-col  bg-orange-200  max-w-sm p-7 rounded-3xl shadow-xl">
+      {/* <Fieldset title={title}> */}
+      <h5 className="mb-3">Shopping cart</h5>
+      <div className="flex flex-col justify-between min-h-96">
         <div className="flex flex-col gap-4">
-          <div className="flex justify-between">
+          <div className="flex justify-between rounded-2xl p-3 bg-orange-100">
             <p>Booking fee: </p>
             <p>{fixedBookingFee},-</p>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between rounded-2xl p-3 bg-orange-100">
             <p>Regular pass: </p>
             <p>{regularTotal},-</p>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between rounded-2xl p-3 bg-orange-100">
             <p>VIP pass: </p>
             <p>{vipTotal},-</p>
           </div>
         </div>
 
         <div>
-          <div className="flex justify-between bg-blue-100 rounded-2xl p-3 mb-4">
+          <div className="flex justify-between bg-white border-2 border-orange-300 rounded-2xl p-3 mb-4">
             <p>TOTAL: </p>
             <p className="font-bold">{fixedBookingFee + regularTotal + vipTotal},-</p>
           </div>
           <Button href={href} buttonText={buttonText}></Button>
         </div>
       </div>
-    </Fieldset>
+      {/* </Fieldset> */}
+    </section>
   );
 }
