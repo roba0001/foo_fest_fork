@@ -1,14 +1,13 @@
-export default function TotalPriceDisplay({ totalPrice }) 
+export default function TotalPriceDisplay({ totalPrice })
 {
     return (
-        <div>
-            <h4 className="flex justify-between px-4 rounded-full bg-white w-full">
-                {/* Passing in the totalPrice as a prop */}
-                <span>Total price: </span> <span>{totalPrice}</span> DKK
+        <div className="mx-auto w-full text-center">
+            <h4 className="flex justify-between gap-4 rounded-full bg-white px-4 py-2 whitespace-nowrap">
+                <span>Total price:</span> <span>{totalPrice} DKK</span>
             </h4>
-            <small className="block mt-2 text-center">
+            <small className="block mt-2">
                 A single fee of DKK 99 is added to the total
             </small>
         </div>
-    )
+    );
 }
