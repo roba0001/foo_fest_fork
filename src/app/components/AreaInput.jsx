@@ -1,18 +1,36 @@
-export default async function AreaInput() {
-  let response = await fetch("http://localhost:8080/available-spots");
-  let data = await response.json();
-  return (
-    <div className="flex flex-col  bg-blue-200 max-w-sm p-7 rounded-3xl shadow-xl">
-      <h5>Choose location:</h5>
-      {data.map((area) => (
-        <div key={area.available} className="hover:bg-blue-300 rounded-2xl  p-3 ">
-          <label className=" ml-3 flex justify-between " htmlFor={area.area}>
-            {area.area}
+"use client";
 
-            <input type="radio" id={area.area} name="area" value="area" />
+import { useState, useEffect } from "react";
+import Fieldset from "./Fieldset";
+
+export default function AreaInput() {
+  const [data, setData] = useState([]);
+  const [title, setTitle] = useState("Choose Location:");
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch("http://localhost:8080/available-spots");
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  return (
+    <Fieldset title={title}>
+      {data.map((area) => (
+        <div key={area.available} className="hover:bg-blue-300 rounded-2xl p-3">
+          <label className="ml-3 flex justify-between" htmlFor={area.area}>
+            {area.area}
+            <input type="radio" id={area.area} name="area" value={area.area} />
           </label>
         </div>
       ))}
-    </div>
+    </Fieldset>
   );
 }
