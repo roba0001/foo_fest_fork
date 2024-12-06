@@ -1,3 +1,3 @@
 export default function Form({ children }) {
-  return <form>{children}</form>;
+  return <form className="flex flex-col gap-5">{children}</form>;
 }
