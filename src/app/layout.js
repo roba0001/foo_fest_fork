@@ -41,7 +41,7 @@ export default function RootLayout({ children })
         <Navigation navItems={navItems}/>
         <main className="min-h-screen m-12">
           {children}
-          <GuestPassPriceCalculator />
+
         </main>
 
         <Footer />
