@@ -11,8 +11,8 @@ export default function ShoppingCart() {
   const fixedBookingFee = 99;
   const greenCampingFee = 299;
   // disse to skal kobles til antal biletter
-  const regularTotal = 40;
-  const vipTotal = 100;
+  const regularTotal = 100;
+  const vipTotal = 10033;
   return (
     <section className="flex flex-col  bg-orange-200  max-w-sm p-7 rounded-3xl shadow-xl">
       {/* <Fieldset title={title}> */}
