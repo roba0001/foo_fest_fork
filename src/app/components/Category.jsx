@@ -1,74 +1,80 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import ProductList from "@/app/components/ProductList";
-import { FaH, FaJenkins } from "react-icons/fa6";
+import Link from "next/link";
+import Image from "next/image";
 
-export default function CategoryList() {
-  const [categories, setCategories] = useState([]);
+export default function Category({ selectedCategory }) {
   const [products, setProducts] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchCategories() {
-      const response = await fetch("http://localhost:8080/bands/category");
-      const data = await response.json();
-      setCategories(data);
-    }
-    fetchCategories();
-  }, []);
-  useEffect(() => {
-    r;
     async function fetchProducts() {
-      if (selectedCategory) {
-        try {
-          const response = await fetch(
-            `http://localhost:8080/bands/category/${selectedCategory}`
-          );
-          n;
-          const data = await response.json();
-          console.log("Fetched data:", data);
+      try {
+        setLoading(true); // Start loading
+        const url = selectedCategory
+          ? `http://localhost:8080/genres/${selectedCategory}`
+          : `http://localhost:8080/bands`;
 
-          if (data && Array.isArray(data.products)) {
-            setProducts(data.products);
-          } else {
-            setProducts([]);
-          }
-        } catch (error) {
-          console.error("Error fetching products:", error);
-          setProducts([]);
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
         }
+
+        const data = await response.json();
+        console.log(data); // Tjek hvad der returneres fra API'et
+
+        if (data && Array.isArray(data.products)) {
+          setProducts(data.products); // Gem de hentede produkter
+        } else {
+          setProducts([]); // Hvis der ikke findes produkter, vis en tom liste
+        }
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        setProducts([]); // Fejlbehandling
+      } finally {
+        setLoading(false); // Stop loading
       }
     }
+
     fetchProducts();
   }, [selectedCategory]);
 
-  const categoryChange = (event) => {
-    const newCategory = event.target.value;
-    setSelectedCategory(newCategory);
-  };
+  if (loading) {
+    return <div>Loading products...</div>;
+  }
 
   return (
-    <div className="bg-card">
-      <form>
-        <label htmlFor="categories">Categories: </label>
-        <select
-          className="bg-background"
-          name="categories"
-          id="categories"
-          onChange={categoryChange}
-          value={selectedCategory}
-        >
-          <option value="">All products</option>
-          {categories.map((category) => (
-            <option key={category.name} value={category}>
-              {category.name}
-            </option>
-          ))}
-        </select>
-      </form>
+    <div>
+      <h1>
+        {selectedCategory
+          ? `Products under the ${selectedCategory} genre`
+          : "All Bands"}
+      </h1>
 
-      <ProductList selectedCategory={selectedCategory} />
+      <div className="grid grid-cols-3">
+        {products.map((product) => (
+          <div key={product.id} className="product-card">
+            <div>
+              <Link href={`/pages/products/${product.id}`}>
+                <h2>{product.genre}</h2>
+              </Link>
+              <h1>Price: {product.price}</h1>
+              {product.image && (
+                <div>
+                  <Image
+                    src={product.image}
+                    alt={product.genre}
+                    width={200} // Tilpas størrelsen efter behov
+                    height={200} // Tilpas størrelsen efter behov
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { isRedirectError } from "next/dist/client/components/redirect";
+/*import { isRedirectError } from "next/dist/client/components/redirect";
 import RootLayout from "../layout";
 import BandCard from "@/app/components/BandCard";
 
@@ -10,5 +10,16 @@ export default function Program() {
         <div>Program</div>
       </>
     </RootLayout>
+  );
+}
+  */
+
+import BandCard from "@/app/components/BandCard";
+
+export default function ProductsPage() {
+  return (
+    <div>
+      <BandCard />
+    </div>
   );
 }

@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@uidotdev/usehooks": "^2.4.1",
-    "next": "15.0.3",
+    "cors": "^2.8.5",
+    "next": "latest",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0"
