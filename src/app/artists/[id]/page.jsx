@@ -1,6 +1,6 @@
 import Hero from '../../components/Hero.jsx';
 import HeroDescription from '../../components/HeroDescription.jsx';
-import Navigation from '@/app/components/Navigation.jsx'
+import Navigation from '../../components/Navigation.jsx'
 import Link from 'next/link'
 import { FaArrowLeftLong } from "react-icons/fa6"
 

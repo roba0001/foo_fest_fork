@@ -1,4 +1,5 @@
 'use client'
+
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import Logo from './Logo.jsx'
@@ -9,7 +10,6 @@ import { IoMdClose } from "react-icons/io"
 export default function Navigation({ navItems = [] })
 {
     const currentPath = usePathname();
-
     const [navigationOpenState, setNavigationOpenState] = useState(false);
 
     const toggleNavigation = () =>
@@ -20,27 +20,30 @@ export default function Navigation({ navItems = [] })
     return (
         <>
             {/* Toggle Button */}
-            <button className={`z-50 cursor-pointer hidden max-md:block transition-right duration-150 ease-in ${
-                    navigationOpenState ? "max-md:right-0" : "max-md:-right-[200px]"
-                }`} onClick={toggleNavigation}>
+            <button
+                className={`fixed top-[20px] right-[20px] z-50 cursor-pointer transition-right duration-150 ease-in max-md:block md:hidden ${navigationOpenState ? "max-md:right-[210px]" : "max-md:right-[40px]"
+                    }`}
+                onClick={toggleNavigation}
+            >
                 {navigationOpenState ? (
                     <IoMdClose
                         size={30}
-                        className="text-black transition-all duration-300 ease-in-out hover:text-orange-300 cursor-pointer max-md:block max-md:absolute max-md:top-[20px] max-md:right-[220px]"
+                        className="text-black transition-all duration-300 ease-in-out hover:text-orange-300"
                     />
                 ) : (
                     <GiHamburgerMenu
                         size={30}
-                        className="text-black transition-all duration-300 ease-in-out hover:text-orange-300 cursor-pointer max-md:block max-md:absolute max-md:top-[20px] max-md:right-[20px]"
+                        className="text-black transition-all duration-300 ease-in-out hover:text-orange-300"
                     />
                 )}
             </button>
 
             {/* Navigation Menu */}
             <nav
-                className={`fixed  w-screen flex justify-between items-center text-center shadow-md h-[70px] px-12 max-md:h-screen max-md:w-[200px] transition-all duration-300 ${
-                    navigationOpenState ? "max-md:right-0" : "max-md:-right-[200px]"
-                }`}
+                className={`fixed top-0 right-0 flex justify-between items-center text-center z-50 bg-white shadow-md h-[70px] px-12 
+              w-full transition-all duration-300 
+              max-md:h-screen max-md:w-[200px] max-md:top-0 max-md:bg-white max-md:shadow-lg max-md:duration-300 ${navigationOpenState ? "max-md:right-0" : "max-md:-right-[200px]"
+                    }`}
             >
                 <Logo>
                     <a href="/" className="max-md:absolute left-[35%] bottom-8 cursor-pointer">

@@ -1,4 +1,5 @@
 import RootLayout from "../layout"
+import Navigation from '@/app/components/Navigation.jsx'
 export default function Program() 
 {
     const navItems =
