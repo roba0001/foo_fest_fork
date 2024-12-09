@@ -20,7 +20,7 @@ export default function Payment() {
   return (
     <Form submitForm={submitForm}>
       <Fieldset title={title}>
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-3 md:gap-5">
           <div className="flex flex-col">
             <label htmlFor="cardNumber">Card number:</label>
             <input
@@ -76,9 +76,9 @@ export default function Payment() {
               className="bg-slate-200 rounded-xl pl-2 pr-2 text-center mt-1"
               required
             ></input>
+            <span className="text-red-500 font-bold">* </span>
             <label htmlFor="termsCheckbox">
-              <span className="text-red-500 font-bold">* </span>I have read and agree to the website
-              terms and conditions{" "}
+              I have read and agree to the website terms and conditions{" "}
             </label>
           </div>
 
