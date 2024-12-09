@@ -1,9 +1,4 @@
-'use client'
-
-import Navigation from '../components/Navigation.jsx'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-
+import RootLayout from "../layout"
 export default function Program() 
 {
     const navItems =

@@ -5,23 +5,22 @@
 @tailwind components;
 @tailwind utilities;
 
-:root
-{
-    /* Colors */
+:root {
+  /* Colors */
+  --body-background-color: #f9f9f9;
+  --primary-text-color: #050507;
+  --accent-color: #fcac66;
+  --scroll-to-top-btn-background-color: #f9f9f9;
 
-    --body-background-color: #f9f9f9;
-    --primary-text-color: #050507;
-    --accent-color: #fcac66;
 
-
-    /* Font Sizes */
-    --heading-one-font-size: clamp(2.3328rem, 2.0827rem + 1.2504vw, 3.0518rem);
-    --heading-two-font-size: clamp(1.944rem, 1.771rem + 0.8651vw, 2.4414rem);
-    --heading-three-font-size: clamp(1.62rem, 1.5041rem + 0.5793vw, 1.9531rem);
-    --heading-four-font-size: clamp(1.35rem, 1.2761rem + 0.3696vw, 1.5625rem);
-    --heading-five-font-size: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
-    --heading-six-font-size: clamp(0.8333rem, 0.7754rem + 0.2899vw, 1rem);
-    --paragraph-font-size: clamp( 0.075rem, -0.4424rem + 2.587vw, 1.5625rem);
+  /* Font Sizes */
+  --heading-one-font-size: clamp(2.3328rem, 2.0827rem + 1.2504vw, 3.0518rem);
+  --heading-two-font-size: clamp(1.944rem, 1.771rem + 0.8651vw, 2.4414rem);
+  --heading-three-font-size: clamp(1.62rem, 1.5041rem + 0.5793vw, 1.9531rem);
+  --heading-four-font-size: clamp(1.35rem, 1.2761rem + 0.3696vw, 1.5625rem);
+  --heading-five-font-size: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+  --heading-six-font-size: clamp(0.8333rem, 0.7754rem + 0.2899vw, 1rem);
+  --paragraph-font-size: clamp(0.075rem, -0.4424rem + 2.587vw, 1.5625rem);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -46,52 +45,106 @@ body {
   background: var(--body-background-color);
   color: var(--primary-text-color);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+
 }
 
-h1, h2, h3, h4, h5, h6
-{
+::-webkit-scrollbar,
+::-moz-scrollbar,
+::-ms-scrollbar {
+  display: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
 }
 
-h1
-{
+h1 {
   font-family: 'B612', sans-serif;
   font-size: var(--heading-one-font-size);
 }
 
-h2
-{
+h2 {
   font-family: 'Fustat', sans-serif;
   font-size: var(--heading-two-font-size);
 }
 
-h3, h4, h5, h6
-{
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Fustat', sans-serif;
 }
 
-h3
-{
+h3 {
   font-size: var(--heading-three-font-size);
 }
 
-h4
-{
+h4 {
   font-size: var(--heading-four-font-size);
 }
 
-h5
-{
+h5 {
   font-size: var(--heading-five-font-size);
 }
 
-h6
-{
+h6 {
   font-size: var(--heading-six-font-size);
 }
 
-p
-{
+p {
   font-family: 'Fustat', sans-serif;
   font-size: var(--paragraph-font-size);
+}
+
+/*
+fixed -right-16 bottom-8 grid place-content-center bg-scrollToTopBtnBackgroundColor shadow-md h-[50px] w-[50px] rounded-full border-2 border-orange-300 text-orange-300 outline-none transition-all duration-100 ease-in hover:bg-orange-300 hover:text-white active:transition-none active:shadow-none active:scale-95
+*/
+
+.scroll-to-top-btn {
+  position: fixed;
+  right: -100px;
+  bottom: 30px;
+  display: grid;
+  place-content: center;
+  color: var(--accent-color);
+  background-color: var(--scroll-to-top-btn-background-color);
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+  outline: none;
+  transition: color .2s ease-in, background .2s ease-in, right .3s ease-in;
+
+  &.active {
+    right: 30px;
+    transition: right .3s ease-in;
+  }
+
+  &:hover {
+    color: #fff;
+    background-color: var(--accent-color);
+    transition: color .2s ease-in, background .2s ease-in;
+  }
+
+  &:active {
+    transform: scale(.98);
+    box-shadow: none;
+    transition: none;
+  }
+}
+
+.full-width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
