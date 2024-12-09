@@ -38,7 +38,6 @@ export default function BandCard()
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import Category from "@/app/components/Category";
 
 export default function Ban() {
