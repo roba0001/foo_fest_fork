@@ -13,7 +13,7 @@ export default function Payment() {
   //   const [onSubmit, setOnSubmit] = useState();
 
   function submitForm(event) {
-    event.preventDefault();
+    // event.preventDefault();
     console.log("form submitted");
   }
 
@@ -28,7 +28,8 @@ export default function Payment() {
               type="text"
               name="cardInformation"
               autoComplete="cc-number"
-              className="w-56 bg-slate-200 rounded-xl pl-2"
+              className="w-56 bg-slate-200 rounded-xl pl-2 "
+              minLength={16}
             ></input>
           </div>
 
@@ -42,6 +43,7 @@ export default function Payment() {
                 autoComplete="cc-exp"
                 placeholder="MM "
                 maxLength={2}
+                minLength={2}
                 className="w-8 mr-2 ml-2 bg-slate-200 text-center"
               ></input>
               <span> / </span>
@@ -52,6 +54,7 @@ export default function Payment() {
                 autoComplete="cc-exp"
                 placeholder=" YY"
                 maxLength={2}
+                minLength={2}
                 className="w-8  ml-2 mr-2 bg-slate-200 text-center"
               ></input>
             </div>
