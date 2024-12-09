@@ -24,8 +24,8 @@ export default function AreaInput() {
   return (
     <Fieldset title={title}>
       {data.map((area) => (
-        <div key={area.available} className="hover:bg-orange-100 rounded-2xl p-3">
-          <label className="ml-3 flex justify-between" htmlFor={area.area}>
+        <div key={area.available} className="hover:bg-orange-100  rounded-2xl p-3">
+          <label className="ml-3 flex justify-between cursor-pointer" htmlFor={area.area}>
             {area.area}
             <input type="radio" id={area.area} name="area" value={area.area} />
           </label>
