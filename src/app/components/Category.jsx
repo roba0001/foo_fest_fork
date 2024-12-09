@@ -11,9 +11,10 @@ export default function Category({ selectedCategory }) {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        setLoading(true); // Start loading
+        setLoading(true);
+
         const url = selectedCategory
-          ? `http://localhost:8080/genres/${selectedCategory}`
+          ? `http://localhost:8080/genre/${selectedCategory}`
           : `http://localhost:8080/bands`;
 
         const response = await fetch(url);
@@ -23,18 +24,14 @@ export default function Category({ selectedCategory }) {
         }
 
         const data = await response.json();
-        console.log(data); // Tjek hvad der returneres fra API'et
+        console.log("Fetched products:", data);
 
-        if (data && Array.isArray(data.products)) {
-          setProducts(data.products); // Gem de hentede produkter
-        } else {
-          setProducts([]); // Hvis der ikke findes produkter, vis en tom liste
-        }
+        setProducts(data.products || []);
       } catch (error) {
         console.error("Error fetching products:", error);
-        setProducts([]); // Fejlbehandling
+        setProducts([]);
       } finally {
-        setLoading(false); // Stop loading
+        setLoading(false);
       }
     }
 
@@ -47,30 +44,22 @@ export default function Category({ selectedCategory }) {
 
   return (
     <div>
-      <h1>
-        {selectedCategory
-          ? `Products under the ${selectedCategory} genre`
-          : "All Bands"}
-      </h1>
-
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-3 gap-4">
         {products.map((product) => (
           <div key={product.id} className="product-card">
-            <div>
-              <Link href={`/pages/products/${product.id}`}>
-                <h2>{product.genre}</h2>
-              </Link>
-              <h1>Price: {product.price}</h1>
-              {product.image && (
-                <div>
-                  <Image
-                    src={product.image}
-                    alt={product.genre}
-                    width={200} // Tilpas størrelsen efter behov
-                    height={200} // Tilpas størrelsen efter behov
-                  />
-                </div>
-              )}
+            <Link href={`/pages/products/${product.id}`}>
+              <h2>{product.genre}</h2>
+            </Link>
+            <h1>Price: {product.price}</h1>
+
+            <div className="image-container">
+              <Image
+                src={product.image || "/fallback.jpg"} // Fallback image
+                alt={product.genre || "Default image"}
+                width={200}
+                height={200}
+                onError={(e) => (e.target.src = "/fallback.jpg")} // Display fallback image
+              />
             </div>
           </div>
         ))}
