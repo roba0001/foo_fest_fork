@@ -2,7 +2,6 @@ import Form from "../components/Form";
 import AreaInput from "../components/AreaInput";
 import RootLayout from "../layout";
 import GuestInput from "../components/GuestInput";
-import Fieldset from "../components/Fieldset";
 import ShoppingCart from "../components/ShoppingCart";
 
 export default function Book() {
