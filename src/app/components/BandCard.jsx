@@ -4,7 +4,6 @@ import testImg from "../../images/band.jpg";
 export default function BandCard() {
   return (
     <article className="overflow-hidden relative h-[350px] w-[250px] border-2 border-green group">
-      {/* Image Wrapper */}
       <div className="h-full">
         <Image
           src={testImg}
@@ -13,12 +12,10 @@ export default function BandCard() {
         />
       </div>
 
-      {/* Header */}
       <header className="absolute bottom-2 left-[50%] translate-x-[-50%] text-white text-center">
         <h3 className="whitespace-nowrap">Band Name</h3>
       </header>
 
-      {/* Band Description */}
       <div className="band-desc-container w-full bg-white absolute top-full min-h-full transition-all duration-500 ease-in group-hover:top-0 p-4 h-fit">
         <h5 className="text-lg font-semibold">Viking</h5>
         <div className="container band-desc-text-container overflow-auto scroll-hide">
