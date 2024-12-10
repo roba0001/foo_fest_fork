@@ -27,13 +27,12 @@ export default function GenreFilter() {
   const genres = ["Alle", ...new Set(bands.map((band) => band.genre))];
 
   return (
-    <div className="container mx-auto p-6">
+    <div>
       {selectedGenre === "Alle"}
 
-      <div className="mb-6">
-        <label className="text-lg font-semibold mr-4">Vælg Genre:</label>
+      <div>
+        <label>Vælg Genre:</label>
         <select
-          className="p-2 border rounded-md"
           value={selectedGenre}
           onChange={(e) => handleFilterChange(e.target.value)}
         >
@@ -48,9 +47,7 @@ export default function GenreFilter() {
       {filteredBands.length > 0 ? (
         <BandsListe bands={filteredBands} />
       ) : (
-        selectedGenre !== "Alle" && (
-          <p className="text-gray-500">Ingen bands fundet for denne genre.</p>
-        )
+        selectedGenre !== "Alle" && <p>Ingen bands fundet for denne genre.</p>
       )}
     </div>
   );

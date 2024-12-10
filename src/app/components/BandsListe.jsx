@@ -59,7 +59,7 @@ export default function BandsList({ bands }) {
   };
 
   return (
-    <div className="container mx-auto p-3">
+    <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {bands && bands.length > 0 ? (
           bands.map((band) => (
@@ -69,17 +69,16 @@ export default function BandsList({ bands }) {
               onMouseEnter={() => setHoveredBand(band.name)}
               onMouseLeave={() => setHoveredBand(null)}
             >
-              <h2 className="text-xl font-semibold mb-4">{band.name}</h2>
+              <h2>{band.name}</h2>
 
               {hoveredBand === band.name && (
-                <div className="mt-4 p-4 bg-gray-200 rounded-lg shadow-md">
+                <div>
                   {getScheduleForBand(band.name).length > 0 ? (
                     getScheduleForBand(band.name).map((event, index) => (
-                      <div key={index} className="mt-2">
-                        <p className="text-gray-700">Scene: {event.scene}</p>
-                        <p className="text-gray-700">
-                          Dato: {mapDayToName(event.day)} - {event.start} -{" "}
-                          {event.end}
+                      <div key={index}>
+                        <p>Scene: {event.scene}</p>
+                        <p>
+                          {mapDayToName(event.day)}: {event.start} - {event.end}
                         </p>
                       </div>
                     ))
