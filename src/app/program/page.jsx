@@ -26,7 +26,7 @@ export default function ProductsPage() {
   );
 }
   */
-
+/*
 import BandCard from "../components/BandCard";
 
 export default function Home() {
@@ -34,6 +34,18 @@ export default function Home() {
     <div>
       <h1>Bandt eller scenerne </h1>
       <BandCard />
+    </div>
+  );
+}
+*/
+import Category from "@/app/components/Category";
+import BandsListe from "@/app/components/BandsListe";
+
+export default function Home() {
+  return (
+    <div>
+      <Category />
+      <BandsListe />
     </div>
   );
 }
