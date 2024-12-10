@@ -40,6 +40,13 @@
   .custom-border {
     @apply border-2 border-orange-300 rounded-xl p-7;
   }
+
+  .vip-ticket-counter-background-color
+  {
+    @apply background-color: #ffedd5;
+  }
+
+  
 }
 
 body {
