@@ -1,49 +1,27 @@
-/*import { isRedirectError } from "next/dist/client/components/redirect";
-import RootLayout from "../layout";
-import BandCard from "@/app/components/BandCard";
-
-export default function Program() {
-  return (
-    <RootLayout>
-      <>
-        <BandCard />
-        <div>Program</div>
-      </>
-    </RootLayout>
-  );
-}
-  */
-/*
-import BandCard from "@/app/components/BandCard";
-import Skema from "@/app/components/Skema";
-
-export default function ProductsPage() {
-  return (
-    <div>
-      <BandCard />
-      <Skema />
-    </div>
-  );
-}
-  */
-/*
-import BandCard from "../components/BandCard";
-
-export default function Home() {
-  return (
-    <div>
-      <h1>Bandt eller scenerne </h1>
-      <BandCard />
-    </div>
-  );
-}
-*/
 import Category from "@/app/components/Category";
 import BandsListe from "@/app/components/BandsListe";
+import Navigation from "@/app/components/Navigation";
 
 export default function Home() {
+  const navItems = [
+    {
+      linkText: "Home",
+      href: "/",
+    },
+    {
+      linkText: "Program",
+      href: "/program",
+    },
+    {
+      linkText: "Book",
+      href: "/book",
+    },
+  ];
+
   return (
     <div>
+      <Navigation navItems={navItems} />
+      <h1>Bandt og scenerne på festival</h1>
       <Category />
       <BandsListe />
     </div>
