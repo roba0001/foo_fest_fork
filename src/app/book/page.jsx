@@ -8,6 +8,21 @@ import ShoppingCart from "../components/ShoppingCart";
 import GuestPassPriceCalculator from "../components/GuestPassPriceCalculator";
 
 export default function Book() {
+  const navItems = [
+    {
+      linkText: "Home",
+      href: "/",
+    },
+    {
+      linkText: "Program",
+      href: "/program",
+    },
+    {
+      linkText: "Book",
+      href: "/book",
+    },
+  ];
+
   return (
     <RootLayout>
       <h1>BOOK YOUR STAY</h1>
