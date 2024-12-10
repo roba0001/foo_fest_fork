@@ -42,7 +42,7 @@ export default function Navigation({ navItems = [] })
             <nav
                 className={`fixed top-0 right-0 flex justify-between items-center text-center z-50 bg-white shadow-md h-[70px] px-12 
               w-full transition-all duration-300 
-              max-md:h-screen max-md:w-[200px] max-md:top-0 max-md:bg-white max-md:shadow-lg max-md:duration-300 ${navigationOpenState ? "max-md:right-0" : "max-md:-right-[200px]"
+              max-md:h-screen max-md:w-[200px] max-md:top-0 max-md:shadow-lg max-md:duration-300 ${navigationOpenState ? "max-md:right-0" : "max-md:-right-[200px]"
                     }`}
             >
                 <Logo>
