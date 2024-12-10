@@ -39,6 +39,11 @@
         h-screen
         flex-col
    }
+
+   .vip-ticket-counter-background-color
+   {
+      background-color: #ffedd5;
+   }
 }
 
 body {
