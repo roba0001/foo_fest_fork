@@ -36,6 +36,12 @@
   }
 }
 
+@layer components {
+  .custom-border {
+    @apply border-2 border-orange-300 rounded-xl p-7;
+  }
+}
+
 body {
   background: var(--body-background-color);
   color: var(--primary-text-color);

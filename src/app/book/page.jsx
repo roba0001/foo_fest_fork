@@ -7,8 +7,7 @@ import ShoppingCart from "../components/ShoppingCart";
 import Navigation from "../components/Navigation";
 import GuestPassPriceCalculator from "../components/GuestPassPriceCalculator";
 
-export default function Book()
-{
+export default function Book() {
   const navItems = [
     {
       linkText: "Home",
