@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Fustat:100, 200, 300, 400, 500, 600, 700, 800, 900');
-@import url('https://fonts.googleapis.com/css?family=B612:100, 200, 300, 400, 500, 600, 700, 800, 900');
+@import url("https://fonts.googleapis.com/css?family=Fustat:100, 200, 300, 400, 500, 600, 700, 800, 900");
+@import url("https://fonts.googleapis.com/css?family=B612:100, 200, 300, 400, 500, 600, 700, 800, 900");
 
 @tailwind base;
 @tailwind components;
@@ -11,7 +11,6 @@
   --primary-text-color: #050507;
   --accent-color: #fcac66;
   --scroll-to-top-btn-background-color: #f9f9f9;
-
 
   /* Font Sizes */
   --heading-one-font-size: clamp(2.3328rem, 2.0827rem + 1.2504vw, 3.0518rem);
@@ -30,15 +29,17 @@
   }
 }
 
+@layer utilities {
+  .mobile-nav {
+    @apply h-screen
+        flex-col;
+  }
+}
 
-@layer utilities
-{
-   .mobile-nav
-   {
-      @apply
-        h-screen
-        flex-col
-   }
+@layer components {
+  .custom-border {
+    @apply border-2 border-orange-300 rounded-xl p-7;
+  }
 }
 
 body {
@@ -46,7 +47,6 @@ body {
   color: var(--primary-text-color);
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
-
 }
 
 ::-webkit-scrollbar,
@@ -65,12 +65,12 @@ h6 {
 }
 
 h1 {
-  font-family: 'B612', sans-serif;
+  font-family: "B612", sans-serif;
   font-size: var(--heading-one-font-size);
 }
 
 h2 {
-  font-family: 'Fustat', sans-serif;
+  font-family: "Fustat", sans-serif;
   font-size: var(--heading-two-font-size);
 }
 
@@ -78,7 +78,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Fustat', sans-serif;
+  font-family: "Fustat", sans-serif;
 }
 
 h3 {
@@ -98,7 +98,7 @@ h6 {
 }
 
 p {
-  font-family: 'Fustat', sans-serif;
+  font-family: "Fustat", sans-serif;
   font-size: var(--paragraph-font-size);
   line-height: 2;
 }
@@ -119,23 +119,23 @@ fixed -right-16 bottom-8 grid place-content-center bg-scrollToTopBtnBackgroundCo
   width: 50px;
   border-radius: 100%;
   border: 2px solid var(--accent-color);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   outline: none;
-  transition: color .2s ease-in, background .2s ease-in, right .3s ease-in;
+  transition: color 0.2s ease-in, background 0.2s ease-in, right 0.3s ease-in;
 
   &.active {
     right: 30px;
-    transition: right .3s ease-in;
+    transition: right 0.3s ease-in;
   }
 
   &:hover {
     color: #fff;
     background-color: var(--accent-color);
-    transition: color .2s ease-in, background .2s ease-in;
+    transition: color 0.2s ease-in, background 0.2s ease-in;
   }
 
   &:active {
-    transform: scale(.98);
+    transform: scale(0.98);
     box-shadow: none;
     transition: none;
   }
