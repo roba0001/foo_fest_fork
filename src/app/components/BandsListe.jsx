@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 
 export default function BandsList({ bands }) {
-  // Modtaget bands som prop
   const [schedule, setSchedule] = useState({});
   const [hoveredBand, setHoveredBand] = useState(null);
 
