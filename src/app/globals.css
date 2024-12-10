@@ -37,7 +37,7 @@
 
 @layer components {
   .custom-border {
-    @apply border-2 border-orange-300 rounded-xl p-7;
+    @apply border-2 border-orange-300 rounded-xl;
   }
 }
 
