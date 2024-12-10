@@ -1,7 +1,7 @@
 export default function Logo({children}) 
 {
     return (
-       <h4>
+        <h4>
             {children}
         </h4>
     ) 

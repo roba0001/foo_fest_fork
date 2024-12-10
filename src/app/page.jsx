@@ -1,13 +1,31 @@
 import RootLayout from './layout'
 import Hero from '../app/components/Hero.jsx'
-import ImageSlider from '../app/components/ImageSlider.jsx'
+import Navigation from '../app/components/Navigation.jsx'
 
 export default function Home()
 {
+  const navItems =
+  [
+    {
+      href: '/',
+      linkText: 'Home'
+    },
+    {
+      href: '/program',
+      linkText: 'Program'
+    },
+    {
+      href: '/book',
+      linkText: 'Book'
+    },
+  ]
+
   return (
     <RootLayout>
-       <Hero />
-       <ImageSlider />
+      <Navigation navItems={navItems} />
+        <Hero>
+            Hey
+        </Hero>
     </RootLayout>
   );
 }
