@@ -38,7 +38,6 @@ export default function RootLayout({ children })
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
 
-        <Navigation navItems={navItems}/>
         <main className="min-h-screen m-12">
           {children}
 
