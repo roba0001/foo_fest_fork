@@ -36,7 +36,9 @@ export default function ShoppingCart() {
         <div>
           <div className="flex justify-between bg-white border-2 border-orange-300 rounded-2xl p-3 mb-4">
             <p>TOTAL: </p>
-            <p className="font-bold">{fixedBookingFee + regularTotal + vipTotal},-</p>
+            <p className="font-bold">
+              {fixedBookingFee + regularTotal + vipTotal},-
+            </p>
           </div>
           <Button href={href} buttonText={buttonText}></Button>
         </div>
