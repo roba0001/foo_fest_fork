@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navigation from '../app/components/Navigation.jsx'
 import Footer from '../app/components/Footer.jsx'
+import GuestPassPriceCalculator from '../app/components/GuestPassPriceCalculator.jsx'
 
 
 const geistSans = localFont({
@@ -40,6 +41,7 @@ export default function RootLayout({ children })
         <Navigation navItems={navItems}/>
         <main className="min-h-screen m-12">
           {children}
+
         </main>
 
         <Footer />
