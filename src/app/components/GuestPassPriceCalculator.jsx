@@ -22,7 +22,7 @@ export default function GuestPassPriceCalculator() {
 
   return (
     <Section>
-      <div className="flex justify-center align-center items-center mx-auto w-fit px-12 h-[400px] gap-4 bg-gray-400 max-md:h-fit max-md:py-12">
+      <div className="flex justify-center align-center items-center mx-auto w-fit px-12 h-[400px] gap-4 bg-white max-md:h-fit max-md:py-12">
         <div className="flex flex-col">
           <div className="flex gap-4 mb-8 max-md:flex-col">
             <TicketCounter
@@ -37,6 +37,7 @@ export default function GuestPassPriceCalculator() {
                 regularPriceCounter > 0 &&
                 setRegularPriceCounter(regularPriceCounter - 1)
               }
+               className="border-2 border-blue-500 rounded-md"
             />
             <TicketCounter
               ticketType="VIP"

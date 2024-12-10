@@ -28,13 +28,6 @@
   }
 }
 
-@layer utilities {
-  .mobile-nav {
-    @apply h-screen
-        flex-col;
-  }
-}
-
 @layer components {
   .custom-border {
     @apply border-2 border-orange-300 rounded-xl;
@@ -42,10 +35,8 @@
 
   .vip-ticket-counter-background-color
   {
-    @apply background-color: #ffedd5;
-  }
-
-  
+    @apply bg-vipTicketCounterBackgroundColor;
+  }  
 }
 
 body {

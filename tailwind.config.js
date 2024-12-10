@@ -12,6 +12,8 @@ module.exports = {
         foreground: "var(--foreground)",
         buttonBackgroundColor: "#fcac66",
         buttonHoverBackgroundColor: "#FF8922",
+        vipTicketCounterBackgroundColor: '#ffedd5',
+        shoppingCartBackgroundColor: '#ffedd5',
       },
     },
   },
