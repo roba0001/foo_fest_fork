@@ -4,6 +4,8 @@ import RootLayout from "../layout";
 import GuestInput from "../components/GuestInput";
 import Fieldset from "../components/Fieldset";
 import ShoppingCart from "../components/ShoppingCart";
+import ShoppingCart from "../components/ShoppingCart";
+import GuestPassPriceCalculator from "../components/GuestPassPriceCalculator";
 
 export default function Book() {
   return (
@@ -17,6 +19,7 @@ export default function Book() {
         <div className="col-start-1 row-start-1">
           <Form>
             <AreaInput />
+            <GuestPassPriceCalculator />
             <GuestInput />
           </Form>
         </div>
