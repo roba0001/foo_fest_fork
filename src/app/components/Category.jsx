@@ -19,8 +19,7 @@ export default function GenreFilter() {
 
   const handleFilterChange = (genre) => {
     setSelectedGenre(genre);
-    const filtered =
-      genre === "Alle" ? bands : bands.filter((band) => band.genre === genre);
+    const filtered = genre === "Alle" ? bands : bands.filter((band) => band.genre === genre);
     setFilteredBands(filtered);
   };
 
@@ -28,9 +27,7 @@ export default function GenreFilter() {
 
   return (
     <div className="container mx-auto p-6">
-      {selectedGenre === "Alle" && (
-        <h1 className="text-2xl font-bold mb-4">Bands på Festivalen</h1>
-      )}
+      {selectedGenre === "Alle" && <h1 className="text-2xl font-bold mb-4">Bands på Festivalen</h1>}
 
       <div className="mb-6">
         <label className="text-lg font-semibold mr-4">Vælg Genre:</label>
