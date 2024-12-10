@@ -6,9 +6,16 @@ import { FaArrowLeftLong } from "react-icons/fa6"
 
 export default function Artist() 
 {
+    const navItems = [
+        {
+            linkText: 'Program',
+            href: '/program',
+        }
+    ]
+
     return (
         <>
-            <Navigation />
+            <Navigation navItems={navItems} />
             <Hero>
                 <HeroDescription>
                     <h2>Band Name</h2>
