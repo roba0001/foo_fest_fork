@@ -26,9 +26,9 @@ export default function RootLayout({ children })
 {
 
     const navItems = [
-      { name: 'Home', href: '/' },
-      { name: 'Program', href: '/program' },
-      { name: 'Book', href: '/book' },
+      { linkText: 'Home', href: '/' },
+      { linkText: 'Program', href: '/program' },
+      { linkText: 'Book', href: '/book' },
     ];
 
   return (
