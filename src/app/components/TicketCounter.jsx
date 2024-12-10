@@ -11,7 +11,7 @@ export default function TicketCounter({
   return (
     <article
       className={`${
-        ticketType === 'VIP' ? 'bg-amber-400' : 'bg-gray-200'
+        ticketType === 'VIP' ? 'vip-ticket-counter-background-color' : 'bg-white'
       } w-[300px] h-[200px] rounded-md`}
     >
       <header className="py-4">
