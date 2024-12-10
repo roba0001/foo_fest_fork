@@ -13,6 +13,7 @@ export default function Artist()
             href: '/',
         }
     ]
+    
     return (
         <>
             <Navigation navItems={navItems}/>
