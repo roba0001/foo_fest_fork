@@ -1,29 +1,36 @@
 "use client";
 import { useState, useEffect } from "react";
 
-export default function BandsList({ bands }) {
+export default function BandsList({ bands })
+{
   // Modtaget bands som prop
   const [schedule, setSchedule] = useState({});
   const [hoveredBand, setHoveredBand] = useState(null);
 
-  useEffect(() => {
+  useEffect(() =>
+  {
     fetch("http://localhost:8080/schedule")
       .then((res) => res.json())
       .then((data) => setSchedule(data))
       .catch((err) => console.error("Error fetching schedule:", err));
   }, []);
 
-  const getScheduleForBand = (bandName) => {
+  const getScheduleForBand = (bandName) =>
+  {
     const bandSchedule = [];
 
-    for (const scene in schedule) {
-      for (const day in schedule[scene]) {
+    for (const scene in schedule)
+    {
+      for (const day in schedule[scene])
+      {
         const events = schedule[scene][day].filter((event) =>
           event.act.includes(bandName)
         );
 
-        if (events.length > 0) {
-          events.forEach((event) => {
+        if (events.length > 0)
+        {
+          events.forEach((event) =>
+          {
             bandSchedule.push({
               scene,
               day,
@@ -38,8 +45,10 @@ export default function BandsList({ bands }) {
     return bandSchedule;
   };
 
-  const mapDayToName = (day) => {
-    switch (day) {
+  const mapDayToName = (day) =>
+  {
+    switch (day)
+    {
       case "mon":
         return "Mandag";
       case "tue":
