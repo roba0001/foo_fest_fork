@@ -10,7 +10,8 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        scrollToTopBtnBackgroundColor: "#f9f9f9"
+        buttonBackgroundColor: "#fcac66",
+        buttonHoverBackgroundColor: "#FF8922",
       },
     },
   },
