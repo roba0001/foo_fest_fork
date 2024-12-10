@@ -3,16 +3,16 @@ import { useState, useEffect } from "react";
 import BandsListe from "@/app/components/BandsListe";
 
 export default function GenreFilter() {
-  const [bands, setBands] = useState([]); // Sørg for at bands starter som et tomt array
-  const [filteredBands, setFilteredBands] = useState([]); // Sørg for at filteredBands starter som et tomt array
+  const [bands, setBands] = useState([]);
+  const [filteredBands, setFilteredBands] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("Alle");
 
   useEffect(() => {
     fetch("http://localhost:8080/bands")
       .then((res) => res.json())
       .then((data) => {
-        setBands(data || []); // Hvis data er undefined, sæt det til et tomt array
-        setFilteredBands(data || []); // Hvis data er undefined, sæt det til et tomt array
+        setBands(data || []);
+        setFilteredBands(data || []);
       })
       .catch((err) => console.error("Error fetching bands:", err));
   }, []);
