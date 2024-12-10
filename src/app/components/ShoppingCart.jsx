@@ -14,7 +14,7 @@ export default function ShoppingCart() {
   const regularTotal = 100;
   const vipTotal = 10033;
   return (
-    <section className="flex flex-col  bg-orange-200  max-w-sm p-7 rounded-3xl shadow-xl">
+    <section className="flex flex-col  bg-orange-100  max-w-sm p-7 rounded-3xl shadow-xl">
       {/* <Fieldset title={title}> */}
       <h5 className="mb-3">Shopping cart</h5>
       <div className="flex flex-col justify-between min-h-96">
@@ -36,9 +36,7 @@ export default function ShoppingCart() {
         <div>
           <div className="flex justify-between bg-white border-2 border-orange-300 rounded-2xl p-3 mb-4">
             <p>TOTAL: </p>
-            <p className="font-bold">
-              {fixedBookingFee + regularTotal + vipTotal},-
-            </p>
+            <p className="font-bold">{fixedBookingFee + regularTotal + vipTotal},-</p>
           </div>
           <Button href={href} buttonText={buttonText}></Button>
         </div>
