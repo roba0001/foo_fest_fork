@@ -4,21 +4,21 @@ import Section from './Section';
 import TicketCounter from './TicketCounter';
 import TotalPriceDisplay from './TotalPriceDisplay';
 
-export default function GuestPassPriceCalculator() {
+export default function GuestPassPriceCalculator()
+{
   const regularTicketPrice = 799;
   const vipTicketPrice = 1299;
 
   const [regularPriceCounter, setRegularPriceCounter] = useState(0);
   const [vipPriceCounter, setVipPriceCounter] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(0);
 
-  useMemo(() => {
-    const calculatedPrice =
-      regularTicketPrice * regularPriceCounter +
-      vipTicketPrice * vipPriceCounter +
-      99;
-    setTotalPrice(calculatedPrice);
-  }, [regularPriceCounter, vipPriceCounter]);
+  const totalPrice =
+    regularTicketPrice * regularPriceCounter +
+    vipTicketPrice * vipPriceCounter +
+    99;
+  // useMemo(() => {
+
+  // }, [regularPriceCounter, vipPriceCounter]);
 
   return (
     <Section>
