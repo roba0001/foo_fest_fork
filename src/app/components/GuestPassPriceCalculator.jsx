@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import Section from './Section';
 import TicketCounter from './TicketCounter';
 import TotalPriceDisplay from './TotalPriceDisplay';
@@ -12,7 +12,7 @@ export default function GuestPassPriceCalculator() {
   const [vipPriceCounter, setVipPriceCounter] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  useEffect(() => {
+  useMemo(() => {
     const calculatedPrice =
       regularTicketPrice * regularPriceCounter +
       vipTicketPrice * vipPriceCounter +
