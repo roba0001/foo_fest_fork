@@ -37,7 +37,7 @@ export default function Payment() {
       {/* <Navigation navItems={navItems} /> */}
       <Form submitForm={submitForm}>
         <Fieldset title={title}>
-          <div className="flex flex-col gap-3 md:gap-5">
+          <div className="flex flex-col gap-3  lg:mt-5 md:gap-4 max-sm:gap-7">
             <div className="flex flex-col">
               <label htmlFor="cardNumber">Card number:</label>
               <input
@@ -45,14 +45,14 @@ export default function Payment() {
                 type="text"
                 name="cardInformation"
                 autoComplete="cc-number"
-                className="w-56 bg-slate-200 rounded-xl pl-2 "
+                className="w-56 bg-slate-200 rounded-xl pl-2 p-1"
                 minLength={16}
               ></input>
             </div>
 
             <div className="flex flex-col">
               <label htmlFor="cardExpirationMM cardExpirationYY">Expiration date:</label>
-              <div className="flex bg-slate-200 rounded-xl w-fit">
+              <div className="flex bg-slate-200 rounded-xl w-fit p-1">
                 <input
                   id="cardExpirationMM"
                   type="text"
@@ -61,7 +61,7 @@ export default function Payment() {
                   placeholder="MM "
                   maxLength={2}
                   minLength={2}
-                  className="w-8 mr-2 ml-2 bg-slate-200 text-center"
+                  className="w-8 mr-2 ml-2 bg-slate-200 text-center "
                 ></input>
                 <span> / </span>
                 <input
@@ -84,7 +84,7 @@ export default function Payment() {
                 type="text"
                 name="cardInformation"
                 max={3}
-                className="w-14 bg-slate-200 rounded-xl pl-2 pr-2 text-center"
+                className="w-20 bg-slate-200 rounded-xl pl-2 pr-2 text-center p-1"
               ></input>
             </div>
 
@@ -102,7 +102,7 @@ export default function Payment() {
               </label>
             </div>
 
-            <div className="self-center ">
+            <div className="self-center sm: mt-5">
               <FormButton href={href} buttonText={buttonText}></FormButton>
             </div>
           </div>
