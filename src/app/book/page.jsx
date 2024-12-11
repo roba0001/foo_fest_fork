@@ -6,6 +6,7 @@ import Fieldset from "../components/Fieldset";
 import ShoppingCart from "../components/ShoppingCart";
 import Navigation from "../components/Navigation";
 import GuestPassPriceCalculator from "../components/GuestPassPriceCalculator";
+import { FiShoppingCart } from "react-icons/fi";
 
 export default function Book() {
   const navItems = [
@@ -33,8 +34,8 @@ export default function Book() {
       <RootLayout>
         <h1>BOOK YOUR STAY</h1>
         <Form>
-          <div className="grid grid-cols-3 grid-rows-2 mt-10 justify-center ">
-            <div className="flex flex-col col-span-2 row-start-1 col-start-1 self-center gap-10">
+          <div className="grid grid-cols-3 max-lg:grid-cols-1 grid-rows-2 mt-10 justify-start gap-10">
+            <div className="flex flex-col col-span-2 row-start-1 col-start-1  gap-10">
               <AreaInput />
               {/* <GuestPassPriceCalculator /> */}
 
@@ -42,9 +43,8 @@ export default function Book() {
                 <GuestInput key={guest.id} guest={guest} />
               ))}
             </div>
-            <br />
 
-            <div className="col-start-3 row-start-1 sticky top-32">
+            <div className="flex flex-col  col-start-3 md:row-start-1 lg:md:row-start-1 max-sm:col-start-1  md:sticky lg:sticky  ">
               <ShoppingCart />
             </div>
           </div>
