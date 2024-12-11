@@ -5,8 +5,8 @@ import Fieldset from "./Fieldset";
 
 export default function AreaInput() {
   const [data, setData] = useState([]);
-  const [title, setTitle] = useState("Choose Location:");
   const [selectedArea, setSelectedArea] = useState(null);
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -26,7 +26,7 @@ export default function AreaInput() {
   };
 
   return (
-    <Fieldset title={title}>
+    <Fieldset title={"Choose area:"}>
       {data.map((area) => (
         <div
           key={area.available}

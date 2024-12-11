@@ -8,6 +8,7 @@ import Navigation from "../components/Navigation";
 import GuestPassPriceCalculator from "../components/GuestPassPriceCalculator";
 import { FiShoppingCart } from "react-icons/fi";
 import { IconContext } from "react-icons";
+import Login from "../components/Login";
 
 export default function Book() {
   const navItems = [
@@ -36,6 +37,7 @@ export default function Book() {
       <Navigation navItems={navItems} />
       <RootLayout>
         <h1>BOOK YOUR STAY</h1>
+        <Login></Login>
 
         <Form>
           <div className="grid grid-cols-3 max-lg:grid-cols-1 grid-rows-2 mt-10 justify-start gap-10 mx-6">

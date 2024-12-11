@@ -101,7 +101,9 @@ h6 {
   font-size: var(--heading-six-font-size);
 }
 
-p {
+p,
+input,
+label {
   font-family: "Fustat", sans-serif;
   font-size: var(--paragraph-font-size);
   line-height: 2;
