@@ -6,7 +6,7 @@ import Fieldset from "./Fieldset";
 export default function AreaInput() {
   const [data, setData] = useState([]);
   const [title, setTitle] = useState("Choose Location:");
-
+  const [selectedArea, setSelectedArea] = useState(null);
   useEffect(() => {
     async function fetchData() {
       try {
@@ -21,20 +21,40 @@ export default function AreaInput() {
     fetchData();
   }, []);
 
+  const handleSelection = (area) => {
+    setSelectedArea(area);
+  };
+
   return (
     <Fieldset title={title}>
       {data.map((area) => (
-        <div key={area.available} className="hover:bg-orange-100  rounded-2xl p-3">
-          <label className="flex justify-between cursor-pointer" htmlFor={area.area}>
+        <div
+          key={area.available}
+          className="hover:bg-orange-100 flex items-center justify-between  rounded-2xl p-3"
+          onClick={() => handleSelection(area.area)}
+        >
+          <label
+            className="flex justify-between cursor-pointer"
+            htmlFor={area.area}
+            onClick={() => handleSelection(area.area)}
+          >
             {area.area}
+          </label>
+          <div className="grid place-items-center">
             <input
               type="radio"
               id={area.area}
               name="area"
               value={area.area}
-              className="accent-color:bg-orange-300"
+              className="col-start-1 row-start-1 appearance-none w-4 h-4 border-2 border-orange-300 rounded-full shrink-0"
+              onChange={() => handleSelection(area.area)}
             />
-          </label>
+            <div
+              className={`col-start-1 row-start-1 w-2 h-2 rounded-full bg-orange-300 ${
+                selectedArea === area.area ? "" : "hide"
+              }`}
+            />
+          </div>
         </div>
       ))}
     </Fieldset>
