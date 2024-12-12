@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 
 //http://localhost:8080/logos/navn - fx A_Perfect_Circle_Logo_2011_-_Michael_John_Stinsman_InvisibleStudio_Productions.png
-
+//
 export default function BandsList({ bands }) {
   const [schedule, setSchedule] = useState({});
   const [hoveredBand, setHoveredBand] = useState(null);
