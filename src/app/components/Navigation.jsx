@@ -6,6 +6,7 @@ import Logo from './Logo.jsx'
 import Link from 'next/link'
 import { GiHamburgerMenu } from "react-icons/gi"
 import { IoMdClose } from "react-icons/io"
+import Login from './Login.jsx'
 
 export default function Navigation({ navItems = [] })
 {
@@ -50,26 +51,31 @@ export default function Navigation({ navItems = [] })
                         <span className="text-black">Foo</span><span className="text-orange-300">Fest</span>
                     </a>
                 </Logo>
-                <ul className="flex gap-12 text-xl max-md:flex-col max-md:text-center max-md:justify-center">
-                    {navItems.map((item, index) => (
-                        <li
-                            key={index}
-                            className={`transition-text duration-150 ease-in ${currentPath !== item.href ? 'hover:text-orange-300 hover:border-b-2 border-b-orange-300' : ''
-                                }`}
-                        >
-                            <Link
-                                href={item.href}
-                                className={`block ${currentPath === item.href
-                                    ? 'border-b-2 border-orange-300 text-orange-300 pointer-events-none'
-                                    : 'border-none'
+                <div className="flex gap-12 items-center">
+                    <ul className="flex gap-12 text-xl max-md:flex-col max-md:text-center max-md:justify-center">
+                        {navItems.map((item, index) => (
+                            <li
+                                key={index}
+                                className={`transition-text duration-150 ease-in ${currentPath !== item.href ? 'hover:text-orange-300 hover:border-b-2 border-b-orange-300' : ''
                                     }`}
-                                style={{ lineHeight: '1.2', padding: '0 2px' }}
                             >
-                                {item.linkText}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+                                <Link
+                                    href={item.href}
+                                    className={`block ${currentPath === item.href
+                                        ? 'border-b-2 border-orange-300 text-orange-300 pointer-events-none'
+                                        : 'border-none'
+                                        }`}
+                                    style={{ lineHeight: '1.2', padding: '0 2px' }}
+                                >
+                                    {item.linkText}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                    <div className="max-md:absolute top-8 left-[45%]">
+                        <Login />
+                    </div>
+                </div>
             </nav>
         </>
     );
