@@ -8,7 +8,7 @@ import Navigation from "../components/Navigation";
 import GuestPassPriceCalculator from "../components/GuestPassPriceCalculator";
 import { FiShoppingCart } from "react-icons/fi";
 import { IconContext } from "react-icons";
-import Login from "../components/Login";
+import { Login } from "../components/Login";
 
 export default function Book() {
   const navItems = [

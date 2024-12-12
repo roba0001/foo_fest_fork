@@ -6,7 +6,7 @@ import Logo from './Logo.jsx'
 import Link from 'next/link'
 import { GiHamburgerMenu } from "react-icons/gi"
 import { IoMdClose } from "react-icons/io"
-import Login from './Login.jsx'
+import { Login } from './Login.jsx'
 
 export default function Navigation({ navItems = [] })
 {
