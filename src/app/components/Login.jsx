@@ -19,7 +19,11 @@ export default function Login() {
 
   return (
     <>
-      <div className="flex justify-end">
+      <div
+        className="flex justify-end"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <Popover placement="bottom-end" backdrop="opaque">
           <PopoverTrigger>
             <CgProfile style={style} />
