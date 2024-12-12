@@ -11,14 +11,35 @@ export default function GuestPassPriceCalculator()
 
   const [regularPriceCounter, setRegularPriceCounter] = useState(0);
   const [vipPriceCounter, setVipPriceCounter] = useState(0);
+  const [optionalGreenCamping, setOptionalGreenCamping] = useState(false)
 
-  const totalPrice =
-    regularTicketPrice * regularPriceCounter +
-    vipTicketPrice * vipPriceCounter +
-    99;
-  // useMemo(() => {
+  const calculateTotalPrice = () =>
+  {
+    const basePrice =
+        (regularTicketPrice * regularPriceCounter)
+      + (vipTicketPrice * vipPriceCounter)
+      + 99
+    
+    return optionalGreenCamping ? basePrice : basePrice + 249
+  }
 
-  // }, [regularPriceCounter, vipPriceCounter]);
+  const [totalPrice, setTotalPrice] = useState(calculateTotalPrice(0))
+
+
+  const handleOptionalGreenCamping = () =>
+  {
+      setOptionalGreenCamping((prevState) =>
+      {
+          const updatedOptionalGreenCamping = !prevState
+
+          // Calculate new total price based on the updated state
+          const updatedTotalPrice = calculateTotalPrice(updatedOptionalGreenCamping)
+          setTotalPrice(updatedTotalPrice)
+
+          return updatedOptionalGreenCamping
+
+      })
+  }
 
   return (
     <Section>
@@ -37,7 +58,7 @@ export default function GuestPassPriceCalculator()
                 regularPriceCounter > 0 &&
                 setRegularPriceCounter(regularPriceCounter - 1)
               }
-               className="border-2 border-blue-500 rounded-md"
+              className="border-2 border-blue-500 rounded-md"
             />
             <TicketCounter
               ticketType="VIP"
@@ -52,6 +73,10 @@ export default function GuestPassPriceCalculator()
                 setVipPriceCounter(vipPriceCounter - 1)
               }
             />
+          </div>
+          <div className="container optional-green-camping-container flex items-center gap-2 mb-2">
+            <label htmlFor="optional_green_camping" className="select-none cursor-pointer">Optional green camping (+ 249 DKK)</label>
+            <input type="checkbox" name="optional_green_camping" className="accent-orange-300 cursor-pointer -order-1" id="optional_green_camping" onChange={handleOptionalGreenCamping} />
           </div>
           <TotalPriceDisplay totalPrice={totalPrice} />
         </div>
