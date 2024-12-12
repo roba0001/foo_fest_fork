@@ -5,7 +5,7 @@ export default function Footer()
 {
     return (
 
-        <footer className="sticky top-[100vh] flex flex-wrap justify-between items-center gap-4 p-4 bg-gray-200">
+        <footer className="sticky top-[100vh] flex flex-wrap justify-between items-center gap-4 p-4 bg-white border-t-2 border-t-orange-300">
             {/* Logo Section */}
             <div className="logo flex flex-col items-center order-1 md:order-2 w-full md:w-auto">
                 <CiGlobe size={40} />

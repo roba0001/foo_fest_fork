@@ -1,15 +1,8 @@
-'use client'
+"use client";
 
-import Navigation from '@/app/components/Navigation.jsx';
-import { usePathname } from 'next/navigation'
+import Navigation from "@/app/components/Navigation.jsx";
+import { usePathname } from "next/navigation";
 
-export default function Home()
-{
- 
-
-  return (
-    <>
-     
-    </>
-  )
+export default function Home() {
+  return <></>;
 }
