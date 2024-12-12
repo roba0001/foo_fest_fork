@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <main className="min-h-full p-12 pt-20">{children}</main>
+        <main className="min-h-full p-12 pt-24">{children}</main>
 
         <Footer />
       </body>
