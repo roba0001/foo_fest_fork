@@ -5,6 +5,7 @@ import Fieldset from "../components/Fieldset";
 import Form from "../components/Form";
 import Button from "../components/Button";
 import FormButton from "../components/FormButton";
+import BackArrowButton from '@/app/components/BackArrowButton.jsx'
 
 export default function Payment() {
   const [title, setTitle] = useState("Payment info");
@@ -108,6 +109,7 @@ export default function Payment() {
           </div>
         </Fieldset>
       </Form>
+      <BackArrowButton href="/book" />
     </>
   );
 }
