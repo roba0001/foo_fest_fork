@@ -47,7 +47,7 @@ export default function GenreFilter() {
       {filteredBands.length > 0 ? (
         <BandsListe bands={filteredBands} />
       ) : (
-        selectedGenre !== "Alle" && <p>Ingen bands fundet for denne genre.</p>
+        selectedGenre !== "Alle"
       )}
     </div>
   );
