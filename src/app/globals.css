@@ -33,10 +33,17 @@
     @apply border-2 border-orange-300 rounded-xl;
   }
 
-  .vip-ticket-counter-background-color
-  {
+  .hide {
+    display: none;
+  }
+
+  .fieldset-width {
+    width: 27rem;
+  }
+
+  .vip-ticket-counter-background-color {
     @apply bg-vipTicketCounterBackgroundColor;
-  }  
+  }
 }
 
 body {
@@ -94,7 +101,9 @@ h6 {
   font-size: var(--heading-six-font-size);
 }
 
-p {
+p,
+input,
+label {
   font-family: "Fustat", sans-serif;
   font-size: var(--paragraph-font-size);
   line-height: 2;
