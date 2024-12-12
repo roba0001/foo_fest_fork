@@ -9,7 +9,13 @@ import { PopoverContent } from "@nextui-org/popover";
 import { CgProfile } from "react-icons/cg";
 
 export default function Login() {
-  const style = { color: "orange", height: "2.5em", width: "2.5em", cursor: "pointer" };
+  const [isHovered, setIsHovered] = useState(false);
+  const style = {
+    color: isHovered ? "orange" : "black",
+    height: "2.5em",
+    width: "2.5em",
+    cursor: "pointer",
+  };
 
   return (
     <>
