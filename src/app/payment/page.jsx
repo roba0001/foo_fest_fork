@@ -36,6 +36,7 @@ export default function Payment() {
   return (
     <>
       {/* <Navigation navItems={navItems} /> */}
+      <BackArrowButton href="book" />
       <Form submitForm={submitForm}>
         <Fieldset title={title}>
           <div className="flex flex-col gap-3  lg:mt-5 md:gap-4 max-sm:gap-7">
@@ -109,7 +110,6 @@ export default function Payment() {
           </div>
         </Fieldset>
       </Form>
-      <BackArrowButton href="/book" />
     </>
   );
 }
