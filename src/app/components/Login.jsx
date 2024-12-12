@@ -14,6 +14,7 @@ export default function Login() {
     color: isHovered ? "orange" : "black",
     height: "2.5em",
     width: "2.5em",
+    transition: 'color .15s ease-in',
     cursor: "pointer",
   };
 
