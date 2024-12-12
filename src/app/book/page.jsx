@@ -37,7 +37,6 @@ export default function Book() {
       <Navigation navItems={navItems} />
       <RootLayout>
         <h1>BOOK YOUR STAY</h1>
-        <Login></Login>
 
         <Form>
           <div className="grid grid-cols-3 max-lg:grid-cols-1 grid-rows-2 mt-10 justify-start gap-10 mx-6">
