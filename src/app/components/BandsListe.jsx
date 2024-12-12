@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 
-//
 export default function BandsList({ bands }) {
   const [schedule, setSchedule] = useState({});
   const [hoveredBand, setHoveredBand] = useState(null);
