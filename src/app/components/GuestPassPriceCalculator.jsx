@@ -84,6 +84,30 @@ export default function GuestPassPriceCalculator()
               checked={optionalGreenCamping} // Reflect current state
             />
           </div>
+
+          <div className={`container optional-tent-put-up-container select-none cursor-pointer ${regularPriceCounter + vipPriceCounter < 2
+              ? 'hidden'
+              : 'flex gap-2'
+            } ${regularPriceCounter >= 2 || vipPriceCounter >= 2
+              ? 'flex'
+              : ''
+            }`}>
+            <label
+              htmlFor="optional_tent_put_up"
+              className="select-none cursor-pointer"
+            >
+              Optional tent put up (2P: DKK 299 - 3P: DKK 399 <small className="text-sm">(price is per tent)</small>)
+            </label>
+            <input
+              type="checkbox"
+              name="optional_tent_put_up"
+              className="accent-orange-300 cursor-pointer -order-1"
+              id="optional_tent_put_up"
+
+            // onChange={handleOptionalTentPutUp}
+            // checked={optionalTentPutUp}
+            />
+          </div>
           <TotalPriceDisplay totalPrice={totalPrice} />
         </div>
       </div>
