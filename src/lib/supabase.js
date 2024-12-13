@@ -18,11 +18,11 @@ export async function getInfo() {
   return data;
 }
 
-export async function postInfo(guestInfo) {
+export async function postInfo(formData) {
   const response = await fetch(url, {
     method: "POST",
     headers: headersList,
-    body: JSON.stringify(guestInfo),
+    body: JSON.stringify(formData),
   });
 
   const data = await response.json();
