@@ -3,6 +3,7 @@ import { useState, useMemo } from 'react';
 import Section from './Section';
 import TicketCounter from './TicketCounter';
 import TotalPriceDisplay from './TotalPriceDisplay';
+import TentAmountChooser from './TentAmountChooser';
 
 export default function GuestPassPriceCalculator()
 {
@@ -12,6 +13,7 @@ export default function GuestPassPriceCalculator()
   const [regularPriceCounter, setRegularPriceCounter] = useState(0);
   const [vipPriceCounter, setVipPriceCounter] = useState(0);
   const [optionalGreenCamping, setOptionalGreenCamping] = useState(false);
+  const [toggleOptionalTentPutUp, setToggleOptionalTentPutUp] = useState(false)
 
   const calculateTotalPrice = () =>
   {
@@ -35,9 +37,17 @@ export default function GuestPassPriceCalculator()
     setOptionalGreenCamping((prevState) => !prevState);
   };
 
+  const handleOptionalTentPutUp = () =>
+  {
+    setToggleOptionalTentPutUp((prevState) => !prevState)
+  }
+
+
+
+
   return (
     <Section>
-      <div className="flex justify-center align-center items-center mx-auto w-fit px-12 h-[400px] gap-4 bg-white max-md:h-fit max-md:py-12">
+      <div className="flex justify-center align-center items-center mx-auto w-fit px-12 py-4 h-fit gap-4 bg-white max-md:h-fit max-md:py-12">
         <div className="flex flex-col">
           <div className="flex gap-4 mb-8 max-md:flex-col">
             <TicketCounter
@@ -86,8 +96,8 @@ export default function GuestPassPriceCalculator()
           </div>
 
           <div className={`container optional-tent-put-up-container select-none cursor-pointer ${regularPriceCounter + vipPriceCounter < 2
-              ? 'hidden'
-              : 'flex gap-2'
+            ? 'hidden'
+            : 'flex gap-2'
             }`}>
             <label
               htmlFor="optional_tent_put_up"
@@ -100,10 +110,11 @@ export default function GuestPassPriceCalculator()
               name="optional_tent_put_up"
               className="accent-orange-300 cursor-pointer -order-1"
               id="optional_tent_put_up"
-
-            // onChange={handleOptionalTentPutUp}
-            // checked={optionalTentPutUp}
+              onChange={handleOptionalTentPutUp}
             />
+          </div>
+          <div className={`${(regularPriceCounter + vipPriceCounter < 2 || !toggleOptionalTentPutUp) ? 'hidden' : 'flex gap-8 my-4'}`}>
+            <TentAmountChooser />
           </div>
           <TotalPriceDisplay totalPrice={totalPrice} />
         </div>
