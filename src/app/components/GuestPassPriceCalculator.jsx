@@ -88,9 +88,6 @@ export default function GuestPassPriceCalculator()
           <div className={`container optional-tent-put-up-container select-none cursor-pointer ${regularPriceCounter + vipPriceCounter < 2
               ? 'hidden'
               : 'flex gap-2'
-            } ${regularPriceCounter >= 2 || vipPriceCounter >= 2
-              ? 'flex'
-              : ''
             }`}>
             <label
               htmlFor="optional_tent_put_up"
