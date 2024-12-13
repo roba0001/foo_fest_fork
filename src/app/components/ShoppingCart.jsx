@@ -11,11 +11,10 @@ export default function ShoppingCart() {
   const fixedBookingFee = 99;
   const greenCampingFee = 299;
   // disse to skal kobles til antal biletter
-  const regularTotal = 100;
-  const vipTotal = 10033;
+  const regularTotal = 799;
+  const vipTotal = 1299;
   return (
-    <section className="flex flex-col  bg-orange-200  max-w-sm p-7 rounded-3xl shadow-xl">
-      {/* <Fieldset title={title}> */}
+    <fieldset className="flex flex-col   bg-orange-100 lg:fieldset-width p-7 rounded-3xl shadow-xl">
       <h5 className="mb-3">Shopping cart</h5>
       <div className="flex flex-col justify-between min-h-96">
         <div className="flex flex-col gap-4">
@@ -23,10 +22,12 @@ export default function ShoppingCart() {
             <p>Booking fee: </p>
             <p>{fixedBookingFee},-</p>
           </div>
+          <hr className="border-orange-300"></hr>
           <div className="flex justify-between rounded-2xl p-3 bg-orange-100">
             <p>Regular pass: </p>
             <p>{regularTotal},-</p>
           </div>
+          <hr className="border-orange-300"></hr>
           <div className="flex justify-between rounded-2xl p-3 bg-orange-100">
             <p>VIP pass: </p>
             <p>{vipTotal},-</p>
@@ -38,10 +39,12 @@ export default function ShoppingCart() {
             <p>TOTAL: </p>
             <p className="font-bold">{fixedBookingFee + regularTotal + vipTotal},-</p>
           </div>
-          <Button href={href} buttonText={buttonText}></Button>
+          <div className="flex flex-col items-center">
+            {/* ændre til formbutton? */}
+            <Button href={href} buttonText={buttonText}></Button>
+          </div>
         </div>
       </div>
-      {/* </Fieldset> */}
-    </section>
+    </fieldset>
   );
 }

@@ -1,9 +1,8 @@
-
 import localFont from "next/font/local";
 import "./globals.css";
-import Navigation from '../app/components/Navigation.jsx'
-import Footer from '../app/components/Footer.jsx'
-
+import Navigation from "../app/components/Navigation.jsx";
+import Footer from "../app/components/Footer.jsx";
+import GuestPassPriceCalculator from "../app/components/GuestPassPriceCalculator.jsx";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,25 +22,21 @@ export const metadata = {
 
 export default function RootLayout({ children })
 {
-
-    const navItems = [
-      { name: 'Home', href: '/' },
-      { name: 'Program', href: '/program' },
-      { name: 'Book', href: '/book' },
-    ];
+  const navItems = [
+    { linkText: "Home", href: "/" },
+    { linkText: "Program", href: "/program" },
+    { linkText: "Book", href: "/book" },
+  ];
 
   return (
-
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-
-        <Navigation navItems={navItems}/>
-        <main className="min-h-screen m-12">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <main className="min-h-full p-12 pt-24">
           {children}
         </main>
-
         <Footer />
       </body>
     </html>
