@@ -25,6 +25,7 @@ export default function Book() {
       href: "/book",
     },
   ];
+
   let guests = [
     { name: "Ronja", id: 1 },
     { name: "Bonja", id: 2 },
