@@ -8,7 +8,6 @@ import GuestPassPriceCalculator from "../components/GuestPassPriceCalculator";
 import { FiShoppingCart } from "react-icons/fi";
 import { IconContext } from "react-icons";
 import { Login } from "../components/Login";
-import TestForm from "../components/TestForm";
 
 export default function Book() {
   const navItems = [
@@ -38,7 +37,6 @@ export default function Book() {
       <Navigation navItems={navItems} />
       <RootLayout>
         <h1>BOOK YOUR STAY</h1>
-        <TestForm />
 
         <Form>
           <div className="grid grid-cols-3 max-lg:grid-cols-1 grid-rows-2 mt-10 justify-start gap-10 mx-6">
@@ -49,7 +47,7 @@ export default function Book() {
             </div>
             <div className="flex flex-col md:col-span-2 lg:col-span-2 row-start-1 col-start-1  gap-10 justify-self-center">
               <AreaInput />
-              {/* <GuestPassPriceCalculator /> */}
+              <GuestPassPriceCalculator />
 
               {guests.map((guest) => (
                 <GuestInput key={guest.id} guest={guest} />

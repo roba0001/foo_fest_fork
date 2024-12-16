@@ -4,7 +4,8 @@ import Fieldset from "./Fieldset";
 import Button from "./Button";
 import { useState } from "react";
 
-export default function ShoppingCart() {
+export default function ShoppingCart()
+{
   const fixedBookingFee = 99;
   const greenCampingFee = 299;
   // disse to skal kobles til antal biletter
