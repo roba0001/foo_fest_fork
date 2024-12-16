@@ -5,7 +5,6 @@ import Button from "./Button";
 import { useState } from "react";
 
 export default function ShoppingCart() {
-  const [title, setTitle] = useState("Shopping Cart");
   const fixedBookingFee = 99;
   const greenCampingFee = 299;
   // disse to skal kobles til antal biletter

@@ -1,7 +1,11 @@
-export default function Form({ children, submitForm }) {
+import FormButton from "./FormButton";
+import sendData from "@/lib/actions";
+
+export default function Form({ children }) {
   return (
-    <form onSubmit={submitForm} className="flex flex-col gap-5  justify-start">
+    <form action={sendData} className="flex flex-col gap-5">
       {children}
+      <FormButton buttonText={"Submit form"} />
     </form>
   );
 }
