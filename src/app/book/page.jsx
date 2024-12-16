@@ -2,13 +2,11 @@ import Form from "../components/Form";
 import AreaInput from "../components/AreaInput";
 import RootLayout from "../layout";
 import GuestInput from "../components/GuestInput";
-import Fieldset from "../components/Fieldset";
 import ShoppingCart from "../components/ShoppingCart";
 import Navigation from "../components/Navigation";
 import GuestPassPriceCalculator from "../components/GuestPassPriceCalculator";
 import { FiShoppingCart } from "react-icons/fi";
-import { IconContext } from "react-icons";
-import { Login } from "../components/Login";
+
 
 export default function Book() {
   const navItems = [
@@ -38,7 +36,7 @@ export default function Book() {
       <RootLayout>
         <h1>BOOK YOUR STAY</h1>
 
-        <Form>
+        <form onSubmit={} className="flex flex-col gap-5  justify-start">
           <div className="grid grid-cols-3 max-lg:grid-cols-1 grid-rows-2 mt-10 justify-start gap-10 mx-6">
             <div className="col-start-2 row-start-1 sticky top-20  md:hide lg:hide">
               <a href="#shoppingCart">
@@ -61,7 +59,7 @@ export default function Book() {
               <ShoppingCart />
             </div>
           </div>
-        </Form>
+        </form>
       </RootLayout>
     </>
   );
