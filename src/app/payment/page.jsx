@@ -8,16 +8,11 @@ import FormButton from "../components/FormButton";
 import BackArrowButton from "@/app/components/BackArrowButton.jsx";
 
 export default function Payment() {
-  function submitForm(event) {
-    event.preventDefault();
-    console.log("form submitted");
-  }
-
   return (
     <div className="flex flex-col">
       <BackArrowButton href="book" />
       <div className="self-center">
-        <Form submitForm={submitForm}>
+        <Form>
           <Fieldset title={"Insert payment info"}>
             <div className="flex flex-col gap-3  lg:mt-5 md:gap-4 max-sm:gap-7">
               <div className="flex flex-col">
