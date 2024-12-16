@@ -19,24 +19,3 @@ export async function postInfo(formData) {
   const data = await response.json();
   return data;
 }
-
-// FooFest API
-// put reserve spot
-const glitchHeadersList = {
-  Accept: "application/json",
-  "Content-Type": "application/json",
-  Prefer: "return=representation",
-};
-
-export default async function putReservation(reservationData) {
-  const response = await fetch("http://localhost:8080/reserve-spot", {
-    method: "PUT",
-    headers: glitchHeadersList,
-    body: JSON.stringify(reservationData),
-  });
-
-  const data = await response.json();
-  return data;
-}
-
-// post id

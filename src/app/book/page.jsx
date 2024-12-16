@@ -6,8 +6,7 @@ import ShoppingCart from "../components/ShoppingCart";
 import Navigation from "../components/Navigation";
 import GuestPassPriceCalculator from "../components/GuestPassPriceCalculator";
 import { FiShoppingCart } from "react-icons/fi";
-
-import putReservation from "@/lib/actions";
+import FlowAreaAndAmount from "../components/FlowAreaAndAmount";
 
 export default function Book() {
   const navItems = [
@@ -36,9 +35,10 @@ export default function Book() {
     <>
       <Navigation navItems={navItems} />
       <RootLayout>
+        <FlowAreaAndAmount />
         <h1>BOOK YOUR STAY</h1>
 
-        <form onSubmit={putReservation} className="flex flex-col gap-5  justify-start">
+        <form className="flex flex-col gap-5  justify-start">
           <div className="grid grid-cols-3 max-lg:grid-cols-1 grid-rows-2 mt-10 justify-start gap-10 mx-6">
             <div className="col-start-2 row-start-1 sticky top-20  md:hide lg:hide">
               <a href="#shoppingCart">
@@ -47,16 +47,14 @@ export default function Book() {
             </div>
             <div className="flex flex-col md:col-span-2 lg:col-span-2 row-start-1 col-start-1  gap-10 justify-self-center">
               <AreaInput />
+
               {/* <GuestPassPriceCalculator /> */}
 
-              {guests.map((guest) => (
+              {/* {guests.map((guest) => (
                 <GuestInput key={guest.id} guest={guest} />
-              ))}
+              ))} */}
             </div>
           </div>
-          <button className="bg-blue-200" type="submit">
-            Submit form
-          </button>
         </form>
         <div
           id="shoppingCart"

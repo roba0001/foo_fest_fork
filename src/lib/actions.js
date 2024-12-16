@@ -2,19 +2,19 @@
 import { postInfo } from "@/lib/supabase";
 import { revalidatePath } from "next/cache";
 
-export async function sendData(formData) {
-  console.log("form indsendt");
-  const data = {
-    area: formData.get("area"),
-    guestFirstName: formData.get("guestFirstName"),
-    guestLastName: formData.get("guestLastName"),
-    guestEmail: formData.get("guestEmail"),
-    guestPhone: formData.get("guestPhone"),
-  };
-  await postInfo(data);
+// export async function sendData(formData) {
+//   console.log("form indsendt");
+//   const data = {
+//     area: formData.get("area"),
+//     guestFirstName: formData.get("guestFirstName"),
+//     guestLastName: formData.get("guestLastName"),
+//     guestEmail: formData.get("guestEmail"),
+//     guestPhone: formData.get("guestPhone"),
+//   };
+//   await postInfo(data);
 
-  revalidatePath("/");
-}
+//   revalidatePath("/");
+// }
 
 // FooFest API
 // put reserve spot
@@ -24,8 +24,9 @@ const glitchHeadersList = {
   Prefer: "return=representation",
 };
 
-export default async function putReservation(event, reservationData) {
-  event.preventDefault();
+export default async function putReservation(reservationData) {
+  console.log("putReservation called");
+  // event.preventDefault();
   const response = await fetch("http://localhost:8080/reserve-spot", {
     method: "PUT",
     headers: glitchHeadersList,
@@ -37,4 +38,4 @@ export default async function putReservation(event, reservationData) {
   return reservationId;
 }
 
-// post id
+// ----------- post id her ------------
