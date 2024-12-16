@@ -7,8 +7,8 @@ export default function Count() {
   const { count } = useStore();
 
   return (
-    <Fieldset title={"How many tickets?"}>
-      <h5>{count}</h5>
+    <Fieldset title={"Choose amount: "}>
+      <h5>{count === 1 ? `${count} ticket` : `${count} tickets`} </h5>
       <CountButtons />
     </Fieldset>
   );
