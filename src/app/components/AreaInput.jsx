@@ -45,9 +45,7 @@ export default function AreaInput() {
               type="radio"
               id={area.area}
               name="area"
-              value={`${area.area}: ${area.available}`}
-              // value={JSON.stringify({area:{area.area}, availableSpots:{area.available}})}
-
+              value={`${area.area}:${area.available}`}
               className="col-start-1 row-start-1 appearance-none w-4 h-4 border-2 border-orange-300 rounded-full shrink-0"
               onChange={() => handleSelection(area.area)}
               checked={selectedArea === area.area} // Ensure the selection is reflected
