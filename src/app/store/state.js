@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+// opdater her så den hænger sammen med GuestPassPriceCalculator komponent
 const useStore = create(
   persist(
     (set) => ({
@@ -14,10 +15,3 @@ const useStore = create(
 );
 
 export default useStore;
-
-// const useStore = create((set) => ({
-//   bears: 0,
-//   increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-//   removeAllBears: () => set({ bears: 0 }),
-//   updateBears: (newBears) => set({ bears: newBears }),
-// }))

@@ -1,4 +1,4 @@
-"use server";
+"use client";
 import { postInfo } from "@/lib/supabase";
 import { revalidatePath } from "next/cache";
 
@@ -25,7 +25,7 @@ const glitchHeadersList = {
 };
 
 export default async function putReservation(reservationData) {
-  console.log("putReservation called");
+  console.log("putReservation called: ", JSON.stringify(reservationData));
   // event.preventDefault();
   const response = await fetch("http://localhost:8080/reserve-spot", {
     method: "PUT",

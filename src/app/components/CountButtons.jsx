@@ -1,17 +1,30 @@
 "use client";
 import useStore from "@/app/store/state";
+import Button from "./Button";
 
 export default function CountButtons() {
   const { increaseCount, resetCount, decreaseCount } = useStore();
   return (
-    <section>
-      <button className="bg-green-400" onClick={() => increaseCount()}>
+    <section className="flex gap-2">
+      <button
+        type="button"
+        className="px-8 py-2 w-fit h-fit bg-buttonBackgroundColor text-white h-40 w-30 rounded-full text-xl transition-bg duration-150 ease-in hover:bg-buttonHoverBackgroundColor"
+        onClick={() => increaseCount()}
+      >
         + one
       </button>
-      <button className="bg-red-400" onClick={() => decreaseCount()}>
+      <button
+        type="button"
+        className="px-8 py-2 w-fit h-fit bg-buttonBackgroundColor text-white h-40 w-30 rounded-full text-xl transition-bg duration-150 ease-in hover:bg-buttonHoverBackgroundColor"
+        onClick={() => decreaseCount()}
+      >
         - one
       </button>
-      <button className="bg-blue-400" onClick={() => resetCount()}>
+      <button
+        type="button"
+        className="px-8 py-2 w-fit h-fit bg-buttonBackgroundColor text-white h-40 w-30 rounded-full text-xl transition-bg duration-150 ease-in hover:bg-buttonHoverBackgroundColor"
+        onClick={() => resetCount()}
+      >
         Reset
       </button>
     </section>
