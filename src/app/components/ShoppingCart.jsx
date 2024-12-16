@@ -6,8 +6,6 @@ import { useState } from "react";
 
 export default function ShoppingCart() {
   const [title, setTitle] = useState("Shopping Cart");
-  const [href, setHref] = useState("/payment");
-  const [buttonText, setButtonText] = useState("Go to payment");
   const fixedBookingFee = 99;
   const greenCampingFee = 299;
   // disse to skal kobles til antal biletter
@@ -41,7 +39,7 @@ export default function ShoppingCart() {
           </div>
           <div className="flex flex-col items-center">
             {/* ændre til formbutton? */}
-            <Button href={href} buttonText={buttonText}></Button>
+            <Button href={"/payment"} buttonText={"Go to payment"}></Button>
           </div>
         </div>
       </div>
