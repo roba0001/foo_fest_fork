@@ -23,9 +23,10 @@ export default function Book() {
       href: "/book",
     },
   ];
+
   let guests = [
     { name: "Ronja", id: 1 },
-    { name: "Bonja", id: 2 },
+    // { name: "Bonja", id: 2 },
   ];
 
   const style = { stroke: "orange", height: "2.5em", width: "2.5em" };
@@ -35,6 +36,7 @@ export default function Book() {
       <Navigation navItems={navItems} />
       <RootLayout>
         <h1>BOOK YOUR STAY</h1>
+        <TestForm />
 
         <form onSubmit={} className="flex flex-col gap-5  justify-start">
           <div className="grid grid-cols-3 max-lg:grid-cols-1 grid-rows-2 mt-10 justify-start gap-10 mx-6">
