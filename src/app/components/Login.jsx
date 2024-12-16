@@ -1,4 +1,6 @@
 "use client";
+
+import { useForm } from 'react-hook-form'
 import { useState } from "react";
 import FormButton from "./FormButton";
 import Form from "./Form";
@@ -18,6 +20,18 @@ export default function Login() {
     cursor: "pointer",
   };
 
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    defaultValues: {
+      username: '',
+      password: '',
+    }
+  });
+
+  const onSubmit = (data) => {
+    localStorage.setItem('Username', data.username);
+    localStorage.setItem('Password', data.password);
+  }
+
   return (
     <>
       <div
@@ -32,7 +46,7 @@ export default function Login() {
           <PopoverContent>
             {(titleProps) => (
               <div className="px-1 py-2">
-                <Form>
+                <Form onSubmit={handleSubmit(onSubmit)}>
                   <fieldset className="flex flex-col bg-white custom-border p-7 gap-4">
                     <legend className="sr-only">Login</legend>
                     <h5 className="text-center mb-4">Login to your account</h5>
@@ -47,8 +61,15 @@ export default function Login() {
                         className="bg-slate-200 p-2 custom-border"
                         name="username"
                         autoComplete="username"
-                        required
+                        {...register("username", {
+                          required: "Username cannot be blank.",
+                          minLength: {
+                            value: 3,
+                            message: "Must be at least 3 characters.",
+                          },
+                        })}
                       />
+                      {errors.username && <p style={{ color: 'red' }}>{errors.username.message}</p>}
                     </div>
 
                     <div className="flex flex-col gap-1">
@@ -57,13 +78,20 @@ export default function Login() {
                         <span className="text-red-500 font-bold">* </span>Password:
                       </label>
                       <input
-                        id="password"
+                        id="password" 
                         type="password"
                         className="bg-slate-200 p-2 custom-border"
                         name="password"
-                        autoComplete="current-password"
-                        required
+                        autoComplete="password"
+                        {...register("password", {
+                          required: "Password cannot be blank.",
+                          minLength: {
+                            value: 3,
+                            message: "Must be at least 8 characters.",
+                          },
+                        })}
                       />
+                      {errors.password && <p style={{ color: 'red' }}>{errors.password.message}</p>}
                     </div>
                     <div className="flex justify-center my-2 ">
                       <FormButton buttonText={"Login"} href={"#"} />

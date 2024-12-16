@@ -1,9 +1,12 @@
 "use client";
+import { useForm } from 'react-hook-form'
 import { useState } from "react";
 import Fieldset from "./Fieldset";
 import { getInfo } from "@/lib/supabase";
 
-export default function GuestInput({ guest }) {
+export default function GuestInput({ guest })
+{
+    
   return (
     <Fieldset title={`Guest #${guest.id} :`}>
       <div className="ml-3 flex flex-col gap-3">
