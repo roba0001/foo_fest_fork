@@ -1,14 +1,21 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
-//http://localhost:8080/logos/navn - fx A_Perfect_Circle_Logo_2011_-_Michael_John_Stinsman_InvisibleStudio_Productions.png
-//
 export default function BandsList({ bands }) {
   const [schedule, setSchedule] = useState({});
   const [hoveredBand, setHoveredBand] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:8080/schedule")
+      .then((res) => res.json())
+      .then((data) => setSchedule(data))
+      .catch((err) => console.error("Error fetching schedule:", err));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/band")
       .then((res) => res.json())
       .then((data) => setSchedule(data))
       .catch((err) => console.error("Error fetching schedule:", err));
@@ -30,6 +37,7 @@ export default function BandsList({ bands }) {
               day,
               start: event.start,
               end: event.end,
+              id: event.id,
             });
           });
         }
@@ -61,39 +69,52 @@ export default function BandsList({ bands }) {
   };
 
   return (
-    <div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {bands && bands.length > 0 ? (
+    <div className="container mx-auto px-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
+        {bands &&
+          bands.length > 0 &&
           bands.map((band) => (
             <div
-              key={band.id}
-              className="bg-white rounded-lg shadow-md hover:shadow-lg p-6 cursor-pointer transition-transform transform hover:scale-105"
+              key={band.slug}
+              className="relative group"
               onMouseEnter={() => setHoveredBand(band.name)}
               onMouseLeave={() => setHoveredBand(null)}
             >
-              <h2>{band.name}</h2>
+              <Link className="mb-3" href={`/artists/${band.slug}`}>
+                <Image
+                  src={
+                    band.logo && band.logo.includes("https")
+                      ? band.logo
+                      : `/img/${band.logo}`
+                  }
+                  alt={`${band.name} playing at a festival`}
+                  width={320}
+                  height={280}
+                  className="w-full h-80 object-cover transition-transform transform group-hover:scale-105"
+                />
+              </Link>
+              <h2 className="absolute bottom-2 right-2 text-white bg-black bg-opacity-75 px-2 py-1 text-sm transition-transform transform group-hover:translate-y-[-20px]">
+                {band.name}
+              </h2>
 
               {hoveredBand === band.name && (
-                <div>
-                  {getScheduleForBand(band.name).length > 0 ? (
-                    getScheduleForBand(band.name).map((event, index) => (
-                      <div key={index}>
-                        <p>Scene: {event.scene}</p>
-                        <p>
-                          {mapDayToName(event.day)}: {event.start} - {event.end}
-                        </p>
-                      </div>
-                    ))
-                  ) : (
-                    <p>Ingen spilleplan </p>
-                  )}
+                <div className="absolute bottom-2 left-0 right-0 bg-black bg-opacity-80 p-2 text-white text-sm">
+                  {getScheduleForBand(band.name).length > 0
+                    ? getScheduleForBand(band.name).map((event) => (
+                        <div key={event.id}>
+                          {" "}
+                          <p>Scene: {event.scene}</p>
+                          <p>
+                            {mapDayToName(event.day)}: {event.start} -{" "}
+                            {event.end}
+                          </p>
+                        </div>
+                      ))
+                    : null}
                 </div>
               )}
             </div>
-          ))
-        ) : (
-          <p>Ingen bands</p>
-        )}
+          ))}
       </div>
     </div>
   );
