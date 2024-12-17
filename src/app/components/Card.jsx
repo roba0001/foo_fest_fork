@@ -83,13 +83,14 @@ export default function BandsList({ bands }) {
             >
               <Link className="mb-3" href={`/artists/${band.id}`}>
                 <Image
+                  if
                   src={
                     band.logo &&
                     (band.logo.startsWith("http") || band.logo.includes("."))
                       ? BandsList.logo
                       : "http://localhost:8080/logos/${band.logo}.png"
                   }
-                  if
+                  else
                   src={
                     band.logo && band.logo.includes("https")
                       ? band.logo
