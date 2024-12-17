@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Fieldset from "./Fieldset";
+import { getInfo } from "@/lib/supabase";
 
 export default function GuestInput({ guest }) {
   return (
@@ -14,9 +15,9 @@ export default function GuestInput({ guest }) {
             className=" max-w-96 border-2 border-orange-300 rounded-xl p-2"
             type="text"
             id="guestFirstName"
-            name="guest"
+            name="guestFirstName"
             autoComplete="given-name"
-            required
+            // required
           />
         </div>
 
@@ -28,9 +29,9 @@ export default function GuestInput({ guest }) {
             className=" max-w-96 border-2 border-orange-300 rounded-xl p-2"
             type="text"
             id="guestLastName"
-            name="guest"
+            name="guestLastName"
             autoComplete="family-name"
-            required
+            // required
           />
         </div>
 
@@ -43,9 +44,9 @@ export default function GuestInput({ guest }) {
             className=" max-w-72 border-2 border-orange-300 rounded-xl p-2"
             type="email"
             id="guestEmail"
-            name="guest"
+            name="guestEmail"
             autoComplete="email"
-            required
+            // required
           />
         </div>
 
@@ -55,7 +56,7 @@ export default function GuestInput({ guest }) {
             className=" max-w-56 border-2 border-orange-300 rounded-xl p-2"
             type="tel"
             id="guestPhone"
-            name="guest"
+            name="guestPhone"
             autoComplete="tel"
           />
         </div>
