@@ -10,7 +10,7 @@ import { useTimer } from "react-timer-hook";
 import FormButton from "./FormButton";
 import { useRouter } from "next/navigation";
 
-export default function FlowAreaAndAmount() {
+export default function FlowAreaAndAmount({ showComponent }) {
   // sæt timeren til 5 minutter
   const expiryTimestamp = new Date();
   expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 300);
@@ -42,7 +42,7 @@ export default function FlowAreaAndAmount() {
     const [area, availableSpots] = formData.get("area").split(":");
 
     // funktionen alert der kører warnings baseret på spot availability
-    const alert = () => {
+    const noSpotsAlert = () => {
       if (availableSpots == 1) {
         // hvis der kun er en plads, brug ordet spot
         toast.warning(
@@ -59,9 +59,9 @@ export default function FlowAreaAndAmount() {
       }
     };
 
-    // kør alert hvsi antal biletter er større end antal ledige pladser
+    // kør alert hvis antal biletter er større end antal ledige pladser
     if (count > availableSpots) {
-      alert();
+      noSpotsAlert();
     } else {
       // ellers, start timeren
       start();
@@ -75,7 +75,8 @@ export default function FlowAreaAndAmount() {
     console.log("availableSpots", availableSpots);
 
     await putReservation(reservationData);
-    await router.push("./program");
+    // await router.push("./program");
+    setShowComponent(false);
   }
 
   return (

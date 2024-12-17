@@ -11,5 +11,12 @@ export const useStore = create(
       setCount: (value) => set({ count: value }), // New function to set count directly
     }),
     { name: "count-storage" }
-  )
+  ),
+
+  function MyComponent({ showComponent }) {
+    if (showComponent) {
+      return <SomeComponent />;
+    }
+    return null;
+  }
 );

@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Fieldset from "../components/Fieldset";
-import Form from "../components/Form";
-import Button from "../components/Button";
-import FormButton from "../components/FormButton";
+import Fieldset from "./Fieldset";
+import Form from "./Form";
+import Button from "./Button";
+import FormButton from "./FormButton";
 import BackArrowButton from "@/app/components/BackArrowButton.jsx";
 
 export default function Payment() {
