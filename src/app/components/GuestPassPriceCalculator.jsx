@@ -175,15 +175,11 @@ export default function GuestPassPriceCalculator()
   // Setting up the price for each ticket type
   const regularTicketPrice = 799
   const vipTicketPrice = 1299
-  // Setting up the price for each ticket type
-  const regularTicketPrice = 799
-  const vipTicketPrice = 1299
 
   // Setting the price counters for each ticket type to 0 initially
   const [regularPriceCounter, setRegularPriceCounter] = useState(0)
-  const [vipPriceCounter, setVipPriceCounter] = useState(0)
+
   // Setting the price counters for each ticket type to 0 initially
-  const [regularPriceCounter, setRegularPriceCounter] = useState(0)
   const [vipPriceCounter, setVipPriceCounter] = useState(0)
 
   // Setting the option for optional green camping to false by default (meaning it has not been selected)
@@ -275,7 +271,6 @@ export default function GuestPassPriceCalculator()
     */
     <Section>
       <div className="flex justify-center align-center items-center mx-auto w-fit px-12 py-4 h-fit gap-4 bg-white max-md:h-fit max-md:py-12">
-      <div className="flex justify-center align-center items-center mx-auto w-fit px-12 py-4 h-fit gap-4 bg-white max-md:h-fit max-md:py-12">
         <div className="flex flex-col">
           <div className="flex gap-4 mb-8 max-md:flex-col">
 
@@ -294,7 +289,6 @@ export default function GuestPassPriceCalculator()
                 regularPriceCounter > 0 &&
                 setRegularPriceCounter(regularPriceCounter - 1)
               }
-              className="border-2 border-blue-500 rounded-md"
               className="border-2 border-blue-500 rounded-md"
             />
             {/* Creating an instance of the TicketCounter component. This one takes care of counting the VIP tickets */}
@@ -437,6 +431,5 @@ export default function GuestPassPriceCalculator()
         </div>
       </div>
     </Section>
-  )
   )
 }
