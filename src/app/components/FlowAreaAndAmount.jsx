@@ -18,7 +18,7 @@ export default function FlowAreaAndAmount() {
   const { seconds, minutes, start } = useTimer({
     //
     expiryTimestamp,
-    // når den udgår, warning i konsollen, skal denne bruges?
+    // ændre denne til at stoppe uret og refreshe siden (??) / sende en alert når done
     onExpire: () => console.warn("Timer expired"),
     // ikke start timeren automatisk
     autoStart: false,
@@ -75,8 +75,7 @@ export default function FlowAreaAndAmount() {
 
   return (
     <>
-      {/* Pass seconds, minutes, and restart to BookingTimer */}
-      <BookingTimer seconds={seconds} minutes={minutes} restart={restart} />
+      <BookingTimer seconds={seconds} minutes={minutes} />
 
       <form onSubmit={handleFormSubmit} className="flex flex-col gap-5 justify-start">
         <AreaInput />
