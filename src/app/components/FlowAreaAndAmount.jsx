@@ -2,12 +2,13 @@
 import putReservation from "@/lib/actions";
 import AreaInput from "./AreaInput";
 import GuestPassPriceCalculator from "./GuestPassPriceCalculator";
-import Count from "./Count";
 import { useStore } from "@/app/store";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import BookingTimer from "@/app/components/BookingTimer";
 import { useTimer } from "react-timer-hook";
+import FormButton from "./FormButton";
+import { useRouter } from "next/navigation";
 
 export default function FlowAreaAndAmount() {
   // sæt timeren til 5 minutter
@@ -27,7 +28,10 @@ export default function FlowAreaAndAmount() {
   // hent antal billetter fra zustand store
   const { count } = useStore();
 
-  // Funktion der kører onSubmit på form
+  // variabel for router
+  const router = useRouter();
+
+  // Funktion der kører når form bliver submitted
   async function handleFormSubmit(event) {
     // ingen refresh
     event.preventDefault();
@@ -71,19 +75,18 @@ export default function FlowAreaAndAmount() {
     console.log("availableSpots", availableSpots);
 
     await putReservation(reservationData);
+    await router.push("./program");
   }
 
   return (
     <>
       <BookingTimer seconds={seconds} minutes={minutes} />
 
-      <form onSubmit={handleFormSubmit} className="flex flex-col gap-5 justify-start">
+      <form onSubmit={handleFormSubmit} className="flex flex-col gap-5 items-center">
         <AreaInput />
-        {/* <Count /> */}
         <GuestPassPriceCalculator />
-        <button className="bg-blue-200 hover:bg-blue-300 w-24 rounded-3xl p-5" type="submit">
-          Submit form
-        </button>
+
+        <FormButton buttonText={"Reserve your spots"}></FormButton>
       </form>
 
       <ToastContainer />

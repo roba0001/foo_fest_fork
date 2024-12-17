@@ -38,7 +38,6 @@ export default function Book() {
       <Navigation navItems={navItems} />
       <RootLayout>
         <h1>BOOK YOUR STAY</h1>
-        {/* <BookingTimer expiryTimestamp={time} /> */}
         <FlowAreaAndAmount />
 
         <form className="flex flex-col gap-5  justify-start">
@@ -49,10 +48,6 @@ export default function Book() {
               </a>
             </div>
             <div className="flex flex-col md:col-span-2 lg:col-span-2 row-start-1 col-start-1  gap-10 justify-self-center">
-              <AreaInput />
-
-              {/* <GuestPassPriceCalculator /> */}
-
               {/* {guests.map((guest) => (
                 <GuestInput key={guest.id} guest={guest} />
               ))} */}
