@@ -1,6 +1,7 @@
 import RootLayout from './layout'
 import Hero from '../app/components/Hero.jsx'
 import Navigation from '../app/components/Navigation.jsx'
+import GuestPassPriceCalculator from '../app/components/GuestPassPriceCalculator.jsx'
 
 export default function Home()
 {
@@ -26,6 +27,8 @@ export default function Home()
         <Hero>
             Hey
         </Hero>
+
+        <GuestPassPriceCalculator/>
     </RootLayout>
   );
 }

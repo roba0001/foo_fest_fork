@@ -5,6 +5,7 @@ import Fieldset from "../components/Fieldset";
 import Form from "../components/Form";
 import Button from "../components/Button";
 import FormButton from "../components/FormButton";
+import BackArrowButton from '@/app/components/BackArrowButton.jsx'
 
 export default function Payment() {
   const [title, setTitle] = useState("Payment info");
@@ -35,6 +36,7 @@ export default function Payment() {
   return (
     <>
       {/* <Navigation navItems={navItems} /> */}
+      <BackArrowButton href="book" />
       <Form submitForm={submitForm}>
         <Fieldset title={title}>
           <div className="flex flex-col gap-3  lg:mt-5 md:gap-4 max-sm:gap-7">

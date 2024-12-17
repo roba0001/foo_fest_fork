@@ -21,6 +21,19 @@
   --paragraph-font-size: clamp(0.8333rem, 0.7754rem + 0.2899vw, 1rem);
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+}
+
+
+input[type="number"]
+{
+  -moz-appearance: textfield;
+
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

@@ -20,18 +20,18 @@ export default function GenreFilter() {
   const handleFilterChange = (genre) => {
     setSelectedGenre(genre);
     const filtered =
-      genre === "Alle" ? bands : bands.filter((band) => band.genre === genre);
+      genre === "All" ? bands : bands.filter((band) => band.genre === genre);
     setFilteredBands(filtered);
   };
 
-  const genres = ["Alle", ...new Set(bands.map((band) => band.genre))];
+  const genres = ["All", ...new Set(bands.map((band) => band.genre))];
 
   return (
     <div>
-      {selectedGenre === "Alle"}
+      {selectedGenre === "All"}
 
       <div>
-        <label>Vælg Genre:</label>
+        <label>Select genre:</label>
         <select
           value={selectedGenre}
           onChange={(e) => handleFilterChange(e.target.value)}
@@ -47,7 +47,7 @@ export default function GenreFilter() {
       {filteredBands.length > 0 ? (
         <BandsListe bands={filteredBands} />
       ) : (
-        selectedGenre !== "Alle" && <p>Ingen bands fundet for denne genre.</p>
+        selectedGenre !== "All"
       )}
     </div>
   );
