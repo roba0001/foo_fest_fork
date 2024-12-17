@@ -4,6 +4,8 @@ import Section from './Section'
 import TicketCounter from './TicketCounter'
 import TotalPriceDisplay from './TotalPriceDisplay'
 import TentAmountChooser from './TentAmountChooser'
+import { useStore } from '../store.js'
+
 
 let twoPersonTentPrice = 299
 let threePersonTentPrice = 399
@@ -176,6 +178,8 @@ export default function GuestPassPriceCalculator()
 
   // Setting the price counters for each ticket type to 0 initially
   const [regularPriceCounter, setRegularPriceCounter] = useState(0)
+
+  // Setting the price counters for each ticket type to 0 initially
   const [vipPriceCounter, setVipPriceCounter] = useState(0)
 
   // Setting the option for optional green camping to false by default (meaning it has not been selected)
@@ -192,6 +196,13 @@ export default function GuestPassPriceCalculator()
 
   // Setting the total amount of tickets to be the result of the sum of the price of regular tickets and VIP tickets
   const totalTickets = regularPriceCounter + vipPriceCounter
+
+  const setCount = useStore((state) => state.setCount)
+
+  useEffect(() =>
+  {
+    setCount(totalTickets)
+  }, [totalTickets, setCount])
 
   /*
       Calculating the total price of tickets
@@ -255,10 +266,15 @@ export default function GuestPassPriceCalculator()
     /*
       Using the Section component as the main wrapper
     */
+    /*
+      Using the Section component as the main wrapper
+    */
     <Section>
       <div className="flex justify-center align-center items-center mx-auto w-fit px-12 py-4 h-fit gap-4 bg-white max-md:h-fit max-md:py-12">
         <div className="flex flex-col">
           <div className="flex gap-4 mb-8 max-md:flex-col">
+
+            {/* Creating an instance of the TicketCounter component. This one takes care of counting the regular tickets */}
 
             {/* Creating an instance of the TicketCounter component. This one takes care of counting the regular tickets */}
             <TicketCounter
@@ -276,6 +292,7 @@ export default function GuestPassPriceCalculator()
               className="border-2 border-blue-500 rounded-md"
             />
             {/* Creating an instance of the TicketCounter component. This one takes care of counting the VIP tickets */}
+            {/* Creating an instance of the TicketCounter component. This one takes care of counting the VIP tickets */}
             <TicketCounter
               ticketType="VIP"
               ticketPrice={vipTicketPrice}
@@ -290,6 +307,66 @@ export default function GuestPassPriceCalculator()
               }
             />
           </div>
+          {/* The option to toggle optional green counting */}
+          <div className="container optional-green-camping-container flex items-center gap-2 mb-2">
+            <label htmlFor="optional_green_camping" className="select-none cursor-pointer">
+              Optional green camping (+ 249 DKK)
+            </label>
+            <input
+              type="checkbox"
+              name="optional_green_camping"
+              className="accent-orange-300 cursor-pointer -order-1"
+              id="optional_green_camping"
+              onChange={handleOptionalGreenCamping}
+              checked={optionalGreenCamping}
+            />
+          </div>
+
+          {
+            /*
+              The optional tent put up container.
+              This container has been set up in a way, so that it only shows up, if the least amount of tickets selected is two, since the minimum amount of people for one tent must be two.
+            */
+          }
+          <div
+            className={`container optional-tent-put-up-container select-none cursor-pointer ${totalTickets < 2 ? "hidden" : "flex gap-2"
+              }`}
+          >
+            <label
+              htmlFor="optional_tent_put_up"
+              className="select-none cursor-pointer"
+            >
+              Optional tent put up (2P: DKK 299 - 3P: DKK 399{" "}
+              <small className="text-sm">(price is per tent)</small>)
+            </label>
+            <input
+              type="checkbox"
+              name="optional_tent_put_up"
+              className="accent-orange-300 cursor-pointer -order-1"
+              id="optional_tent_put_up"
+              onChange={handleOptionalTentPutUp}
+            />
+          </div>
+
+          {
+            /*
+              The tent amount chooser.
+              This is set up in such a way that the it's being hidden, if the amount of total tickets is below 2, or the option to select put up has not been checked off.
+            */
+          }
+          <div
+            className={`${totalTickets < 2 || !toggleOptionalTentPutUp
+              ? "hidden"
+              : "flex gap-8 my-4"
+              }`}
+          >
+            <TentAmountChooser
+              numberOfTickets={totalTickets}
+              onTentPriceChange={setSelectedTentPrice} // Pass callback
+            />
+          </div>
+
+          {/* Shows the total, computed price */}
           {/* The option to toggle optional green counting */}
           <div className="container optional-green-camping-container flex items-center gap-2 mb-2">
             <label htmlFor="optional_green_camping" className="select-none cursor-pointer">
