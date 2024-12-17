@@ -89,6 +89,12 @@ export default function BandsList({ bands }) {
                       ? BandsList.logo
                       : "http://localhost:8080/logos/${band.logo}.png"
                   }
+                  if
+                  src={
+                    band.logo && band.logo.includes("https")
+                      ? band.logo
+                      : `/img/${band.logo}`
+                  }
                   alt={`${band.name} playing at a festival`}
                   width={320}
                   height={280}
