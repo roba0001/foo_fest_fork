@@ -1,10 +1,5 @@
-import Header from './Header.jsx'
+import Header from "./Header.jsx";
 
-export default function HeroDescription({children}) 
-{
-    return (
-        <div>
-            {children}
-        </div>
-    )
+export default function HeroDescription({ children }) {
+  return <div>{children}</div>;
 }
