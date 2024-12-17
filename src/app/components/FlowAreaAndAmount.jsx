@@ -79,7 +79,8 @@ export default function FlowAreaAndAmount() {
 
       <form onSubmit={handleFormSubmit} className="flex flex-col gap-5 justify-start">
         <AreaInput />
-        <Count />
+        {/* <Count /> */}
+        <GuestPassPriceCalculator />
         <button className="bg-blue-200 hover:bg-blue-300 w-24 rounded-3xl p-5" type="submit">
           Submit form
         </button>
