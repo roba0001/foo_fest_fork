@@ -1,7 +1,7 @@
 import Section from './Section.jsx'
 import HeroDescription from './HeroDescription.jsx'
 import Image from 'next/image'
-import heroBg from '@/images/hero/hero_bg.jpg'
+
 
 export default function Hero()
 {
@@ -9,7 +9,7 @@ export default function Hero()
         <Section>
             <div className="h-[700px] full-width">
                 <Image
-                    src={heroBg}
+                    src="/images/hero/hero_bg.jpg"
                     alt="Hero background"
                     layout="fill"
                     className="object-cover h-full"
