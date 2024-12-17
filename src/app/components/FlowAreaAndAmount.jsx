@@ -3,7 +3,7 @@ import putReservation from "@/lib/actions";
 import AreaInput from "./AreaInput";
 import GuestPassPriceCalculator from "./GuestPassPriceCalculator";
 import Count from "./Count";
-import useStore from "../store/state";
+import { useStore } from "@/app/store";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import BookingTimer from "@/app/components/BookingTimer";

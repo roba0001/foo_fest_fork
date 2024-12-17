@@ -1,6 +1,6 @@
 "use client";
 import CountButtons from "@/app/components/CountButtons";
-import useStore from "@/app/store/state";
+import { useStore } from "@/app/store";
 import Fieldset from "./Fieldset";
 
 export default function Count() {

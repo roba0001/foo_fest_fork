@@ -1,5 +1,5 @@
 "use client";
-import useStore from "@/app/store/state";
+import { useStore } from "@/app/store";
 import Button from "./Button";
 
 export default function CountButtons() {
