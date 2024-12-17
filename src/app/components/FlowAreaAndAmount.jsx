@@ -8,7 +8,6 @@ import "react-toastify/dist/ReactToastify.css";
 import BookingTimer from "@/app/components/BookingTimer";
 import { useTimer } from "react-timer-hook";
 import FormButton from "./FormButton";
-import { useRouter } from "next/navigation";
 
 export default function FlowAreaAndAmount() {
   // sæt timeren til 5 minutter
@@ -25,11 +24,9 @@ export default function FlowAreaAndAmount() {
     autoStart: false,
   });
 
-  // hent antal billetter fra zustand store
+  // hent antal billetter og reservationID fra zustand store
   const { count } = useStore();
-
-  // variabel for router
-  const router = useRouter();
+  const { reservationId, setReservationId } = useStore();
 
   // Funktion der kører når form bliver submitted
   async function handleFormSubmit(event) {
@@ -65,17 +62,20 @@ export default function FlowAreaAndAmount() {
     } else {
       // ellers, start timeren
       start();
+      // clear reservationID
+      setReservationId(null);
     }
 
     // lav variabel der sendes med ned til putReservation (vores PUT reuquest)
     // sæt amount til at være værdien af count (antal billetter)
     const reservationData = { area, amount: count };
 
-    console.log("reservationData", reservationData);
-    console.log("availableSpots", availableSpots);
+    // variabel med ny reservationId
+    const newReservationId = await putReservation(reservationData);
+    // set reservationId til at have værdi af det nye reservationId
+    setReservationId(newReservationId);
 
-    await putReservation(reservationData);
-    await router.push("./program");
+    console.log("reservationId fra FAAA: ", reservationId);
   }
 
   return (
