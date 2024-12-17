@@ -10,10 +10,10 @@ export default function GuestInputForm() {
   // hent antal billetter fra zustand store
   const { count, reservationId } = useStore();
 
+  //   Victor udskifter dette med det rigtige array af gæster
   let guests = [
     { name: "Ronja", id: 1 },
     { name: "Bonja", id: 2 },
-    // { name: "Sonja", id: 3 },
   ];
 
   // Funktion der kører når form bliver submitted
