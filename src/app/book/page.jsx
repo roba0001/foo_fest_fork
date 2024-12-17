@@ -47,7 +47,7 @@ export default function Book() {
             </div>
             <div className="flex flex-col md:col-span-2 lg:col-span-2 row-start-1 col-start-1  gap-10 justify-self-center">
               <AreaInput />
-              {/* <GuestPassPriceCalculator /> */}
+              <GuestPassPriceCalculator />
 
               {guests.map((guest) => (
                 <GuestInput key={guest.id} guest={guest} />
