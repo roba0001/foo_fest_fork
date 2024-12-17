@@ -7,6 +7,8 @@ import Navigation from "../components/Navigation";
 import GuestPassPriceCalculator from "../components/GuestPassPriceCalculator";
 import { FiShoppingCart } from "react-icons/fi";
 import FlowAreaAndAmount from "../components/FlowAreaAndAmount";
+import BookingTimer from "../components/BookingTimer";
+import { UseBookingTimer } from "../components/UseBookingTimer";
 
 export default function Book() {
   const navItems = [
@@ -35,8 +37,9 @@ export default function Book() {
     <>
       <Navigation navItems={navItems} />
       <RootLayout>
-        <FlowAreaAndAmount />
         <h1>BOOK YOUR STAY</h1>
+        {/* <BookingTimer expiryTimestamp={time} /> */}
+        <FlowAreaAndAmount />
 
         <form className="flex flex-col gap-5  justify-start">
           <div className="grid grid-cols-3 max-lg:grid-cols-1 grid-rows-2 mt-10 justify-start gap-10 mx-6">

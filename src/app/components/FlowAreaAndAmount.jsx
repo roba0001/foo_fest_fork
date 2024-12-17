@@ -6,54 +6,66 @@ import Count from "./Count";
 import useStore from "../store/state";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { sayHello } from "@/lib/actions";
+import BookingTimer from "@/app/components/BookingTimer";
+import { useTimer } from "react-timer-hook";
 
 export default function FlowAreaAndAmount() {
-  // hent antal biletter fra zustand store
+  // sæt timeren til 5 minutter
+  const expiryTimestamp = new Date();
+  expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 300);
+
+  // lav variablerne der skal sendes med ned til BookingTimer komponenten
+  const { seconds, minutes, start } = useTimer({
+    //
+    expiryTimestamp,
+    // når den udgår, warning i konsollen, skal denne bruges?
+    onExpire: () => console.warn("Timer expired"),
+    // ikke start timeren automatisk
+    autoStart: false,
+  });
+
+  // hent antal billetter fra zustand store
   const { count } = useStore();
 
-  //   funktionen der kører når onSubmit på form
+  // Funktion der kører onSubmit på form
   async function handleFormSubmit(event) {
     // ingen refresh
     event.preventDefault();
 
     const formData = new FormData(event.target);
 
-    // få areanavn og antal ledige pladser fra AreaInput komponentens value, og split dem ad ved : (kolon)
+    // få areanavn og antal ledige pladser fra AreaInput's input value, og split dem ad ved : (kolon)
     const [area, availableSpots] = formData.get("area").split(":");
 
-    // funktionen for alert
+    // funktionen alert der kører warnings baseret på spot availability
     const alert = () => {
       if (availableSpots == 1) {
-        // hvis der kun er en plads brug ordet spot
+        // hvis der kun er en plads, brug ordet spot
         toast.warning(
           `There is only ${availableSpots} available spot in ${area}, try a different area!`,
-          {
-            position: "top-left",
-          }
+          { position: "top-left" }
         );
       } else {
+        // hvis der er flere, brug ordet spots
+
         toast.warning(
-          // ellers hvis der er mere end 1, brug ordet spots
           `There are only ${availableSpots} available spots in ${area}, try a different area!`,
-          {
-            position: "top-left",
-          }
+          { position: "top-left" }
         );
       }
     };
 
-    // kør funktionen alert hvis antal biletter er større end antal ledige pladser
+    // kør alert hvsi antal biletter er større end antal ledige pladser
     if (count > availableSpots) {
       alert();
+    } else {
+      // ellers, start timeren
+      start();
     }
 
-    // lav er variabel der sendes med ned til putReservation (PUT request).
-    // Sæt amount til at have værdi af count(antal biletter)
-    const reservationData = {
-      area,
-      amount: count,
-    };
+    // lav variabel der sendes med ned til putReservation (vores PUT reuquest)
+    // sæt amount til at være værdien af count (antal billetter)
+    const reservationData = { area, amount: count };
 
     console.log("reservationData", reservationData);
     console.log("availableSpots", availableSpots);
@@ -63,7 +75,10 @@ export default function FlowAreaAndAmount() {
 
   return (
     <>
-      <form onSubmit={handleFormSubmit} className="flex flex-col gap-5  justify-start">
+      {/* Pass seconds, minutes, and restart to BookingTimer */}
+      <BookingTimer seconds={seconds} minutes={minutes} restart={restart} />
+
+      <form onSubmit={handleFormSubmit} className="flex flex-col gap-5 justify-start">
         <AreaInput />
         <Count />
         <button className="bg-blue-200 hover:bg-blue-300 w-24 rounded-3xl p-5" type="submit">
