@@ -1,17 +1,9 @@
-import Form from "../components/Form";
-import AreaInput from "../components/AreaInput";
 import RootLayout from "../layout";
-import GuestInput from "../components/GuestInput";
 import ShoppingCart from "../components/ShoppingCart";
 import Navigation from "../components/Navigation";
-import GuestPassPriceCalculator from "../components/GuestPassPriceCalculator";
-import { FiShoppingCart } from "react-icons/fi";
-import FlowAreaAndAmount from "../components/FlowAreaAndAmount";
-import BookingTimer from "../components/BookingTimer";
-import { UseBookingTimer } from "../components/UseBookingTimer";
-import GuestInputForm from "@/app/components/GuestInputForm";
+
 import BookingTimerContainer from "../components/BookingTimerContainer";
-import HiddenStateWrapper from "@/app/components/HiddenStateWrapper";
+import UseStateFlowWrapper from "@/app/components/UseStateFlowWrapper";
 
 export default function Book() {
   // set state for om GuestInputForm er visible eller ej
@@ -30,8 +22,6 @@ export default function Book() {
     },
   ];
 
-  const style = { stroke: "orange", height: "2.5em", width: "2.5em" };
-
   return (
     <>
       <Navigation navItems={navItems} />
@@ -39,7 +29,7 @@ export default function Book() {
         <h1>BOOK YOUR STAY</h1>
         <section className="grid grid-cols-1 lg:grid-cols-3 ">
           <BookingTimerContainer>
-            <HiddenStateWrapper />
+            <UseStateFlowWrapper />
           </BookingTimerContainer>
 
           <div

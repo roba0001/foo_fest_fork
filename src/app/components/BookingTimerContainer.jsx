@@ -23,11 +23,9 @@ export default function BookingTimerContainer({ children }) {
     autoStart: false,
   });
 
-  const style = { stroke: "orange", height: "2.5em", width: "2.5em" };
-
   return (
-    <div className="col-span-2 flex flex-col gap-16">
-      <div className="flex justify-between  sticky top-20 ">
+    <div className="col-span-2 flex flex-col gap-16 ">
+      <div className="flex justify-between z-10  sticky top-20 ">
         <BookingTimer seconds={seconds} minutes={minutes} />
         <div className="col-start-2   xl:hide lg:hide">
           <a href="#shoppingCart">

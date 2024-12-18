@@ -56,6 +56,11 @@ input[type="number"] {
     width: 20rem;
   }
 
+  .form-disabled {
+    pointer-events: none;
+    opacity: 0.3;
+  }
+
   .vip-ticket-counter-background-color {
     @apply bg-vipTicketCounterBackgroundColor;
   }

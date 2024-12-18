@@ -5,37 +5,10 @@ import GuestPassPriceCalculator from "./GuestPassPriceCalculator";
 import { useStore } from "@/app/store";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import BookingTimer from "@/app/components/BookingTimer";
-// import { useTimer } from "react-timer-hook";
+
 import FormButton from "./FormButton";
 
-export default function FlowAreaAndAmount({ start, setIsVisible }) {
-  // sæt timeren til 5 minutter
-  // const expiryTimestamp = new Date();
-  // expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 10);
-
-  // // lav variablerne der skal sendes med ned til BookingTimer komponenten
-  // const { seconds, minutes, start, restart } = useTimer({
-  //   //
-  //   expiryTimestamp,
-  //   // ændre denne til at stoppe uret og refreshe siden (??) / sende en alert når done
-  //   onExpire: () => {
-  //     console.warn("Timer expired");
-
-  //     // ny const, så den starter på 5min hver gang den restarter med 1 sekunds delay inden den restarter
-  //     setTimeout(() => {
-  //       const newExpiryTimestamp = new Date();
-  //       newExpiryTimestamp.setSeconds(newExpiryTimestamp.getSeconds() + 10);
-  //       restart(newExpiryTimestamp);
-  //     }, 1000);
-
-  //     restart(newExpiryTimestamp);
-  //   },
-
-  //   // ikke start timeren automatisk
-  //   autoStart: false,
-  // });
-
+export default function FlowAreaAndAmount({ start, setIsVisible, isDisabled, setIsDisabled }) {
   // hent antal billetter og reservationID fra zustand store
   const { count } = useStore();
   const { reservationId, setReservationId } = useStore();
@@ -91,13 +64,17 @@ export default function FlowAreaAndAmount({ start, setIsVisible }) {
 
     // set isVisible to true here
     setIsVisible(true);
+    setIsDisabled(true);
   }
 
   return (
     <section>
-      {/* <BookingTimer seconds={seconds} minutes={minutes} /> */}
-
-      <form onSubmit={handleFormSubmit} className="flex flex-col gap-16 items-center">
+      <form
+        onSubmit={handleFormSubmit}
+        className={`${
+          isDisabled ? "form-disabled" : ""
+        }  flex flex-col gap-16 items-center mb-16 z-0`}
+      >
         <AreaInput />
         <GuestPassPriceCalculator />
 
