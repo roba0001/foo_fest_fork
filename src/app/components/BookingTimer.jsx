@@ -1,9 +1,9 @@
 "use client";
 
-export default function BookingTimer({ seconds, minutes, restart }) {
+export default function BookingTimer({ seconds, minutes }) {
   return (
-    <div>
-      <div style={{ fontSize: "100px" }}>
+    <div className="flex justify-end sticky top-20">
+      <div>
         <span>{minutes}</span>:<span>{seconds}</span>
       </div>
     </div>

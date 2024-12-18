@@ -12,14 +12,26 @@ import FormButton from "./FormButton";
 export default function FlowAreaAndAmount() {
   // sæt timeren til 5 minutter
   const expiryTimestamp = new Date();
-  expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 300);
+  expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 10);
 
   // lav variablerne der skal sendes med ned til BookingTimer komponenten
   const { seconds, minutes, start, restart } = useTimer({
     //
     expiryTimestamp,
     // ændre denne til at stoppe uret og refreshe siden (??) / sende en alert når done
-    onExpire: () => console.warn("Timer expired"),
+    onExpire: () => {
+      console.warn("Timer expired");
+
+      // ny const, så den starter på 5min hver gang den restarter med 1 sekunds delay inden den restarter
+      setTimeout(() => {
+        const newExpiryTimestamp = new Date();
+        newExpiryTimestamp.setSeconds(newExpiryTimestamp.getSeconds() + 10);
+        restart(newExpiryTimestamp);
+      }, 1000);
+
+      restart(newExpiryTimestamp);
+    },
+
     // ikke start timeren automatisk
     autoStart: false,
   });
@@ -79,7 +91,7 @@ export default function FlowAreaAndAmount() {
   }
 
   return (
-    <>
+    <section className="h-fit overflow-y-auto">
       <BookingTimer seconds={seconds} minutes={minutes} />
 
       <form onSubmit={handleFormSubmit} className="flex flex-col gap-5 items-center">
@@ -90,6 +102,6 @@ export default function FlowAreaAndAmount() {
       </form>
 
       <ToastContainer />
-    </>
+    </section>
   );
 }
