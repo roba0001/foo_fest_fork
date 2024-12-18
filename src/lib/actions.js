@@ -9,7 +9,6 @@ const glitchHeadersList = {
 };
 
 export default async function putReservation(reservationData) {
-  // event.preventDefault();
   const response = await fetch("http://localhost:8080/reserve-spot", {
     method: "PUT",
     headers: glitchHeadersList,
@@ -22,7 +21,6 @@ export default async function putReservation(reservationData) {
 }
 
 // POST request with reservationId to confirm booking
-
 export async function postReservation(reservationData) {
   console.log("postReservation funktion kører");
   const response = await fetch("http://localhost:8080/fullfill-reservation", {
@@ -32,6 +30,6 @@ export async function postReservation(reservationData) {
   });
 
   const data = await response.json();
-  console.log("response from glitch PUSH", data);
+  console.log("response from PUSH request", data);
   return data;
 }

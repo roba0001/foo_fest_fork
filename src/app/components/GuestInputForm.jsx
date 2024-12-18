@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function GuestInputForm({ isVisible, setIsVisible }) {
-  // hent antal billetter fra zustand store
+  // hent antal billetter og reservationId fra zustand store
   const { count, reservationId } = useStore();
 
   const router = useRouter();
@@ -19,20 +19,6 @@ export default function GuestInputForm({ isVisible, setIsVisible }) {
   // Synchonize the guests array's length with the ticket amount
   useEffect(() => {
     setGuests((prev) =>
-      /*
-          A few things happen here:
-            1.
-            Using the .from() method on the Array object to create a new Array object
-            
-            2.
-            The length of the array is being set to "count", which is the same as the amount of tickets (this essentially sets the length of the array to be the same as the amount of tickets)
-
-            3.
-            A callback function keeping track of the current index is passed to the .from() method (this callback takes two arguments - the value current value of the item and the index number of the current item - but since we only care about the indices, the first argument is left empty (represented by the underscore))
-
-            The prev[index] retrieves the existing guest object at the current index in the guests array (the state of the array in the previous iteration). If no previous index exists, only an id is being set, and the value is left empty.  
-
-      */
       Array.from({ length: count }, (_, index) => prev[index] || { guestName: "", id: index + 1 })
     );
   }, [count]);
@@ -53,23 +39,16 @@ export default function GuestInputForm({ isVisible, setIsVisible }) {
     // looper igennem guestsData og for hver guest sender den en POST request med postInfo(guestData) til supabase.
     for (const guestData of guestsData) {
       await postInfo(guestData);
-      console.log("FORMDATA SENT TO SUPABASE");
+      console.log("guestData sendt til supabase: ", guestData);
     }
 
     // ---------------------------
 
     // -----API POST request------
-    console.log("reservationId fra GIF:  ", reservationId);
     const reservationData = { id: reservationId };
-    console.log("dette sender vi til postReservation", reservationData);
+    console.log("reservationId sendt til POST: ", reservationData);
 
-    try {
-      const response = await postReservation(reservationData);
-      console.log("Response from postReservation:", response);
-    } catch (error) {
-      console.error("Error in postReservation:", error);
-    }
-    console.log(response);
+    await postReservation(reservationData);
     // ---------------------------
 
     await router.push("./payment");

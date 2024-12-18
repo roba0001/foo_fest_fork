@@ -49,22 +49,21 @@ export default function FlowAreaAndAmount({ start, setIsVisible, isDisabled, set
       start();
       // clear reservationID
       setReservationId(null);
+      // set isVisible og isDisabled til true
+      setIsVisible(true);
+      setIsDisabled(true);
     }
 
     // lav variabel der sendes med ned til putReservation (vores PUT reuquest)
     // sæt amount til at være værdien af count (antal billetter)
     const reservationData = { area, amount: count };
 
-    // variabel med ny reservationId
+    // variabel med ny reservationId som vi modtager
     const newReservationId = await putReservation(reservationData);
     // set reservationId til at have værdi af det nye reservationId
     setReservationId(newReservationId);
 
-    console.log("reservationId fra FAAA: ", reservationId);
-
-    // set isVisible to true here
-    setIsVisible(true);
-    setIsDisabled(true);
+    console.log("reservationId sendt til PUT: ", newReservationId);
   }
 
   return (
