@@ -17,7 +17,7 @@ export default function GuestInput({ guest }) {
             id="guestFirstName"
             name={`guestFirstName_${guest.id}`}
             autoComplete="given-name"
-            // required
+            required
           />
         </div>
 
@@ -31,7 +31,7 @@ export default function GuestInput({ guest }) {
             id="guestLastName"
             name={`guestLastName_${guest.id}`}
             autoComplete="family-name"
-            // required
+            required
           />
         </div>
 
@@ -46,7 +46,7 @@ export default function GuestInput({ guest }) {
             id="guestEmail"
             name={`guestEmail_${guest.id}`}
             autoComplete="email"
-            // required
+            required
           />
         </div>
 

@@ -79,9 +79,11 @@ export default function GuestInputForm() {
 
   return (
     <form onSubmit={handleFormSubmit} className="flex flex-col gap-5 items-center">
-      {guests.map((guest) => (
-        <GuestInput key={guest.id} guest={guest} />
-      ))}
+      <div className="grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-5">
+        {guests.map((guest) => (
+          <GuestInput key={guest.id} guest={guest} />
+        ))}
+      </div>
       <FormButton buttonText={"Confirm reservation"}></FormButton>
     </form>
   );

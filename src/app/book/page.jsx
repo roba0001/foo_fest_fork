@@ -10,6 +10,7 @@ import FlowAreaAndAmount from "../components/FlowAreaAndAmount";
 import BookingTimer from "../components/BookingTimer";
 import { UseBookingTimer } from "../components/UseBookingTimer";
 import GuestInputForm from "@/app/components/GuestInputForm";
+import BookingTimerContainer from "../components/BookingTimerContainer";
 
 export default function Book() {
   const navItems = [
@@ -34,9 +35,10 @@ export default function Book() {
       <Navigation navItems={navItems} />
       <RootLayout>
         <h1>BOOK YOUR STAY</h1>
-        <FlowAreaAndAmount />
-        <GuestInputForm />
-
+        <BookingTimerContainer>
+          <FlowAreaAndAmount />
+          <GuestInputForm />
+        </BookingTimerContainer>
         {/* <form className="flex flex-col gap-5  justify-start">
           <div className="grid grid-cols-3 max-lg:grid-cols-1 grid-rows-2 mt-10 justify-start gap-10 mx-6">
             <div className="col-start-2 row-start-1 sticky top-20  md:hide lg:hide">
