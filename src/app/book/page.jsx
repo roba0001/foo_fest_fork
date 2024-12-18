@@ -11,8 +11,10 @@ import BookingTimer from "../components/BookingTimer";
 import { UseBookingTimer } from "../components/UseBookingTimer";
 import GuestInputForm from "@/app/components/GuestInputForm";
 import BookingTimerContainer from "../components/BookingTimerContainer";
+import HiddenStateWrapper from "@/app/components/HiddenStateWrapper";
 
 export default function Book() {
+  // set state for om GuestInputForm er visible eller ej
   const navItems = [
     {
       linkText: "Home",
@@ -37,8 +39,7 @@ export default function Book() {
         <h1>BOOK YOUR STAY</h1>
         <section className="grid grid-cols-1 lg:grid-cols-3 ">
           <BookingTimerContainer>
-            <FlowAreaAndAmount />
-            <GuestInputForm />
+            <HiddenStateWrapper />
           </BookingTimerContainer>
 
           <div

@@ -7,7 +7,7 @@ import { postInfo } from "@/lib/supabase";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-export default function GuestInputForm() {
+export default function GuestInputForm({ isVisible, setIsVisible }) {
   // hent antal billetter fra zustand store
   const { count, reservationId } = useStore();
 
@@ -78,8 +78,11 @@ export default function GuestInputForm() {
   }
 
   return (
-    <form onSubmit={handleFormSubmit} className="flex flex-col gap-16 items-center">
-      <div className="grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-5">
+    <form
+      onSubmit={handleFormSubmit}
+      className={`${isVisible ? "" : "hidden"} flex flex-col gap-16 items-center`}
+    >
+      <div className=" grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-5">
         {guests.map((guest) => (
           <GuestInput key={guest.id} guest={guest} />
         ))}

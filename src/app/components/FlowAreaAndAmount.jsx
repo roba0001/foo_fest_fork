@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 // import { useTimer } from "react-timer-hook";
 import FormButton from "./FormButton";
 
-export default function FlowAreaAndAmount({ start }) {
+export default function FlowAreaAndAmount({ start, setIsVisible }) {
   // sæt timeren til 5 minutter
   // const expiryTimestamp = new Date();
   // expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 10);
@@ -88,6 +88,9 @@ export default function FlowAreaAndAmount({ start }) {
     setReservationId(newReservationId);
 
     console.log("reservationId fra FAAA: ", reservationId);
+
+    // set isVisible to true here
+    setIsVisible(true);
   }
 
   return (
