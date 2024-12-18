@@ -8,15 +8,13 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function GuestInputForm({ isVisible, setIsVisible }) {
-  // hent antal billetter og reservationId fra zustand store
+  // hent reservationId fra zustand store
   const { count, reservationId } = useStore();
 
   const router = useRouter();
 
-  // State for managing the guests array
   const [guests, setGuests] = useState([]);
 
-  // Synchonize the guests array's length with the ticket amount
   useEffect(() => {
     setGuests((prev) =>
       Array.from({ length: count }, (_, index) => prev[index] || { guestName: "", id: index + 1 })
@@ -24,10 +22,8 @@ export default function GuestInputForm({ isVisible, setIsVisible }) {
   }, [count]);
 
   async function handleFormSubmit(event) {
-    // ingen refresh
     event.preventDefault();
 
-    //---- SUPABASE POST request ----
     const formData = new FormData(event.target);
     const guestsData = guests.map((guest) => ({
       guestFirstName: formData.get(`guestFirstName_${guest.id}`),
@@ -36,13 +32,10 @@ export default function GuestInputForm({ isVisible, setIsVisible }) {
       guestPhone: formData.get(`guestPhone_${guest.id}`),
     }));
 
-    // looper igennem guestsData og for hver guest sender den en POST request med postInfo(guestData) til supabase.
     for (const guestData of guestsData) {
       await postInfo(guestData);
       console.log("guestData sendt til supabase: ", guestData);
     }
-
-    // ---------------------------
 
     // -----API POST request------
     const reservationData = { id: reservationId };
@@ -51,9 +44,7 @@ export default function GuestInputForm({ isVisible, setIsVisible }) {
     await postReservation(reservationData);
     // ---------------------------
 
-    await router.push("./payment");
-
-    // console.log("reservationId from GuestInputForm: ", reservationId);
+    // await router.push("./payment");
   }
 
   return (

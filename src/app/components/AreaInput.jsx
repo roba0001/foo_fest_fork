@@ -8,6 +8,7 @@ export default function AreaInput() {
   const [selectedArea, setSelectedArea] = useState(null);
 
   useEffect(() => {
+    // fetch available-spots fra API
     async function fetchData() {
       try {
         const response = await fetch("http://localhost:8080/available-spots");
@@ -27,6 +28,7 @@ export default function AreaInput() {
 
   return (
     <Fieldset title={"Choose area:"}>
+      {/* map igennem --> radiobuttons til hvert area */}
       {data.map((area) => (
         <div
           key={area.spots}
@@ -48,7 +50,7 @@ export default function AreaInput() {
               value={`${area.area}:${area.available}`}
               className="col-start-1 row-start-1 appearance-none w-4 h-4 border-2 border-orange-300 rounded-full shrink-0"
               onChange={() => handleSelection(area.area)}
-              checked={selectedArea === area.area} // Ensure the selection is reflected
+              checked={selectedArea === area.area}
             />
             <div
               className={`col-start-1 row-start-1 w-2 h-2 rounded-full bg-orange-300 ${

@@ -9,31 +9,23 @@ import "react-toastify/dist/ReactToastify.css";
 import FormButton from "./FormButton";
 
 export default function FlowAreaAndAmount({ start, setIsVisible, isDisabled, setIsDisabled }) {
-  // hent antal billetter og reservationID fra zustand store
-  const { count } = useStore();
-  const { reservationId, setReservationId } = useStore();
+  // hent antal billetter og reservationId fra zustand store
+  const { count, setReservationId } = useStore();
 
-  // Funktion der kører når form bliver submitted
   async function handleFormSubmit(event) {
-    // ingen refresh
     event.preventDefault();
 
     const formData = new FormData(event.target);
 
-    // få areanavn og antal ledige pladser fra AreaInput's input value, og split dem ad ved : (kolon)
     const [area, availableSpots] = formData.get("area").split(":");
 
-    // funktionen alert der kører warnings baseret på spot availability
     const alert = () => {
       if (availableSpots == 1) {
-        // hvis der kun er en plads, brug ordet spot
         toast.warning(
           `There is only ${availableSpots} available spot in ${area}, try a different area!`,
           { position: "top-left" }
         );
       } else {
-        // hvis der er flere, brug ordet spots
-
         toast.warning(
           `There are only ${availableSpots} available spots in ${area}, try a different area!`,
           { position: "top-left" }
@@ -41,26 +33,24 @@ export default function FlowAreaAndAmount({ start, setIsVisible, isDisabled, set
       }
     };
 
-    // kør alert hvis antal biletter er større end antal ledige pladser
     if (count > availableSpots) {
       alert();
     } else {
-      // ellers, start timeren
       start();
-      // clear reservationID
       setReservationId(null);
-      // set isVisible og isDisabled til true
       setIsVisible(true);
       setIsDisabled(true);
     }
 
     // lav variabel der sendes med ned til putReservation (vores PUT reuquest)
-    // sæt amount til at være værdien af count (antal billetter)
+    // sæt amount til antal biletter
     const reservationData = { area, amount: count };
 
-    // variabel med ny reservationId som vi modtager
+    // send reservationData med ned og kald PUTfunktionen
+    // put funktionens return (reservationId) i en variabel
     const newReservationId = await putReservation(reservationData);
-    // set reservationId til at have værdi af det nye reservationId
+
+    // set reservationId i zustand den returnerede reservationData's værdi
     setReservationId(newReservationId);
 
     console.log("reservationId sendt til PUT: ", newReservationId);

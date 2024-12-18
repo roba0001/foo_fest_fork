@@ -1,7 +1,7 @@
 "use client";
 
 // -------- FOOFEST API ----------
-// PUT request to reserve spot
+// PUT request
 const glitchHeadersList = {
   Accept: "application/json",
   "Content-Type": "application/json",
@@ -20,7 +20,7 @@ export default async function putReservation(reservationData) {
   return reservationId;
 }
 
-// POST request with reservationId to confirm booking
+// POST request med reservationId
 export async function postReservation(reservationData) {
   console.log("postReservation funktion kører");
   const response = await fetch("http://localhost:8080/fullfill-reservation", {
