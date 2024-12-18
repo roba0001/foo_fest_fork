@@ -31,7 +31,7 @@ export default function BookingTimerContainer({ children }) {
         <BookingTimer seconds={seconds} minutes={minutes} />
         <div className="col-start-2   xl:hide lg:hide">
           <a href="#shoppingCart">
-            <FiShoppingCart style={style} />
+            <FiShoppingCart className="h-10 w-10 transition-text duration-150 ease-in hover:text-orange-300" />
           </a>
         </div>
       </div>
