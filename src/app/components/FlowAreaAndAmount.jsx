@@ -5,24 +5,36 @@ import GuestPassPriceCalculator from "./GuestPassPriceCalculator";
 import { useStore } from "@/app/store";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import BookingTimer from "@/app/components/BookingTimer";
-import { useTimer } from "react-timer-hook";
+// import BookingTimer from "@/app/components/BookingTimer";
+// import { useTimer } from "react-timer-hook";
 import FormButton from "./FormButton";
 
-export default function FlowAreaAndAmount() {
+export default function FlowAreaAndAmount({ start }) {
   // sæt timeren til 5 minutter
-  const expiryTimestamp = new Date();
-  expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 300);
+  // const expiryTimestamp = new Date();
+  // expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 10);
 
-  // lav variablerne der skal sendes med ned til BookingTimer komponenten
-  const { seconds, minutes, start } = useTimer({
-    //
-    expiryTimestamp,
-    // ændre denne til at stoppe uret og refreshe siden (??) / sende en alert når done
-    onExpire: () => console.warn("Timer expired"),
-    // ikke start timeren automatisk
-    autoStart: false,
-  });
+  // // lav variablerne der skal sendes med ned til BookingTimer komponenten
+  // const { seconds, minutes, start, restart } = useTimer({
+  //   //
+  //   expiryTimestamp,
+  //   // ændre denne til at stoppe uret og refreshe siden (??) / sende en alert når done
+  //   onExpire: () => {
+  //     console.warn("Timer expired");
+
+  //     // ny const, så den starter på 5min hver gang den restarter med 1 sekunds delay inden den restarter
+  //     setTimeout(() => {
+  //       const newExpiryTimestamp = new Date();
+  //       newExpiryTimestamp.setSeconds(newExpiryTimestamp.getSeconds() + 10);
+  //       restart(newExpiryTimestamp);
+  //     }, 1000);
+
+  //     restart(newExpiryTimestamp);
+  //   },
+
+  //   // ikke start timeren automatisk
+  //   autoStart: false,
+  // });
 
   // hent antal billetter og reservationID fra zustand store
   const { count } = useStore();
@@ -79,13 +91,10 @@ export default function FlowAreaAndAmount() {
   }
 
   return (
-    <>
-      <BookingTimer seconds={seconds} minutes={minutes} />
+    <section>
+      {/* <BookingTimer seconds={seconds} minutes={minutes} /> */}
 
-      <form
-        onSubmit={handleFormSubmit}
-        className="flex flex-col gap-5 items-center"
-      >
+      <form onSubmit={handleFormSubmit} className="flex flex-col gap-16 items-center">
         <AreaInput />
         <GuestPassPriceCalculator />
 
@@ -93,6 +102,6 @@ export default function FlowAreaAndAmount() {
       </form>
 
       <ToastContainer />
-    </>
+    </section>
   );
 }
