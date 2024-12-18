@@ -29,7 +29,7 @@ export default function AreaInput() {
     <Fieldset title={"Choose area:"}>
       {data.map((area) => (
         <div
-          key={area.available}
+          key={area.spots}
           className="hover:bg-orange-100 flex items-center justify-between  rounded-2xl p-3"
           onClick={() => handleSelection(area.area)}
         >
