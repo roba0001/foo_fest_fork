@@ -2,12 +2,12 @@
 import putReservation from "@/lib/actions";
 import AreaInput from "./AreaInput";
 import GuestPassPriceCalculator from "./GuestPassPriceCalculator";
-import Count from "./Count";
 import { useStore } from "@/app/store";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import BookingTimer from "@/app/components/BookingTimer";
 import { useTimer } from "react-timer-hook";
+import FormButton from "./FormButton";
 
 export default function FlowAreaAndAmount() {
   // sæt timeren til 5 minutter
@@ -24,10 +24,11 @@ export default function FlowAreaAndAmount() {
     autoStart: false,
   });
 
-  // hent antal billetter fra zustand store
+  // hent antal billetter og reservationID fra zustand store
   const { count } = useStore();
+  const { reservationId, setReservationId } = useStore();
 
-  // Funktion der kører onSubmit på form
+  // Funktion der kører når form bliver submitted
   async function handleFormSubmit(event) {
     // ingen refresh
     event.preventDefault();
@@ -61,29 +62,31 @@ export default function FlowAreaAndAmount() {
     } else {
       // ellers, start timeren
       start();
+      // clear reservationID
+      setReservationId(null);
     }
 
     // lav variabel der sendes med ned til putReservation (vores PUT reuquest)
     // sæt amount til at være værdien af count (antal billetter)
     const reservationData = { area, amount: count };
 
-    console.log("reservationData", reservationData);
-    console.log("availableSpots", availableSpots);
+    // variabel med ny reservationId
+    const newReservationId = await putReservation(reservationData);
+    // set reservationId til at have værdi af det nye reservationId
+    setReservationId(newReservationId);
 
-    await putReservation(reservationData);
+    console.log("reservationId fra FAAA: ", reservationId);
   }
 
   return (
     <>
       <BookingTimer seconds={seconds} minutes={minutes} />
 
-      <form onSubmit={handleFormSubmit} className="flex flex-col gap-5 justify-start">
+      <form onSubmit={handleFormSubmit} className="flex flex-col gap-5 items-center">
         <AreaInput />
-        {/* <Count /> */}
         <GuestPassPriceCalculator />
-        <button className="bg-blue-200 hover:bg-blue-300 w-24 rounded-3xl p-5" type="submit">
-          Submit form
-        </button>
+
+        <FormButton buttonText={"Reserve your spots"}></FormButton>
       </form>
 
       <ToastContainer />
