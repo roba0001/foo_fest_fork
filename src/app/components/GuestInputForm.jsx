@@ -16,7 +16,7 @@ export default function GuestInputForm() {
   // State for managing the guests array
   const [guests, setGuests] = useState([]);
 
-  // Synchonize the guests array's length with the ticket amoutn
+  // Synchonize the guests array's length with the ticket amount
   useEffect(() => {
     setGuests((prev) =>
       /*
@@ -37,7 +37,6 @@ export default function GuestInputForm() {
     );
   }, [count]);
 
-  // Funktion der kører når form bliver submitted
   async function handleFormSubmit(event) {
     // ingen refresh
     event.preventDefault();
@@ -70,7 +69,7 @@ export default function GuestInputForm() {
     } catch (error) {
       console.error("Error in postReservation:", error);
     }
-
+    console.log(response);
     // ---------------------------
 
     await router.push("./payment");

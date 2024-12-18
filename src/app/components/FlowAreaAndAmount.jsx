@@ -15,9 +15,10 @@ export default function FlowAreaAndAmount() {
   expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 300);
 
   // lav variablerne der skal sendes med ned til BookingTimer komponenten
-  const { seconds, minutes, start } = useTimer({
+  const { seconds, minutes, start, restart, pause } = useTimer({
     //
     expiryTimestamp,
+
     // ændre denne til at stoppe uret og refreshe siden (??) / sende en alert når done
     onExpire: () => console.warn("Timer expired"),
     // ikke start timeren automatisk
@@ -70,7 +71,7 @@ export default function FlowAreaAndAmount() {
     // sæt amount til at være værdien af count (antal billetter)
     const reservationData = { area, amount: count };
 
-    // variabel med ny reservationId
+    // variabel med ny reservationId med return verdien af putReservation
     const newReservationId = await putReservation(reservationData);
     // set reservationId til at have værdi af det nye reservationId
     setReservationId(newReservationId);
