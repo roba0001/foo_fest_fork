@@ -14,7 +14,7 @@ export default function Hero({ bandName, genre }) {
         />
         <div className="absolute bottom-12 right-12 text-right z-10 text-white">
           <HeroDescription>
-            <h1>FooFest</h1>
+            <h2>band.name</h2>
             <h4>band.genre</h4>
           </HeroDescription>
         </div>

@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import Hero from "../../components/Hero.jsx";
+import HeroArtists from "@/app/components/HeroArtists.jsx";
 import HeroDescription from "../../components/HeroDescription.jsx";
 import Navigation from "@/app/components/Navigation.jsx";
 import BackArrowButton from "@/app/components/BackArrowButton.jsx";
@@ -91,12 +91,12 @@ export default function Artist() {
   return (
     <>
       <Navigation navItems={[{ linkText: "Program", href: "/program" }]} />
-      <Hero>
+      <HeroArtists>
         <HeroDescription>
           <h2>{band.name}</h2>
           <h4>{band.genre}</h4>
         </HeroDescription>
-      </Hero>
+      </HeroArtists>
 
       <BackArrowButton href="/program" />
 
