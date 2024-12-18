@@ -5,19 +5,19 @@ import FormButton from "./FormButton";
 import GuestInput from "./GuestInput";
 import { postInfo } from "@/lib/supabase";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-export default function GuestInputForm()
-{
+export default function GuestInputForm() {
   // hent antal billetter fra zustand store
   const { count, reservationId } = useStore();
 
-  // State for managing the guests array
-  const [guests, setGuests] = useState([])
+  const router = useRouter();
 
+  // State for managing the guests array
+  const [guests, setGuests] = useState([]);
 
   // Synchonize the guests array's length with the ticket amoutn
-  useEffect(() =>
-  {
+  useEffect(() => {
     setGuests((prev) =>
       /*
           A few things happen here:
@@ -33,24 +33,12 @@ export default function GuestInputForm()
             The prev[index] retrieves the existing guest object at the current index in the guests array (the state of the array in the previous iteration). If no previous index exists, only an id is being set, and the value is left empty.  
 
       */
-      Array.from(
-        { length: count },
-        (_, index) => prev[index] ||
-        { guestName: "", id: index + 1 })
-    )
-  }, [count])
-
-  // Victor udskifter dette med det rigtige array af gæster
-  // let guests = [
-  //   { name: "Ronja", id: 1 },
-  //   { name: "Ronja", id: 2 },
-  //   { name: "Ronja", id: 3 },
-  //   { name: "Ronja", id: 4 },
-  // ];
+      Array.from({ length: count }, (_, index) => prev[index] || { guestName: "", id: index + 1 })
+    );
+  }, [count]);
 
   // Funktion der kører når form bliver submitted
-  async function handleFormSubmit(event)
-  {
+  async function handleFormSubmit(event) {
     // ingen refresh
     event.preventDefault();
 
@@ -64,29 +52,28 @@ export default function GuestInputForm()
     }));
 
     // looper igennem guestsData og for hver guest sender den en POST request med postInfo(guestData) til supabase.
-    for (const guestData of guestsData)
-    {
+    for (const guestData of guestsData) {
       await postInfo(guestData);
       console.log("FORMDATA SENT TO SUPABASE");
     }
 
-    // ---------
+    // ---------------------------
 
     // -----API POST request------
     console.log("reservationId fra GIF:  ", reservationId);
     const reservationData = { id: reservationId };
     console.log("dette sender vi til postReservation", reservationData);
 
-    try
-    {
+    try {
       const response = await postReservation(reservationData);
       console.log("Response from postReservation:", response);
-    } catch (error)
-    {
+    } catch (error) {
       console.error("Error in postReservation:", error);
     }
 
     // ---------------------------
+
+    await router.push("./payment");
 
     // console.log("reservationId from GuestInputForm: ", reservationId);
   }
