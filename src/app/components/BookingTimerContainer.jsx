@@ -10,13 +10,45 @@ export default function BookingTimerContainer({ children }) {
   expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 300);
 
   // lav variablerne der skal sendes med ned til BookingTimer komponenten
-  const { seconds, minutes, start, restart } = useTimer({
+  const { seconds, minutes, start, pause } = useTimer({
     //
     expiryTimestamp,
-    // ændre denne til at stoppe uret og refreshe siden (??) / sende en alert når done
+    // når nedtellingen er ferdig, paus den og reload siden
     onExpire: () => {
       console.warn("Timer expired");
       pause();
+
+      // Lav en message der vises når tiden er udløbet
+      const message = document.createElement("p");
+      message.textContent = `Time ran out,try again!`;
+      message.style.position = "fixed";
+      message.style.top = "50%";
+      message.style.left = "50%";
+      message.style.transform = "translate(-50%, -50%)";
+      message.style.backgroundColor = "rgba(255, 255, 255)";
+      message.style.color = "black";
+      message.style.padding = "20px";
+      message.style.borderRadius = "25px";
+      message.style.border = "2px solid #FDBA74";
+      message.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.5)";
+      message.style.zIndex = "1000";
+      document.body.appendChild(message);
+
+      const overlay = document.createElement("div");
+      overlay.style.position = "fixed";
+      overlay.style.top = "0";
+      overlay.style.left = "0";
+      overlay.style.width = "100%";
+      overlay.style.height = "100%";
+      overlay.style.backdropFilter = "blur(5px)"; // Apply background blur
+      overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)"; // Optional: Add a semi-transparent overlay
+      overlay.style.zIndex = "999";
+      document.body.appendChild(overlay);
+
+      // Delay the reload
+      setTimeout(() => {
+        location.reload();
+      }, 3000);
     },
 
     // ikke start timeren automatisk
