@@ -50,19 +50,19 @@ export default function BandsList({ bands }) {
   const mapDayToName = (day) => {
     switch (day) {
       case "mon":
-        return "Mandag";
+        return "Monday";
       case "tue":
-        return "Tirsdag";
+        return "Tuesday";
       case "wed":
-        return "Onsdag";
+        return "Wednesday";
       case "thu":
-        return "Torsdag";
+        return "Thursday";
       case "fri":
-        return "Fredag";
+        return "Friday";
       case "sat":
-        return "Lørdag";
+        return "Saturday";
       case "sun":
-        return "Søndag";
+        return "Sunday";
       default:
         return "";
     }
@@ -80,23 +80,34 @@ export default function BandsList({ bands }) {
               onMouseEnter={() => setHoveredBand(band.name)}
               onMouseLeave={() => setHoveredBand(null)}
             >
-              <Link className="mb-3" href={`/artists/${band.slug}`}>
-                <Image
-                  src={
-                    band.logo && band.logo.includes("https")
-                      ? band.logo
-                      : `/img/${band.logo}`
-                  }
-                  alt={`${band.name} playing at a festival`}
-                  width={320}
-                  height={280}
-                  className="w-full h-80 object-cover transition-transform transform group-hover:scale-105"
-                />
-              </Link>
-              <h2 className="absolute bottom-2 right-2 text-white bg-black bg-opacity-75 px-2 py-1 text-sm transition-transform transform group-hover:translate-y-[-20px]">
+              {band.logo && band.logo.includes("https") ? (
+                <Link className="mb-3" href={`/artists/${band.slug}`}>
+                  <Image
+                    src={band.logo}
+                    alt={`${band.name} playing at a festival`}
+                    width={320}
+                    height={280}
+                    className="w-full h-80 object-cover transition-transform transform group-hover:scale-105"
+                  />
+                </Link>
+              ) : (
+                <Link className="mb-3" href={`/artists/${band.slug}`}>
+                  <Image
+                    src={`http://localhost:8080/logos/${
+                      band.logo && band.logo.includes(".")
+                        ? band.logo
+                        : `${band.logo}.png`
+                    }`}
+                    alt={`${band.name} playing at a festival`}
+                    width={320}
+                    height={280}
+                    className="w-full h-80 object-cover transition-transform transform group-hover:scale-105"
+                  />
+                </Link>
+              )}
+              <h3 className="absolute bottom-2 right-2 text-white bg-black bg-opacity-75 px-2 py-1 text-sm transition-transform transform group-hover:translate-y-[-20px]">
                 {band.name}
-              </h2>
-
+              </h3>
               {hoveredBand === band.name && (
                 <div className="absolute bottom-2 left-0 right-0 bg-black bg-opacity-80 p-2 text-white text-sm">
                   {getScheduleForBand(band.name).length > 0

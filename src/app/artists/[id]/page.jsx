@@ -62,19 +62,19 @@ export default function Artist() {
   const mapDayToName = (day) => {
     switch (day) {
       case "mon":
-        return "Mandag";
+        return "Monday";
       case "tue":
-        return "Tirsdag";
+        return "Tuesday";
       case "wed":
-        return "Onsdag";
+        return "Wednesday";
       case "thu":
-        return "Torsdag";
+        return "Thursday";
       case "fri":
-        return "Fredag";
+        return "Friday";
       case "sat":
-        return "Lørdag";
+        return "Saturday";
       case "sun":
-        return "Søndag";
+        return "Sunday";
       default:
         return "";
     }

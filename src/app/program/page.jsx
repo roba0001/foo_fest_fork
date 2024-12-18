@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div>
       <Navigation navItems={navItems} />
-      <h1>Bandt og scenerne på festival</h1>
+      <h2>Bandt and the stages at the festival</h2>
       <Category />
       <BandsListe />
     </div>
