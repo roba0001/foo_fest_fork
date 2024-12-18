@@ -56,7 +56,7 @@ export default function FlowAreaAndAmount() {
       }
     };
 
-    // kør alert hvsi antal biletter er større end antal ledige pladser
+    // kør alert hvis antal biletter er større end antal ledige pladser
     if (count > availableSpots) {
       alert();
     } else {
@@ -82,7 +82,10 @@ export default function FlowAreaAndAmount() {
     <>
       <BookingTimer seconds={seconds} minutes={minutes} />
 
-      <form onSubmit={handleFormSubmit} className="flex flex-col gap-5 items-center">
+      <form
+        onSubmit={handleFormSubmit}
+        className="flex flex-col gap-5 items-center"
+      >
         <AreaInput />
         <GuestPassPriceCalculator />
 
