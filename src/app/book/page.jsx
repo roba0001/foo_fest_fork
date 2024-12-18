@@ -46,13 +46,13 @@ export default function Book() {
             </div>
             <div className="flex flex-col md:col-span-2 lg:col-span-2 row-start-1 col-start-1  gap-10 justify-self-center"></div>
           </div>
-        </form>
+        </form> */}
         <div
           id="shoppingCart"
           className="flex sticky top-20 flex-col pt-5 justify-self-center  col-start-3 md:row-start-1 max-md:col-start-1 max-sm:col-start-1  md:sticky max-lg:sticky  "
         >
           <ShoppingCart />
-        </div> */}
+        </div>
       </RootLayout>
     </>
   );
