@@ -2,6 +2,7 @@
 import BookingTimer from "@/app/components/BookingTimer";
 import { useTimer } from "react-timer-hook";
 import React from "react";
+import { FiShoppingCart } from "react-icons/fi";
 
 export default function BookingTimerContainer({ children }) {
   // sæt timeren til 5 minutter
@@ -22,10 +23,19 @@ export default function BookingTimerContainer({ children }) {
     autoStart: false,
   });
 
+  const style = { stroke: "orange", height: "2.5em", width: "2.5em" };
+
   return (
-    <div>
-      <BookingTimer seconds={seconds} minutes={minutes} />
-      {/* map through children and pass the function start as a prop to all children */}
+    <div className="col-span-2 flex flex-col gap-16">
+      <div className="flex justify-between  sticky top-20 ">
+        <BookingTimer seconds={seconds} minutes={minutes} />
+        <div className="col-start-2   xl:hide lg:hide">
+          <a href="#shoppingCart">
+            <FiShoppingCart style={style} />
+          </a>
+        </div>
+      </div>
+      {/* mapper igennem alle children og sender timerens start funktion med */}
       {React.Children.map(children, (child) => React.cloneElement(child, { start }))}
     </div>
   );

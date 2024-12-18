@@ -91,10 +91,10 @@ export default function FlowAreaAndAmount({ start }) {
   }
 
   return (
-    <section className="mb-5">
+    <section>
       {/* <BookingTimer seconds={seconds} minutes={minutes} /> */}
 
-      <form onSubmit={handleFormSubmit} className="flex flex-col gap-5 items-center">
+      <form onSubmit={handleFormSubmit} className="flex flex-col gap-16 items-center">
         <AreaInput />
         <GuestPassPriceCalculator />
 
