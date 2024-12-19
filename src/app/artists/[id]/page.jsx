@@ -15,14 +15,14 @@ export default function Artist() {
 
   useEffect(() => {
     if (slug) {
-      fetch(`http://localhost:8080/bands/${slug}`)
+      fetch(`https://polarized-chrome-trouser.glitch.me/bands/${slug}`)
         .then((res) => res.json())
         .then((data) => {
           setBand(data);
           setLoading(false);
         });
 
-      fetch("http://localhost:8080/schedule")
+      fetch("https://polarized-chrome-trouser.glitch.me/schedule")
         .then((res) => res.json())
         .then((data) => setSchedule(data));
     }
@@ -33,9 +33,7 @@ export default function Artist() {
 
     for (const scene in schedule) {
       for (const day in schedule[scene]) {
-        const events = schedule[scene][day].filter((event) =>
-          event.act.includes(bandName)
-        );
+        const events = schedule[scene][day].filter((event) => event.act.includes(bandName));
 
         if (events.length > 0) {
           events.forEach((event) => {
@@ -101,8 +99,7 @@ export default function Artist() {
             {getScheduleForBand(band.name).length > 0 ? (
               getScheduleForBand(band.name).map((event) => (
                 <span key={event.id}>
-                  {event.scene} - {mapDayToName(event.day)}, {event.start} -{" "}
-                  {event.end}
+                  {event.scene} - {mapDayToName(event.day)}, {event.start} - {event.end}
                 </span>
               ))
             ) : (
@@ -112,9 +109,7 @@ export default function Artist() {
 
           <div className="text-right max-md:text-center">
             <h5 className="text-orange-300">Members:</h5>
-            <span>
-              {band.members ? band.members.join(", ") : "No members listed"}
-            </span>
+            <span>{band.members ? band.members.join(", ") : "No members listed"}</span>
           </div>
         </div>
       </div>

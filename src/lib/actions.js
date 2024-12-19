@@ -10,7 +10,7 @@ const glitchHeadersList = {
 
 export default async function putReservation(reservationData) {
   // event.preventDefault();
-  const response = await fetch("http://localhost:8080/reserve-spot", {
+  const response = await fetch("https://polarized-chrome-trouser.glitch.me/reserve-spot", {
     method: "PUT",
     headers: glitchHeadersList,
     body: JSON.stringify(reservationData),
@@ -25,7 +25,7 @@ export default async function putReservation(reservationData) {
 
 export async function postReservation(reservationData) {
   console.log("postReservation funktion kører");
-  const response = await fetch("http://localhost:8080/fullfill-reservation", {
+  const response = await fetch("https://polarized-chrome-trouser.glitch.me/fullfill-reservation", {
     method: "POST",
     headers: glitchHeadersList,
     body: JSON.stringify(reservationData),
