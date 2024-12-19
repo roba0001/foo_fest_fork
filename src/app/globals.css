@@ -46,8 +46,19 @@ input[type="number"] {
     display: none;
   }
 
-  .fieldset-width {
+  .fieldset-xlwidth {
     width: 27rem;
+  }
+  .fieldset-lgwidth {
+    width: 20rem;
+  }
+  .fieldset-smwidth {
+    width: 20rem;
+  }
+
+  .form-disabled {
+    pointer-events: none;
+    opacity: 0.3;
   }
 
   .vip-ticket-counter-background-color {

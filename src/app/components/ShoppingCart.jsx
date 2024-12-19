@@ -11,7 +11,7 @@ export default function ShoppingCart() {
   const regularTotal = 799;
   const vipTotal = 1299;
   return (
-    <fieldset className="flex flex-col   bg-orange-100 lg:fieldset-width p-7 rounded-3xl shadow-xl">
+    <fieldset className="flex flex-col sticky top-36 mt-16   bg-orange-100 w-80 xl:fieldset-xlwidth lg:fieldset-lgwidth md:fieldset-xlwidth p-7 rounded-3xl shadow-xl">
       <h5 className="mb-3">Shopping cart</h5>
       <div className="flex flex-col justify-between min-h-96">
         <div className="flex flex-col gap-4">
