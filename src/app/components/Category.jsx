@@ -27,12 +27,13 @@ export default function GenreFilter() {
   const genres = ["All", ...new Set(bands.map((band) => band.genre))];
 
   return (
-    <div>
+    <div class="container mx-auto px-4  bg-white  custom-border p-7 ">
       {selectedGenre === "All"}
 
-      <div>
-        <label>Select genre:</label>
+      <div className="p-3 pb-3.5 ">
+        <label className="pb-3.5 text-heading-four">Select genre:</label>
         <select
+          className="vip-ticket-counter-background-color rounded-[20px]"
           value={selectedGenre}
           onChange={(e) => handleFilterChange(e.target.value)}
         >
