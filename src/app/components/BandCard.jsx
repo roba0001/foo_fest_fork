@@ -5,11 +5,7 @@ export default function BandCard() {
   return (
     <article className="overflow-hidden relative h-[350px] w-[250px] border-2 border-green group">
       <div className="h-full">
-        <Image
-          src={testImg}
-          alt="band image"
-          className="h-full w-full object-cover"
-        />
+        <Image src={testImg} alt="band image" className="h-full w-full object-cover" />
       </div>
 
       <header className="absolute bottom-2 left-[50%] translate-x-[-50%] text-white text-center">
