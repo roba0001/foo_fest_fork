@@ -13,14 +13,14 @@ export default function Artist() {
 
   useEffect(() => {
     if (slug) {
-      fetch(`http://localhost:8080/bands/${slug}`)
+      fetch(`https://polarized-chrome-trouser.glitch.me/bands/${slug}`)
         .then((res) => res.json())
         .then((data) => {
           setBand(data);
           setLoading(false);
         });
 
-      fetch("http://localhost:8080/schedule")
+      fetch("https://polarized-chrome-trouser.glitch.me/schedule")
         .then((res) => res.json())
         .then((data) => setSchedule(data));
     }
