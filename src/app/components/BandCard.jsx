@@ -41,11 +41,11 @@ function BandCard({
         </Link>
       )}
 
-      <h4 className="absolute bottom-2 right-2 vip-ticket-counter-background-color rounded-[20px] p-1 z-20">
+      <h4 className="absolute bottom-2 right-2 vip-ticket-counter-background-color rounded-[20px] bg-white  custom-border p-1 ">
         {band.name}
       </h4>
       {hoveredBand === band.name && (
-        <div className="absolute bottom-14 right-2 vip-ticket-counter-background-color rounded-[20px] p-3 z-20">
+        <div className="absolute bottom-16 right-2 bg-white  custom-border p-1 ">
           {getScheduleForBand(band.name).length > 0
             ? getScheduleForBand(band.name).map((event) => (
                 <div key={event.id}>

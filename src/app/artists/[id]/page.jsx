@@ -1,15 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
 import HeroArtists from "@/app/components/HeroArtists.jsx";
-import HeroDescription from "../../components/HeroDescription.jsx";
 import Navigation from "@/app/components/Navigation.jsx";
 import BackArrowButton from "@/app/components/BackArrowButton.jsx";
+import Hero from "@/app/components/Hero"; // Importer Hero-komponenten
 
 export default function Artist() {
   const [band, setBand] = useState(null);
   const [schedule, setSchedule] = useState({});
   const [loading, setLoading] = useState(true);
-  //const [error, setError] = useState(null);
 
   const slug = window.location.pathname.split("/").pop();
 
@@ -80,15 +79,8 @@ export default function Artist() {
   return (
     <>
       <Navigation navItems={[{ linkText: "Program", href: "/program" }]} />
-      <HeroArtists>
-        <HeroDescription>
-          <h2>{band.name}</h2>
-          <h4>{band.genre}</h4>
-        </HeroDescription>
-      </HeroArtists>
-
+      <HeroArtists genre={band.genre} band={band} />
       <BackArrowButton href="/program" />
-
       <div className="container band-desc-container mx-auto flex flex-col justify-center w-[50vw]">
         <h4 className="text-orange-300">{band.name}</h4>
         <p className="band-description text-base text-justify">{band.bio}</p>
