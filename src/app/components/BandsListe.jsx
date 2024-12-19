@@ -7,7 +7,7 @@ export default function BandsList({ bands }) {
   const [hoveredBand, setHoveredBand] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:8080/schedule")
+    fetch("https://polarized-chrome-trouser.glitch.me/schedule")
       .then((res) => res.json())
       .then((data) => setSchedule(data))
       .catch((err) => console.error("Error fetching schedule:", err));
@@ -22,6 +22,8 @@ export default function BandsList({ bands }) {
 
         if (events.length > 0) {
           events.forEach((event) => {
+            console.log("Event found:", event);
+
             bandSchedule.push({
               scene,
               day,

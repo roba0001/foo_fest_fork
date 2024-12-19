@@ -2,7 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { v4 as uuidv4 } from "uuid";
 
-function BandCard({ band, hoveredBand, setHoveredBand, getScheduleForBand, mapDayToName }) {
+function BandCard({
+  band,
+  hoveredBand,
+  setHoveredBand,
+  getScheduleForBand,
+  mapDayToName,
+}) {
   const randomId = uuidv4();
 
   return (
@@ -25,8 +31,10 @@ function BandCard({ band, hoveredBand, setHoveredBand, getScheduleForBand, mapDa
       ) : (
         <Link className="mb-3" href={`/artists/${band.slug}`}>
           <Image
-            src={`http://localhost:8080/logos/${
-              band.logo && band.logo.includes(".") ? band.logo : `${band.logo}.png`
+            src={`https://polarized-chrome-trouser.glitch.me/logos/${
+              band.logo && band.logo.includes(".")
+                ? band.logo
+                : `${band.logo}.png`
             }`}
             alt={`${band.name} playing at a festival`}
             width={320}

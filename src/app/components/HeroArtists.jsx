@@ -16,7 +16,7 @@ export default function Hero({ band, genre }) {
           />
         ) : (
           <Image
-            src={`http://localhost:8080/logos/${
+            src={`https://polarized-chrome-trouser.glitch.me/logos/${
               band?.logo && band.logo.includes(".")
                 ? band.logo
                 : `${band?.logo}.png`

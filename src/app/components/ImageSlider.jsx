@@ -45,15 +45,15 @@ export default function ImageSlider() {
         <h2 className="text-center pt-12">Galleri of the FooFest</h2>
       </Header>
 
-      <div className="mx-auto flex flex-col items-center min-w-[600px] max-w-[85%]">
-        <div className="slides-container min-w-[375px] w-full max-w-[90%] h-[500px] mt-4 border-2 border-orange-400">
+      <div className="mx-auto flex flex-col items-center min-w-[600px] max-w-[85%] rounded-3xl ">
+        <div className="slides-container min-w-[375px] w-full max-w-[90%] h-[500px] mt-4 border-2 border-orange-400 rounded-3xl ">
           <article
             style={{
               backgroundImage: `url(${slides[currentIndex].bandImage})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
-            className="h-[100%] w-[100%] duration-500 slide"
+            className="h-[100%] w-[100%] duration-500 slide rounded-3xl"
           ></article>
         </div>
         <div className="flex justify-center items-center gap-7 mt-6 w-full">
