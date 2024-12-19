@@ -133,7 +133,7 @@ label {
 fixed -right-16 bottom-8 grid place-content-center bg-scrollToTopBtnBackgroundColor shadow-md h-[50px] w-[50px] rounded-full border-2 border-orange-300 text-orange-300 outline-none transition-all duration-100 ease-in hover:bg-orange-300 hover:text-white active:transition-none active:shadow-none active:scale-95
 */
 
-.scroll-to-top-btn {
+/* .scroll-to-top-btn {
   position: fixed;
   right: -100px;
   bottom: 30px;
@@ -165,7 +165,7 @@ fixed -right-16 bottom-8 grid place-content-center bg-scrollToTopBtnBackgroundCo
     box-shadow: none;
     transition: none;
   }
-}
+} */
 
 .full-width {
   width: 100vw;

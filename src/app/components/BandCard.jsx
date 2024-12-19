@@ -1,13 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { v4 as uuidv4 } from "uuid";
 
-function BandCard({
-  band,
-  hoveredBand,
-  setHoveredBand,
-  getScheduleForBand,
-  mapDayToName,
-}) {
+function BandCard({ band, hoveredBand, setHoveredBand, getScheduleForBand, mapDayToName }) {
+  const randomId = uuidv4();
+
   return (
     <div
       key={band.slug}
@@ -29,9 +26,7 @@ function BandCard({
         <Link className="mb-3" href={`/artists/${band.slug}`}>
           <Image
             src={`http://localhost:8080/logos/${
-              band.logo && band.logo.includes(".")
-                ? band.logo
-                : `${band.logo}.png`
+              band.logo && band.logo.includes(".") ? band.logo : `${band.logo}.png`
             }`}
             alt={`${band.name} playing at a festival`}
             width={320}
@@ -47,8 +42,8 @@ function BandCard({
       {hoveredBand === band.name && (
         <div className="absolute bottom-16 right-2 bg-white custom-border p-1">
           {getScheduleForBand(band.name).length > 0
-            ? getScheduleForBand(band.name).map((event, index) => (
-                <div key={index}>
+            ? getScheduleForBand(band.name).map((event) => (
+                <div key={randomId}>
                   <p>Scene: {event.scene}</p>
                   {event.cancelled && <p className="text-red-500">Cancelled</p>}
                   <p>

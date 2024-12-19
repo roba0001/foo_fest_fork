@@ -28,13 +28,11 @@ export default function RootLayout({ children }) {
   ];
 
   return (
-    <html lang="en">
+    <html>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <main className="min-h-full p-12 pt-20">{children}</main>
         <Footer />
       </body>

@@ -21,11 +21,11 @@ export default function Home() {
   ];
 
   return (
-    <RootLayout>
+    <>
+      {" "}
       <Navigation navItems={navItems} />
       <Hero></Hero>
-
       <ImageSlider />
-    </RootLayout>
+    </>
   );
 }
