@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import HeroArtists from "@/app/components/HeroArtists.jsx";
 import Navigation from "@/app/components/Navigation.jsx";
 import BackArrowButton from "@/app/components/BackArrowButton.jsx";
-import Hero from "@/app/components/Hero"; // Importer Hero-komponenten
 
 export default function Artist() {
   const [band, setBand] = useState(null);
@@ -81,9 +80,9 @@ export default function Artist() {
   return (
     <>
       <Navigation navItems={[{ linkText: "Program", href: "/program" }]} />
-      <Hero genre={band.genre} band={band} />
+      <HeroArtists genre={band.genre} band={band} />
       <BackArrowButton href="/program" />
-      <div className="container band-desc-container mx-auto flex flex-col justify-center w-[50vw]">
+      <div className="container band-desc-container mx-auto flex flex-col justify-center w-[65vw]">
         <h4 className="text-orange-300">{band.name}</h4>
         <p className="band-description text-base text-justify">{band.bio}</p>
 

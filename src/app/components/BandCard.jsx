@@ -45,11 +45,12 @@ function BandCard({
         {band.name}
       </h4>
       {hoveredBand === band.name && (
-        <div className="absolute bottom-16 right-2 bg-white  custom-border p-1 ">
+        <div className="absolute bottom-16 right-2 bg-white custom-border p-1">
           {getScheduleForBand(band.name).length > 0
-            ? getScheduleForBand(band.name).map((event) => (
-                <div key={event.id}>
+            ? getScheduleForBand(band.name).map((event, index) => (
+                <div key={index}>
                   <p>Scene: {event.scene}</p>
+                  {event.cancelled && <p className="text-red-500">Cancelled</p>}
                   <p>
                     {mapDayToName(event.day)}: {event.start} - {event.end}
                   </p>

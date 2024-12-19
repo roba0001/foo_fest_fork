@@ -24,11 +24,15 @@ export default function BandsList({ bands }) {
 
         if (events.length > 0) {
           events.forEach((event) => {
+            console.log("Event found:", event); // Debug: Log hver begivenhed
+
             bandSchedule.push({
               scene,
               day,
               start: event.start,
               end: event.end,
+              cancelled:
+                event.cancelled !== undefined ? event.cancelled : false,
             });
           });
         }
@@ -37,7 +41,6 @@ export default function BandsList({ bands }) {
 
     return bandSchedule;
   };
-
   const mapDayToName = (day) => {
     switch (day) {
       case "mon":
