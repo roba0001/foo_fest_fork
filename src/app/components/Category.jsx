@@ -8,7 +8,7 @@ export default function GenreFilter() {
   const [selectedGenre, setSelectedGenre] = useState("Alle");
 
   useEffect(() => {
-    fetch("http://localhost:8080/bands")
+    fetch("https://polarized-chrome-trouser.glitch.me/bands")
       .then((res) => res.json())
       .then((data) => {
         setBands(data || []);
@@ -19,20 +19,20 @@ export default function GenreFilter() {
 
   const handleFilterChange = (genre) => {
     setSelectedGenre(genre);
-    const filtered =
-      genre === "All" ? bands : bands.filter((band) => band.genre === genre);
+    const filtered = genre === "All" ? bands : bands.filter((band) => band.genre === genre);
     setFilteredBands(filtered);
   };
 
   const genres = ["All", ...new Set(bands.map((band) => band.genre))];
 
   return (
-    <div>
+    <div class="container mx-auto px-4  bg-white  custom-border p-7 ">
       {selectedGenre === "All"}
 
-      <div>
-        <label>Select genre:</label>
+      <div className="p-3 pb-3.5 ">
+        <label className="pb-3.5 text-heading-four">Select genre:</label>
         <select
+          className="vip-ticket-counter-background-color rounded-[20px]"
           value={selectedGenre}
           onChange={(e) => handleFilterChange(e.target.value)}
         >
@@ -44,11 +44,7 @@ export default function GenreFilter() {
         </select>
       </div>
 
-      {filteredBands.length > 0 ? (
-        <BandsListe bands={filteredBands} />
-      ) : (
-        selectedGenre !== "All"
-      )}
+      {filteredBands.length > 0 ? <BandsListe bands={filteredBands} /> : selectedGenre !== "All"}
     </div>
   );
 }

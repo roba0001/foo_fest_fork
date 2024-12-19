@@ -1,14 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
+import BandCard from "@/app/components/BandCard";
 
-//http://localhost:8080/logos/navn - fx A_Perfect_Circle_Logo_2011_-_Michael_John_Stinsman_InvisibleStudio_Productions.png
-//
 export default function BandsList({ bands }) {
   const [schedule, setSchedule] = useState({});
   const [hoveredBand, setHoveredBand] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:8080/schedule")
+    fetch("https://polarized-chrome-trouser.glitch.me/schedule")
       .then((res) => res.json())
       .then((data) => setSchedule(data))
       .catch((err) => console.error("Error fetching schedule:", err));
@@ -19,9 +18,7 @@ export default function BandsList({ bands }) {
 
     for (const scene in schedule) {
       for (const day in schedule[scene]) {
-        const events = schedule[scene][day].filter((event) =>
-          event.act.includes(bandName)
-        );
+        const events = schedule[scene][day].filter((event) => event.act.includes(bandName));
 
         if (events.length > 0) {
           events.forEach((event) => {
@@ -42,58 +39,40 @@ export default function BandsList({ bands }) {
   const mapDayToName = (day) => {
     switch (day) {
       case "mon":
-        return "Mandag";
+        return "Monday";
       case "tue":
-        return "Tirsdag";
+        return "Tuesday";
       case "wed":
-        return "Onsdag";
+        return "Wednesday";
       case "thu":
-        return "Torsdag";
+        return "Thursday";
       case "fri":
-        return "Fredag";
+        return "Friday";
       case "sat":
-        return "Lørdag";
+        return "Saturday";
       case "sun":
-        return "Søndag";
+        return "Sunday";
       default:
         return "";
     }
   };
 
   return (
-    <div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {bands && bands.length > 0 ? (
+    <div className="container mx-auto ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
+        {bands &&
+          bands.length > 0 &&
           bands.map((band) => (
-            <div
-              key={band.id}
-              className="bg-white rounded-lg shadow-md hover:shadow-lg p-6 cursor-pointer transition-transform transform hover:scale-105"
-              onMouseEnter={() => setHoveredBand(band.name)}
-              onMouseLeave={() => setHoveredBand(null)}
-            >
-              <h2>{band.name}</h2>
-
-              {hoveredBand === band.name && (
-                <div>
-                  {getScheduleForBand(band.name).length > 0 ? (
-                    getScheduleForBand(band.name).map((event, index) => (
-                      <div key={index}>
-                        <p>Scene: {event.scene}</p>
-                        <p>
-                          {mapDayToName(event.day)}: {event.start} - {event.end}
-                        </p>
-                      </div>
-                    ))
-                  ) : (
-                    <p>Ingen spilleplan </p>
-                  )}
-                </div>
-              )}
-            </div>
-          ))
-        ) : (
-          <p>Ingen bands</p>
-        )}
+            <BandCard
+              key={band.slug}
+              band={band}
+              schedule={schedule}
+              hoveredBand={hoveredBand}
+              setHoveredBand={setHoveredBand}
+              getScheduleForBand={getScheduleForBand}
+              mapDayToName={mapDayToName}
+            />
+          ))}
       </div>
     </div>
   );

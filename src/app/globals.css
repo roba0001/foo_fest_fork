@@ -22,16 +22,12 @@
 }
 
 input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button
-{
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
 
-
-input[type="number"]
-{
+input[type="number"] {
   -moz-appearance: textfield;
-
 }
 
 @media (prefers-color-scheme: dark) {
@@ -50,8 +46,19 @@ input[type="number"]
     display: none;
   }
 
-  .fieldset-width {
+  .fieldset-xlwidth {
     width: 27rem;
+  }
+  .fieldset-lgwidth {
+    width: 20rem;
+  }
+  .fieldset-smwidth {
+    width: 20rem;
+  }
+
+  .form-disabled {
+    pointer-events: none;
+    opacity: 0.3;
   }
 
   .vip-ticket-counter-background-color {

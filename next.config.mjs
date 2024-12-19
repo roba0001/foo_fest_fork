@@ -19,7 +19,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "localhost",
-        port: "8080", // Specify the port for localhost (if applicable)
+        port: "8080",
         pathname: "/logos/**",
       },
       {

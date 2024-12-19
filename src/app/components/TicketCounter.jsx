@@ -25,12 +25,15 @@ export default function TicketCounter({
           <button
             className="increment-btn"
             onClick={onIncrement}
+            type="button"
           >
             <CiCirclePlus size={30} />
           </button>
           <span className="guest-counter">{count}</span>
           <button
+            className="decrement-btn"
             onClick={onDecrement}
+            type="button"
           >
             <CiCircleMinus size={30} />
           </button>

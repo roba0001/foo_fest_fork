@@ -10,7 +10,7 @@ export default function AreaInput() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("http://localhost:8080/available-spots");
+        const response = await fetch("https://polarized-chrome-trouser.glitch.me/available-spots");
         const result = await response.json();
         setData(result);
       } catch (error) {
@@ -29,7 +29,7 @@ export default function AreaInput() {
     <Fieldset title={"Choose area:"}>
       {data.map((area) => (
         <div
-          key={area.available}
+          key={area.spots}
           className="hover:bg-orange-100 flex items-center justify-between  rounded-2xl p-3"
           onClick={() => handleSelection(area.area)}
         >
@@ -45,9 +45,10 @@ export default function AreaInput() {
               type="radio"
               id={area.area}
               name="area"
-              value={area.area}
+              value={`${area.area}:${area.available}`}
               className="col-start-1 row-start-1 appearance-none w-4 h-4 border-2 border-orange-300 rounded-full shrink-0"
               onChange={() => handleSelection(area.area)}
+              checked={selectedArea === area.area} // Ensure the selection is reflected
             />
             <div
               className={`col-start-1 row-start-1 w-2 h-2 rounded-full bg-orange-300 ${

@@ -1,40 +1,37 @@
-"use server";
-import { postInfo } from "@/lib/supabase";
-import { revalidatePath } from "next/cache";
+"use client";
 
-export async function sendData(formData) {
-  console.log("form indsendt");
-  const data = {
-    area: formData.get("area"),
-    guestFirstName: formData.get("guestFirstName"),
-    guestLastName: formData.get("guestLastName"),
-    guestEmail: formData.get("guestEmail"),
-    guestPhone: formData.get("guestPhone"),
-  };
-  await postInfo(data);
-
-  revalidatePath("/");
-}
-
-// FooFest API
-// put reserve spot
+// -------- FOOFEST API ----------
+// PUT request to reserve spot
 const glitchHeadersList = {
   Accept: "application/json",
   "Content-Type": "application/json",
   Prefer: "return=representation",
 };
 
-export default async function putReservation(event, reservationData) {
-  event.preventDefault();
-  const response = await fetch("http://localhost:8080/reserve-spot", {
+export default async function putReservation(reservationData) {
+  // event.preventDefault();
+  const response = await fetch("https://polarized-chrome-trouser.glitch.me/reserve-spot", {
     method: "PUT",
     headers: glitchHeadersList,
     body: JSON.stringify(reservationData),
   });
 
-  const reservationId = await response.json();
-  console.log(reservationId);
+  const responseData = await response.json();
+  const reservationId = responseData.id;
   return reservationId;
 }
 
-// post id
+// POST request with reservationId to confirm booking
+
+export async function postReservation(reservationData) {
+  console.log("postReservation funktion kører");
+  const response = await fetch("https://polarized-chrome-trouser.glitch.me/fullfill-reservation", {
+    method: "POST",
+    headers: glitchHeadersList,
+    body: JSON.stringify(reservationData),
+  });
+
+  const data = await response.json();
+  console.log("response from glitch PUSH", data);
+  return data;
+}
