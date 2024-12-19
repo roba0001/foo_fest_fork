@@ -9,7 +9,7 @@ export default function Artist() {
   const [band, setBand] = useState(null);
   const [schedule, setSchedule] = useState({});
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  //const [error, setError] = useState(null);
 
   const slug = window.location.pathname.split("/").pop();
 
@@ -20,16 +20,11 @@ export default function Artist() {
         .then((data) => {
           setBand(data);
           setLoading(false);
-        })
-        .catch((err) => {
-          setError("Band not found");
-          setLoading(false);
         });
 
       fetch("http://localhost:8080/schedule")
         .then((res) => res.json())
-        .then((data) => setSchedule(data))
-        .catch((err) => console.error("Error fetching schedule:", err));
+        .then((data) => setSchedule(data));
     }
   }, [slug]);
 
@@ -82,10 +77,6 @@ export default function Artist() {
 
   if (loading) {
     return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
   }
 
   return (
