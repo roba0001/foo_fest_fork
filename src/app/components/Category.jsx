@@ -8,7 +8,7 @@ export default function GenreFilter() {
   const [selectedGenre, setSelectedGenre] = useState("Alle");
 
   useEffect(() => {
-    fetch("https://polarized-chrome-trouser.glitch.me/bands")
+    fetch("http://localhost:8080/bands")
       .then((res) => res.json())
       .then((data) => {
         setBands(data || []);
@@ -29,7 +29,8 @@ export default function GenreFilter() {
   return (
     <div class="container mx-auto px-4  bg-white  custom-border p-7 ">
       {selectedGenre === "All"}
-      <div className="p-3 pb-3.5 ">
+
+      <div className="pb-3.5  bg-white  custom-border p-3 ">
         <label className="pb-3.5 text-heading-four">Select genre:</label>
         <select
           className="vip-ticket-counter-background-color rounded-[20px]"

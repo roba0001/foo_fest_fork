@@ -14,14 +14,14 @@ export default function Artist() {
 
   useEffect(() => {
     if (slug) {
-      fetch(`https://polarized-chrome-trouser.glitch.me/bands/${slug}`)
+      fetch(`http://localhost:8080/bands/${slug}`)
         .then((res) => res.json())
         .then((data) => {
           setBand(data);
           setLoading(false);
         });
 
-      fetch("https://polarized-chrome-trouser.glitch.me/schedule")
+      fetch("http://localhost:8080/schedule")
         .then((res) => res.json())
         .then((data) => setSchedule(data));
     }
@@ -32,7 +32,9 @@ export default function Artist() {
 
     for (const scene in schedule) {
       for (const day in schedule[scene]) {
-        const events = schedule[scene][day].filter((event) => event.act.includes(bandName));
+        const events = schedule[scene][day].filter((event) =>
+          event.act.includes(bandName)
+        );
 
         if (events.length > 0) {
           events.forEach((event) => {
@@ -79,7 +81,7 @@ export default function Artist() {
   return (
     <>
       <Navigation navItems={[{ linkText: "Program", href: "/program" }]} />
-      <HeroArtists genre={band.genre} band={band} />
+      <Hero genre={band.genre} band={band} />
       <BackArrowButton href="/program" />
       <div className="container band-desc-container mx-auto flex flex-col justify-center w-[50vw]">
         <h4 className="text-orange-300">{band.name}</h4>
@@ -88,20 +90,21 @@ export default function Artist() {
         <div className="container stage-and-members-container flex justify-between gap-4 mt-6 max-md:flex-col max-md:justify-center max-md:text-center">
           <div>
             <h5 className="text-orange-300">Performance:</h5>
-            {getScheduleForBand(band.name).length > 0 ? (
-              getScheduleForBand(band.name).map((event) => (
-                <span key={event.id}>
-                  {event.scene} - {mapDayToName(event.day)}, {event.start} - {event.end}
-                </span>
-              ))
-            ) : (
-              <span>No performance scheduled</span>
-            )}
+            {getScheduleForBand(band.name).length > 0
+              ? getScheduleForBand(band.name).map((event) => (
+                  <span key={event.id}>
+                    {event.scene} - {mapDayToName(event.day)}, {event.start} -{" "}
+                    {event.end}
+                  </span>
+                ))
+              : null}
           </div>
 
           <div className="text-right max-md:text-center">
             <h5 className="text-orange-300">Members:</h5>
-            <span>{band.members ? band.members.join(", ") : "No members listed"}</span>
+            <span>
+              {band.members ? band.members.join(", ") : "No members listed"}
+            </span>
           </div>
         </div>
       </div>
