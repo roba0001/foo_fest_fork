@@ -6,7 +6,7 @@ export default function BackArrow({ href }) {
     <Link href={href}>
       <FaArrowLeftLong
         size={30}
-        className="-mt-8 mb-12 transition-text duration-150 ease-in hover:text-orange-300"
+        className="mt-8 mb-12 transition-text duration-150 ease-in hover:text-orange-300"
       />
     </Link>
   );
