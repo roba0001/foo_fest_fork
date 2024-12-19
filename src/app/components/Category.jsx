@@ -19,15 +19,14 @@ export default function GenreFilter() {
 
   const handleFilterChange = (genre) => {
     setSelectedGenre(genre);
-    const filtered =
-      genre === "All" ? bands : bands.filter((band) => band.genre === genre);
+    const filtered = genre === "All" ? bands : bands.filter((band) => band.genre === genre);
     setFilteredBands(filtered);
   };
 
   const genres = ["All", ...new Set(bands.map((band) => band.genre))];
 
   return (
-    <div class="container mx-auto px-4  bg-white  custom-border p-7 ">
+    <div className="container mx-auto px-4  bg-white  custom-border p-7 ">
       {selectedGenre === "All"}
 
       <div className="pb-3.5  bg-white  custom-border p-3 ">
@@ -45,11 +44,7 @@ export default function GenreFilter() {
         </select>
       </div>
 
-      {filteredBands.length > 0 ? (
-        <BandsListe bands={filteredBands} />
-      ) : (
-        selectedGenre !== "All"
-      )}
+      {filteredBands.length > 0 ? <BandsListe bands={filteredBands} /> : selectedGenre !== "All"}
     </div>
   );
 }

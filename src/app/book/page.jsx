@@ -25,21 +25,19 @@ export default function Book() {
   return (
     <>
       <Navigation navItems={navItems} />
-      <RootLayout>
-        <h1>BOOK YOUR STAY</h1>
-        <section className="grid grid-cols-1 lg:grid-cols-3 ">
-          <BookingTimerContainer>
-            <UseStateFlowWrapper />
-          </BookingTimerContainer>
+      <h1>BOOK YOUR STAY</h1>
+      <section className="grid grid-cols-1 lg:grid-cols-3 ">
+        <BookingTimerContainer>
+          <UseStateFlowWrapper />
+        </BookingTimerContainer>
 
-          <div
-            id="shoppingCart"
-            className="flex  flex-col  pt-5 justify-self-center sm:justify-self-center  col-start-1  xl:col-start-3 lg:col-start-3 max-lg:sticky  "
-          >
-            <ShoppingCart />
-          </div>
-        </section>
-      </RootLayout>
+        <div
+          id="shoppingCart"
+          className="flex  flex-col  pt-5 justify-self-center sm:justify-self-center  col-start-1  xl:col-start-3 lg:col-start-3 max-lg:sticky  "
+        >
+          <ShoppingCart />
+        </div>
+      </section>
     </>
   );
 }
