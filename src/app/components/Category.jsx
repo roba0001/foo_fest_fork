@@ -6,6 +6,7 @@ export default function GenreFilter() {
   const [bands, setBands] = useState([]);
   const [filteredBands, setFilteredBands] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("Alle");
+  const [logoCredits, setLogoCredits] = useState([]);
 
   useEffect(() => {
     fetch("https://polarized-chrome-trouser.glitch.me/bands")
@@ -13,6 +14,7 @@ export default function GenreFilter() {
       .then((data) => {
         setBands(data || []);
         setFilteredBands(data || []);
+        setLogoCredits(data.logoCredits || []);
       })
       .catch((err) => console.error("Error fetching bands:", err));
   }, []);
@@ -44,7 +46,11 @@ export default function GenreFilter() {
         </select>
       </div>
 
-      {filteredBands.length > 0 ? <BandsListe bands={filteredBands} /> : selectedGenre !== "All"}
+      {filteredBands.length > 0 ? (
+        <BandsListe logoCredits={logoCredits} bands={filteredBands} />
+      ) : (
+        selectedGenre !== "All"
+      )}
     </div>
   );
 }

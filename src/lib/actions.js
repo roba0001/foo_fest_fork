@@ -2,7 +2,7 @@
 
 // -------- FOOFEST API ----------
 // PUT request to reserve spot
-const glitchHeadersList = {
+export const glitchHeadersList = {
   Accept: "application/json",
   "Content-Type": "application/json",
   Prefer: "return=representation",

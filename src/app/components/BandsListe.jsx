@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import BandCard from "@/app/components/BandCard";
 
-export default function BandsList({ bands }) {
+export default function BandsList({ bands, logoCredits }) {
   const [schedule, setSchedule] = useState({});
   const [hoveredBand, setHoveredBand] = useState(null);
 
@@ -11,6 +11,13 @@ export default function BandsList({ bands }) {
       .then((res) => res.json())
       .then((data) => setSchedule(data))
       .catch((err) => console.error("Error fetching schedule:", err));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/bands")
+      .then((res) => res.json())
+      .then((data) => setLogoCredits(data.logoCredits || []))
+      .catch((err) => console.error("Error fetching logo credits:", err));
   }, []);
 
   const getScheduleForBand = (bandName) => {
@@ -71,6 +78,7 @@ export default function BandsList({ bands }) {
               setHoveredBand={setHoveredBand}
               getScheduleForBand={getScheduleForBand}
               mapDayToName={mapDayToName}
+              logoCredits={logoCredits}
             />
           ))}
       </div>
