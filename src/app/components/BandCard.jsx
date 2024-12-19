@@ -1,13 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-function BandCard({
-  band,
-  hoveredBand,
-  setHoveredBand,
-  getScheduleForBand,
-  mapDayToName,
-}) {
+function BandCard({ band, hoveredBand, setHoveredBand, getScheduleForBand, mapDayToName }) {
   // Tjekker om et bandet er aflyst og skal være sløret
   const bandSchedule = getScheduleForBand(band.name);
   const isCancelled = bandSchedule.some((event) => event.cancelled);
@@ -38,13 +32,11 @@ function BandCard({
               className="w-full h-80 object-cover transition-transform transform group-hover:scale-105"
             />
           </Link>
-        ))}
+        )
       ) : isCancelled ? (
         <Image
           src={`http://localhost:8080/logos/${
-            band.logo && band.logo.includes(".")
-              ? band.logo
-              : `${band.logo}.png`
+            band.logo && band.logo.includes(".") ? band.logo : `${band.logo}.png`
           }`}
           alt={`${band.name} playing at a festival`}
           width={320}
@@ -55,9 +47,7 @@ function BandCard({
       ) : (
         <Image
           src={`http://localhost:8080/logos/${
-            band.logo && band.logo.includes(".")
-              ? band.logo
-              : `${band.logo}.png`
+            band.logo && band.logo.includes(".") ? band.logo : `${band.logo}.png`
           }`}
           alt={`${band.name} playing at a festival`}
           width={320}
