@@ -10,7 +10,7 @@ export default function AreaInput() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("http://localhost:8080/available-spots");
+        const response = await fetch("https://polarized-chrome-trouser.glitch.me/available-spots");
         const result = await response.json();
         setData(result);
       } catch (error) {

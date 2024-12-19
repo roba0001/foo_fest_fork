@@ -35,7 +35,7 @@ function BandCard({ band, hoveredBand, setHoveredBand, getScheduleForBand, mapDa
         )
       ) : isCancelled ? (
         <Image
-          src={`http://localhost:8080/logos/${
+          src={`https://polarized-chrome-trouser.glitch.me/logos/${
             band.logo && band.logo.includes(".") ? band.logo : `${band.logo}.png`
           }`}
           alt={`${band.name} playing at a festival`}
@@ -46,7 +46,7 @@ function BandCard({ band, hoveredBand, setHoveredBand, getScheduleForBand, mapDa
         />
       ) : (
         <Image
-          src={`http://localhost:8080/logos/${
+          src={`https://polarized-chrome-trouser.glitch.me/logos/${
             band.logo && band.logo.includes(".") ? band.logo : `${band.logo}.png`
           }`}
           alt={`${band.name} playing at a festival`}
