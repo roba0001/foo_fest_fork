@@ -30,6 +30,6 @@ export async function postReservation(reservationData) {
   });
 
   const data = await response.json();
-  console.log("response from PUSH request", data);
+  console.log("response from POST request", data);
   return data;
 }
