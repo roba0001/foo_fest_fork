@@ -53,10 +53,10 @@ function BandCard({
             ? getScheduleForBand(band.name).map((event) => (
                 <div key={randomId}>
                   <p>Scene: {event.scene}</p>
-                  {event.cancelled && <p className="text-red-500">Cancelled</p>}
                   <p>
                     {mapDayToName(event.day)}: {event.start} - {event.end}
                   </p>
+                  {event.cancelled && <p className="text-red-500">Cancelled</p>}
                 </div>
               ))
             : null}
