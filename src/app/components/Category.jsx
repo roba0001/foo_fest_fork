@@ -27,7 +27,7 @@ export default function GenreFilter() {
   const genres = ["All", ...new Set(bands.map((band) => band.genre))];
 
   return (
-    <div class="container mx-auto px-4  bg-white  custom-border p-7 ">
+    <div className="container mx-auto px-4  bg-white  custom-border p-7 ">
       {selectedGenre === "All"}
 
       <div className="p-3 pb-3.5 ">

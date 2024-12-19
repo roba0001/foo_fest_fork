@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-function BandCard({ band, hoveredBand, setHoveredBand, getScheduleForBand, mapDayToName }) {
+function BandCard({ band, hoveredBand, setHoveredBand, getScheduleForBand, mapDayToName })
+{
   // Tjekker om et bandet er aflyst og skal være sløret
   const bandSchedule = getScheduleForBand(band.name);
   const isCancelled = bandSchedule.some((event) => event.cancelled);
@@ -13,6 +14,8 @@ function BandCard({ band, hoveredBand, setHoveredBand, getScheduleForBand, mapDa
       onMouseEnter={() => setHoveredBand(band.name)}
       onMouseLeave={() => setHoveredBand(null)}
     >
+
+
       {band.logo && band.logo.includes("https") ? (
         isCancelled ? (
           <Image
@@ -34,21 +37,20 @@ function BandCard({ band, hoveredBand, setHoveredBand, getScheduleForBand, mapDa
           </Link>
         )
       ) : isCancelled ? (
+
         <Image
-          src={`http://localhost:8080/logos/${
-            band.logo && band.logo.includes(".") ? band.logo : `${band.logo}.png`
-          }`}
+          src={`http://localhost:8080/logos/${band.logo && band.logo.includes(".") ? band.logo : `${band.logo}.png`
+            }`}
           alt={`${band.name} playing at a festival`}
           width={320}
           height={280}
-          className="w-full h-80 object-cover filter blur-sm "
-          // gør billlederne sløret blur-sm"
+          className="w-full h-80 object-cover"
+        // gør billlederne sløret blur-sm"
         />
       ) : (
         <Image
-          src={`http://localhost:8080/logos/${
-            band.logo && band.logo.includes(".") ? band.logo : `${band.logo}.png`
-          }`}
+          src={`http://localhost:8080/logos/${band.logo && band.logo.includes(".") ? band.logo : `${band.logo}.png`
+            }`}
           alt={`${band.name} playing at a festival`}
           width={320}
           height={280}
