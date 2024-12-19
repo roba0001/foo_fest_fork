@@ -8,7 +8,7 @@ export default function GenreFilter() {
   const [selectedGenre, setSelectedGenre] = useState("Alle");
 
   useEffect(() => {
-    fetch("http://localhost:8080/bands")
+    fetch("http://localhost:8080/band")
       .then((res) => res.json())
       .then((data) => {
         setBands(data || []);

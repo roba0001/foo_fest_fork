@@ -42,13 +42,17 @@ export default function ImageSlider() {
   return (
     <Section>
       <Header>
-        <h2 className="text-center">Program</h2>
+        <h2 className="text-center pt-12">Program</h2>
       </Header>
 
       <div className="mx-auto flex flex-col items-center min-w-[600px] max-w-[85%]">
         <div className="slides-container min-w-[375px] w-full max-w-[90%] h-[500px] mt-4 border-2 border-orange-400">
           <article
-            style={{ backgroundColor: slides[currentIndex].backgroundColor }}
+            style={{
+              backgroundImage: `url(${slides[currentIndex].bandImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
             className="h-[100%] w-[100%] duration-500 slide"
           ></article>
         </div>
