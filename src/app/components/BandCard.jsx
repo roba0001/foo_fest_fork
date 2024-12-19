@@ -1,13 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-function BandCard({
-  band,
-  hoveredBand,
-  setHoveredBand,
-  getScheduleForBand,
-  mapDayToName,
-}) {
+function BandCard({ band, hoveredBand, setHoveredBand, getScheduleForBand, mapDayToName }) {
   // Tjekker om et bandet er aflyst og skal være sløret
   const bandSchedule = getScheduleForBand(band.name);
   const isCancelled = bandSchedule.some((event) => event.cancelled);
@@ -19,6 +13,28 @@ function BandCard({
       onMouseEnter={() => setHoveredBand(band.name)}
       onMouseLeave={() => setHoveredBand(null)}
     >
+      {band.logo.includes("https") ? (
+        <Link className="mb-3" href={`/artists/${band.slug}`}>
+          <Image
+            src={band.logo}
+            alt={`${band.name} playing at a festival`}
+            width={320}
+            height={280}
+            className="w-full h-80 object-cover "
+          />
+        </Link>
+      ) : (
+        <Link className="mb-3" href={`/artists/${band.slug}`}>
+          <Image
+            src={band.logo.startsWith("/") ? band.logo : `/${band.logo}`}
+            alt={`${band.name} playing at a festival`}
+            width={320}
+            height={280}
+            className="w-full h-80 object-cover transition-transform transform group-hover:scale-105"
+          />
+        </Link>
+      )}
+
       {band.logo && band.logo.includes("https") ? (
         isCancelled ? (
           <Image
@@ -31,40 +47,36 @@ function BandCard({
         ) : (
           <Link className="mb-3" href={`/artists/${band.slug}`}>
             <Image
-              src={band.logo}
+              src={band.logo.startsWith("/") ? band.logo : `/${band.logo}`}
               alt={`${band.name} playing at a festival`}
               width={320}
               height={280}
               className="w-full h-80 object-cover transition-transform transform group-hover:scale-105"
             />
           </Link>
-        ))}
-      // ) : isCancelled ? (
-      //   <Image
-      //     src={`http://localhost:8080/logos/${
-      //       band.logo && band.logo.includes(".")
-      //         ? band.logo
-      //         : `${band.logo}.png`
-      //     }`}
-      //     alt={`${band.name} playing at a festival`}
-      //     width={320}
-      //     height={280}
-      //     className="w-full h-80 object-cover filter blur-sm "
-      //     // gør billlederne sløret blur-sm"
-      //   />
-      // ) : (
-      //   <Image
-      //     src={`http://localhost:8080/logos/${
-      //       band.logo && band.logo.includes(".")
-      //         ? band.logo
-      //         : `${band.logo}.png`
-      //     }`}
-      //     alt={`${band.name} playing at a festival`}
-      //     width={320}
-      //     height={280}
-      //     className="w-full h-80 object-cover transition-transform transform group-hover:scale-105 filter blur-sm"
-      //   />
-      // )}
+        )
+      ) : isCancelled ? (
+        <Image
+          src={`http://localhost:8080/logos/${
+            band.logo && band.logo.includes(".") ? band.logo : `${band.logo}.png`
+          }`}
+          alt={`${band.name} playing at a festival`}
+          width={320}
+          height={280}
+          className="w-full h-80 object-cover filter blur-sm "
+          // gør billlederne sløret blur-sm"
+        />
+      ) : (
+        <Image
+          src={`http://localhost:8080/logos/${
+            band.logo && band.logo.includes(".") ? band.logo : `${band.logo}.png`
+          }`}
+          alt={`${band.name} playing at a festival`}
+          width={320}
+          height={280}
+          className="w-full h-80 object-cover transition-transform transform group-hover:scale-105 filter blur-sm"
+        />
+      )}
 
       <h4 className="absolute bottom-2 right-2 vip-ticket-counter-background-color rounded-[20px] p-1 z-20">
         {band.name}
