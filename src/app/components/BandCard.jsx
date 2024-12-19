@@ -1,23 +1,89 @@
 import Image from "next/image";
-import testImg from "../../images/band.jpg";
+import Link from "next/link";
 
-export default function BandCard() {
+function BandCard({
+  band,
+  hoveredBand,
+  setHoveredBand,
+  getScheduleForBand,
+  mapDayToName,
+}) {
+  // Tjekker om et bandet er aflyst og skal være sløret
+  const bandSchedule = getScheduleForBand(band.name);
+  const isCancelled = bandSchedule.some((event) => event.cancelled);
+
   return (
-    <article className="overflow-hidden relative h-[350px] w-[250px] border-2 border-green group">
-      <div className="h-full">
-        <Image src={testImg} alt="band image" className="h-full w-full object-cover" />
-      </div>
+    <div
+      key={band.slug}
+      className={`relative group ${isCancelled ? "opacity-50" : ""}`}
+      onMouseEnter={() => setHoveredBand(band.name)}
+      onMouseLeave={() => setHoveredBand(null)}
+    >
+      {band.logo && band.logo.includes("https") ? (
+        isCancelled ? (
+          <Image
+            src={band.logo}
+            alt={`${band.name} playing at a festival`}
+            width={320}
+            height={280}
+            className="w-full h-80 object-cover "
+          />
+        ) : (
+          <Link className="mb-3" href={`/artists/${band.slug}`}>
+            <Image
+              src={band.logo}
+              alt={`${band.name} playing at a festival`}
+              width={320}
+              height={280}
+              className="w-full h-80 object-cover transition-transform transform group-hover:scale-105"
+            />
+          </Link>
+        ))}
+      ) : isCancelled ? (
+        <Image
+          src={`http://localhost:8080/logos/${
+            band.logo && band.logo.includes(".")
+              ? band.logo
+              : `${band.logo}.png`
+          }`}
+          alt={`${band.name} playing at a festival`}
+          width={320}
+          height={280}
+          className="w-full h-80 object-cover filter blur-sm "
+          // gør billlederne sløret blur-sm"
+        />
+      ) : (
+        <Image
+          src={`http://localhost:8080/logos/${
+            band.logo && band.logo.includes(".")
+              ? band.logo
+              : `${band.logo}.png`
+          }`}
+          alt={`${band.name} playing at a festival`}
+          width={320}
+          height={280}
+          className="w-full h-80 object-cover transition-transform transform group-hover:scale-105 filter blur-sm"
+        />
+      )}
 
-      <header className="absolute bottom-2 left-[50%] translate-x-[-50%] text-white text-center">
-        <h3 className="whitespace-nowrap">Band Name</h3>
-      </header>
-
-      <div className="band-desc-container w-full bg-white absolute top-full min-h-full transition-all duration-500 ease-in group-hover:top-0 p-4 h-fit">
-        <h5 className="text-lg font-semibold">Viking</h5>
-        <div className="container band-desc-text-container overflow-auto scroll-hide">
-          <p className="text-sm text-gray-700 mt-2 h-[250px]"></p>
+      <h4 className="absolute bottom-2 right-2 vip-ticket-counter-background-color rounded-[20px] p-1 z-20">
+        {band.name}
+      </h4>
+      {hoveredBand === band.name && !isCancelled && (
+        <div className="absolute bottom-14 right-2 vip-ticket-counter-background-color rounded-[20px] p-3 z-20">
+          {bandSchedule.length > 0 &&
+            bandSchedule.map((event) => (
+              <div key={event.id}>
+                <p>Scene: {event.scene}</p>
+                <p>
+                  {mapDayToName(event.day)}: {event.start} - {event.end}
+                </p>
+              </div>
+            ))}
         </div>
-      </div>
-    </article>
+      )}
+    </div>
   );
 }
+
+export default BandCard;
