@@ -5,7 +5,7 @@
 const glitchHeadersList = {
   Accept: "application/json",
   "Content-Type": "application/json",
-  Prefer: "return=representation",
+  // Prefer: "return=representation",
 };
 
 export default async function putReservation(reservationData) {
