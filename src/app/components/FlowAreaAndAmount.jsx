@@ -44,11 +44,13 @@ export default function FlowAreaAndAmount({ start, setIsVisible, isDisabled, set
     // kør alert hvis antal biletter er større end antal ledige pladser
     if (count > availableSpots) {
       alert();
+      setIsDisabled(false);
     } else {
       // ellers, start timeren
       start();
       // clear reservationID
       setReservationId(null);
+      setIsDisabled(true);
     }
 
     // lav variabel der sendes med ned til putReservation (vores PUT reuquest)
@@ -60,11 +62,10 @@ export default function FlowAreaAndAmount({ start, setIsVisible, isDisabled, set
     // set reservationId til at have værdi af det nye reservationId
     setReservationId(newReservationId);
 
-    console.log("reservationId fra FAAA: ", reservationId);
+    console.log("newReservationId der returneres fra PUT: ", newReservationId);
 
     // set isVisible to true here
     setIsVisible(true);
-    setIsDisabled(true);
   }
 
   return (

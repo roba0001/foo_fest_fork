@@ -36,10 +36,9 @@ export default function ShoppingCart() {
             <p>TOTAL: </p>
             <p className="font-bold">{fixedBookingFee + regularTotal + vipTotal},-</p>
           </div>
-          <div className="flex flex-col items-center">
-            {/* ændre til formbutton? */}
+          {/* <div className="flex flex-col items-center">
             <Button href={"/payment"} buttonText={"Go to payment"}></Button>
-          </div>
+          </div> */}
         </div>
       </div>
     </fieldset>

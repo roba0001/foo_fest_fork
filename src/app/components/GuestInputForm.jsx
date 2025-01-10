@@ -69,10 +69,9 @@ export default function GuestInputForm({ isVisible, setIsVisible }) {
     } catch (error) {
       console.error("Error in postReservation:", error);
     }
-    console.log(response);
     // ---------------------------
 
-    // await router.push("./payment");
+    await router.push("./payment");
 
     // console.log("reservationId from GuestInputForm: ", reservationId);
   }
