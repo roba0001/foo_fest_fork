@@ -18,7 +18,9 @@ export default function BandsList({ bands }) {
 
     for (const scene in schedule) {
       for (const day in schedule[scene]) {
-        const events = schedule[scene][day].filter((event) => event.act.includes(bandName));
+        const events = schedule[scene][day].filter((event) =>
+          event.act.includes(bandName)
+        );
 
         if (events.length > 0) {
           events.forEach((event) => {
@@ -29,7 +31,8 @@ export default function BandsList({ bands }) {
               day,
               start: event.start,
               end: event.end,
-              cancelled: event.cancelled !== undefined ? event.cancelled : false,
+              cancelled:
+                event.cancelled !== undefined ? event.cancelled : false,
             });
           });
         }
