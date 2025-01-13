@@ -4,3 +4,4 @@ export default function RadioInput() {
     <input type="radio" id={htmlFor} name="area" value="area" />
   </label>;
 }
+llll;
