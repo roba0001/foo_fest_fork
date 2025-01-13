@@ -5,6 +5,7 @@ import TicketCounter from "./TicketCounter";
 import TotalPriceDisplay from "./TotalPriceDisplay";
 import TentAmountChooser from "./TentAmountChooser";
 import { useStore } from "@/app/store";
+import BookingOptionPopover from './BookingOptionPopover'
 
 let twoPersonTentPrice = 299;
 let threePersonTentPrice = 399;
@@ -283,12 +284,24 @@ export default function GuestPassPriceCalculator()
               count={vipPriceCounter}
               onIncrement={() => vipPriceCounter < 6 && setVipPriceCounter(vipPriceCounter + 1)}
               onDecrement={() => vipPriceCounter > 0 && setVipPriceCounter(vipPriceCounter - 1)}
+
+            />
+
+            <BookingOptionPopover
+              popoverHeaderText="VIP Festival"
+              popoverContentText="This ticket allows you to get access to VIP bars with special VIP parties, lounges with gourmet food servings and comfortable seatings. On top of that, you also get to meet your favourite artist playing on the festival one to one. This is the choice for you, who wants an unforgettable experience."
             />
           </div>
-          <div className="container optional-green-camping-container flex items-center gap-2 mb-2">
-            <label htmlFor="optional_green_camping" className="select-none cursor-pointer">
-              Optional green camping (+ 249 DKK)
-            </label>
+          <div className="container optional-green-camping-container flex items-center gap-1 mb-2">
+            <div className="flex items-center">
+              <label htmlFor="optional_green_camping" className="select-none cursor-pointer flex items-center gap-1">
+                Optional green camping (+ 249 DKK)
+                <BookingOptionPopover
+                  popoverHeaderText="Green camping"
+                  popoverContentText="Green camping offers eco-friendly accommodations with added convenience. If you want a climate friendly experience, this is the choice for you"
+                />
+              </label>
+            </div>
             <input
               type="checkbox"
               name="optional_green_camping"
@@ -305,6 +318,11 @@ export default function GuestPassPriceCalculator()
             <label htmlFor="optional_tent_put_up" className="select-none cursor-pointer">
               Optional tent put up (2P: DKK 299 - 3P: DKK 399{" "}
               <small className="text-sm">(price is per tent)</small>)
+
+              <BookingOptionPopover
+                popoverHeaderText="Tent put up"
+                popoverContentText="This is the choice for you, who don't want to bring your own tents with you to the festival. For a small fee, you can get the festival personel to put up the tents for you, so that you can enjoy the full festival experience with no hassle. Do note that it's only available for groups from 2-12 people."
+              />
             </label>
             <input
               type="checkbox"

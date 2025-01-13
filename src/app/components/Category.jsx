@@ -1,8 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
 import BandsListe from "@/app/components/BandsListe";
+import ArtistFilter from './ArtistFilter.jsx'
 
-export default function GenreOrSceneFilter() {
+export default function GenreOrSceneFilter()
+{
   const [bands, setBands] = useState([]);
   const [filteredBands, setFilteredBands] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("All");
@@ -10,10 +12,19 @@ export default function GenreOrSceneFilter() {
   const [selectedScene, setSelectedScene] = useState("All");
   const [schedule, setSchedule] = useState({});
 
-  useEffect(() => {
+  const handleFilterChange = (e) =>
+  {
+    const value = e.target.value;
+    setFilterValue(value);  // Update the local state of ArtistFilter
+    onFilterChange(value);  // Notify the parent component (BandsList)
+  }
+
+  useEffect(() =>
+  {
     fetch("https://polarized-chrome-trouser.glitch.me/bands")
       .then((res) => res.json())
-      .then((data) => {
+      .then((data) =>
+      {
         setBands(data || []);
         setFilteredBands(data || []);
       })
@@ -21,7 +32,8 @@ export default function GenreOrSceneFilter() {
 
     fetch("https://polarized-chrome-trouser.glitch.me/schedule")
       .then((res) => res.json())
-      .then((data) => {
+      .then((data) =>
+      {
         const sceneNames = Object.keys(data);
         setScenes(["All", ...sceneNames]);
         setSchedule(data);
@@ -29,46 +41,58 @@ export default function GenreOrSceneFilter() {
       .catch((err) => console.error("Error fetching schedule:", err));
   }, []);
 
-  const handleGenreChange = (genre) => {
+  const handleGenreChange = (genre) =>
+  {
     setSelectedGenre(genre);
     setSelectedScene("All");
     filterBands(genre, "All");
   };
 
-  const handleSceneChange = (scene) => {
+  const handleSceneChange = (scene) =>
+  {
     setSelectedScene(scene);
     setSelectedGenre("All");
     filterBands("All", scene);
   };
 
-  const filterBands = (genre, scene) => {
-    if (genre !== "All" && scene === "All") {
+  const filterBands = (genre, scene) =>
+  {
+    if (genre !== "All" && scene === "All")
+    {
       const filtered = bands.filter((band) => band.genre === genre);
       setFilteredBands(filtered);
-    } else if (scene !== "All" && genre === "All") {
-      const filtered = bands.filter((band) => {
+    } else if (scene !== "All" && genre === "All")
+    {
+      const filtered = bands.filter((band) =>
+      {
         const bandSchedule = getScheduleForBand(band.name);
         return bandSchedule.some(
           (scheduleEntry) => scheduleEntry.scene === scene
         );
       });
       setFilteredBands(filtered);
-    } else if (genre === "All" && scene === "All") {
+    } else if (genre === "All" && scene === "All")
+    {
       setFilteredBands(bands);
     }
   };
 
-  const getScheduleForBand = (bandName) => {
+  const getScheduleForBand = (bandName) =>
+  {
     const bandSchedule = [];
 
-    for (const scene in schedule) {
-      for (const day in schedule[scene]) {
+    for (const scene in schedule)
+    {
+      for (const day in schedule[scene])
+      {
         const events = schedule[scene][day].filter((event) =>
           event.act.includes(bandName)
         );
 
-        if (events.length > 0) {
-          events.forEach((event) => {
+        if (events.length > 0)
+        {
+          events.forEach((event) =>
+          {
             bandSchedule.push({
               scene,
               day,
@@ -89,19 +113,27 @@ export default function GenreOrSceneFilter() {
 
   return (
     <div className="container mx-auto px-4 bg-white custom-border p-7">
-      <div className="pb-3.5">
-        <label className="pb-3.5 text-heading-four">Select genre:</label>
-        <select
-          className="vip-ticket-counter-background-color rounded-[20px]"
-          value={selectedGenre}
-          onChange={(e) => handleGenreChange(e.target.value)}
-        >
-          {genres.map((genre) => (
-            <option key={genre} value={genre}>
-              {genre}
-            </option>
-          ))}
-        </select>
+      <div className="flex justify-between items-center mb-8">
+        <div className="pb-3.5 flex items-center align-center justify-between w-full max-md:flex-col max-md:gap-8">
+          {/* Artist Filter */}
+          <ArtistFilter onFilterChange={handleFilterChange} />
+
+          {/* Genre Filter */}
+          <div className="-order-1 whitespace-nowrap">
+            <label className="pb-3.5 text-heading-four mr-4">Select genre:</label>
+            <select
+              className="vip-ticket-counter-background-color rounded-[20px] px-4 py-2 cursor-pointer"
+              value={selectedGenre}
+              onChange={(e) => handleFilterChange(e.target.value)}
+            >
+              {genres.map((genre) => (
+                <option key={genre} value={genre}>
+                  {genre}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
       </div>
 
       <div className="pb-3.5">
