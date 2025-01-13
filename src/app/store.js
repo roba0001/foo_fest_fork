@@ -6,6 +6,7 @@ export const useStore = create(
     (set) => ({
       count: 0,
       reservationId: null,
+      reservationMessage: null,
 
       regularTicketPrice: 799,
       vipTicketPrice: 1299,
@@ -14,9 +15,9 @@ export const useStore = create(
       optionalGreenCamping: false,
       selectedTentPrice: 0,
 
-      // resetCount: () => set({ count: 0 }),
       setCount: (value) => set({ count: value }),
       setReservationId: (id) => set({ reservationId: id }),
+      setReservationMessage: (message) => set({ reservationMessage: message }),
     }),
     { name: "count-storage" }
   )
