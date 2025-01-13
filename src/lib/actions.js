@@ -32,6 +32,7 @@ export async function postReservation(reservationData) {
   });
 
   const data = await response.json();
-  console.log("response from glitch PUSH", data);
-  return data;
+  const message = data.message;
+  console.log("response message from POST reservation", message);
+  return message;
 }
