@@ -40,12 +40,12 @@ export default function BookingTimerContainer({ children }) {
       overlay.style.left = "0";
       overlay.style.width = "100%";
       overlay.style.height = "100%";
-      overlay.style.backdropFilter = "blur(5px)"; // Apply background blur
-      overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)"; // Optional: Add a semi-transparent overlay
+      overlay.style.backdropFilter = "blur(5px)";
+      overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
       overlay.style.zIndex = "999";
       document.body.appendChild(overlay);
 
-      // Delay the reload
+      // vis besked i 3 sekunder inden reload af siden
       setTimeout(() => {
         location.reload();
       }, 3000);
