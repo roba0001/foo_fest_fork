@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 
 export default function GuestInputForm({ isVisible, setIsVisible }) {
   // hent antal billetter fra zustand store
-  const { count, reservationId } = useStore();
+  const { count, reservationId, reservationMessage, setReservationMessage } = useStore();
 
   const router = useRouter();
 
@@ -63,12 +63,10 @@ export default function GuestInputForm({ isVisible, setIsVisible }) {
     const reservationData = { id: reservationId };
     console.log("dette sender vi til postReservation", reservationData);
 
-    try {
-      const response = await postReservation(reservationData);
-      console.log("Response from postReservation:", response);
-    } catch (error) {
-      console.error("Error in postReservation:", error);
-    }
+    const response = await postReservation(reservationData);
+    console.log("Response from postReservation:", response);
+    setReservationMessage(response);
+
     // ---------------------------
 
     await router.push("./payment");

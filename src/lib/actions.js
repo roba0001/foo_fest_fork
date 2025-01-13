@@ -32,7 +32,7 @@ export async function postReservation(reservationData) {
   });
 
   const data = await response.json();
-  const message = data.message;
-  console.log("response message from POST reservation", message);
-  return message;
+  const reservationMessage = data.message;
+  console.log("response message from POST reservation", reservationMessage);
+  return reservationMessage;
 }
