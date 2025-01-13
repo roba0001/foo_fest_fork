@@ -21,9 +21,7 @@ export default function Home() {
   return (
     <div>
       <Navigation navItems={navItems} />
-      <h2 className="container mx-auto px-4">
-        Program of the band playen in festival
-      </h2>
+      <h2 className="container mx-auto px-4">Program</h2>
       <Category />
       <BandsListe />
     </div>
