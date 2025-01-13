@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import BandCard from "@/app/components/BandCard";
 
-export default function BandsList({ bands }) {
+export default function BandsListe({ bands }) {
   const [schedule, setSchedule] = useState({});
   const [hoveredBand, setHoveredBand] = useState(null);
 
@@ -24,8 +24,6 @@ export default function BandsList({ bands }) {
 
         if (events.length > 0) {
           events.forEach((event) => {
-            console.log("Event found:", event);
-
             bandSchedule.push({
               scene,
               day,
@@ -41,6 +39,7 @@ export default function BandsList({ bands }) {
 
     return bandSchedule;
   };
+
   const mapDayToName = (day) => {
     switch (day) {
       case "mon":
