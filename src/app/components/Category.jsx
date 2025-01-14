@@ -12,19 +12,17 @@ export default function GenreOrSceneFilter()
   const [selectedScene, setSelectedScene] = useState("All");
   const [schedule, setSchedule] = useState({});
 
-  const handleFilterChange = (e) =>
-  {
-    const value = e.target.value;
-    setFilterValue(value);  // Update the local state of ArtistFilter
-    onFilterChange(value);  // Notify the parent component (BandsList)
-  }
+  const handleFilterChange = (value) => {
+    const filtered = bands.filter((band) =>
+      band.name.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredBands(filtered);
+  };
 
-  useEffect(() =>
-  {
+  useEffect(() => {
     fetch("https://polarized-chrome-trouser.glitch.me/bands")
       .then((res) => res.json())
-      .then((data) =>
-      {
+      .then((data) => {
         setBands(data || []);
         setFilteredBands(data || []);
       })
@@ -32,8 +30,7 @@ export default function GenreOrSceneFilter()
 
     fetch("https://polarized-chrome-trouser.glitch.me/schedule")
       .then((res) => res.json())
-      .then((data) =>
-      {
+      .then((data) => {
         const sceneNames = Object.keys(data);
         setScenes(["All", ...sceneNames]);
         setSchedule(data);
@@ -151,7 +148,7 @@ export default function GenreOrSceneFilter()
         </select>
       </div>
 
-      {filteredBands.length > 0 ? <BandsListe bands={filteredBands} /> : null}
+      {filteredBands.length > 0 ? <BandsListe bands={filteredBands} getScheduleForBand={getScheduleForBand} /> : null}
     </div>
   );
 }

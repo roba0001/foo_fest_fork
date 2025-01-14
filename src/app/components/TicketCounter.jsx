@@ -36,7 +36,7 @@ export default function TicketCounter({
             type="button"
           >
             <CiCirclePlus size={30} />
-          </button>c:\Users\Victo\OneDrive\Documents\kea\3semester\exam_website\foo_fest_improved\src\app\components\BookingOptionPopover.jsx
+          </button>
         </div>
       </article>
     </Fieldset>
