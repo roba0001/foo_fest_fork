@@ -21,7 +21,7 @@ export default function Book() {
       href: "/book",
     },
   ];
-  a;
+
   return (
     <>
       <Navigation navItems={navItems} />
