@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import BandsListe from "@/app/components/BandsListe";
-import ArtistFilter from "./ArtistFilter.jsx";
 
 export default function GenreOrSceneFilter() {
   const [bands, setBands] = useState([]);
@@ -10,12 +9,6 @@ export default function GenreOrSceneFilter() {
   const [scenes, setScenes] = useState([]);
   const [selectedScene, setSelectedScene] = useState("All");
   const [schedule, setSchedule] = useState({});
-
-  const handleFilterChange = (e) => {
-    const value = e.target.value;
-    setFilterValue(value); // Update the local state of ArtistFilter
-    onFilterChange(value); // Notify the parent component (BandsList)
-  };
 
   useEffect(() => {
     fetch("https://polarized-chrome-trouser.glitch.me/bands")
@@ -96,29 +89,19 @@ export default function GenreOrSceneFilter() {
 
   return (
     <div className="container mx-auto px-4 bg-white custom-border p-7">
-      <div className="flex justify-between items-center mb-8">
-        <div className="pb-3.5 flex items-center align-center justify-between w-full max-md:flex-col max-md:gap-8">
-          {/* Artist Filter */}
-          <ArtistFilter onFilterChange={handleFilterChange} />
-
-          {/* Genre Filter */}
-          <div className="-order-1 whitespace-nowrap">
-            <label className="pb-3.5 text-heading-four mr-4">
-              Select genre:
-            </label>
-            <select
-              className="vip-ticket-counter-background-color rounded-[20px] px-4 py-2 cursor-pointer"
-              value={selectedGenre}
-              onChange={(e) => handleFilterChange(e.target.value)}
-            >
-              {genres.map((genre) => (
-                <option key={genre} value={genre}>
-                  {genre}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
+      <div className="pb-3.5">
+        <label className="pb-3.5 text-heading-four">Select genre:</label>
+        <select
+          className="vip-ticket-counter-background-color rounded-[20px]"
+          value={selectedGenre}
+          onChange={(e) => handleGenreChange(e.target.value)}
+        >
+          {genres.map((genre) => (
+            <option key={genre} value={genre}>
+              {genre}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div className="pb-3.5">
@@ -136,7 +119,7 @@ export default function GenreOrSceneFilter() {
         </select>
       </div>
 
-      {filteredBands.length > 0 ? <BandsListe bands={filteredBands} getScheduleForBand={getScheduleForBand} /> : null}
+      {filteredBands.length > 0 ? <BandsListe bands={filteredBands} /> : null}
     </div>
   );
 }
